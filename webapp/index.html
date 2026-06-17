@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Table Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    #map { width: 100%; height: 100%; }
+    .popup-content h3 { margin: 0 0 6px; font-size: 15px; color: #c0392b; }
+    .popup-content p { margin: 2px 0; font-size: 13px; color: #333; }
+    .popup-content .label { font-weight: 600; color: #555; }
+    .popup-content a { color: #2980b9; text-decoration: none; }
+    .popup-content a:hover { text-decoration: underline; }
+    .popup-content .category { display: inline-block; background: #e74c3c; color: #fff; padding: 1px 8px; border-radius: 10px; font-size: 11px; margin-bottom: 4px; }
+    #status { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: 6px 16px; border-radius: 6px; font-size: 13px; z-index: 1000; display: none; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="status">Loading map data...</div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script>
+    (function () {
+      var map = L.map('map', { zoomControl: true }).setView([37.535, 126.897], 13);
+      var markers = L.markerClusterGroup();
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+      }).addTo(map);
+
+      var status = document.getElementById('status');
+      status.style.display = 'block';
+
+      function esc(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str || ''));
+        return div.innerHTML;
+      }
+
+      fetch('data/map_data.json')
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (geojson) {
+          status.style.display = 'none';
+
+          var geoJsonLayer = L.geoJSON(geojson, {
+            onEachFeature: function (feature, layer) {
+              var p = feature.properties || {};
+              var html = '<div class="popup-content">';
+              html += '<h3>' + esc(p.title || 'Untitled') + '</h3>';
+              if (p.category) html += '<span class="category">' + esc(p.category) + '</span>';
+              if (p.address) html += '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>';
+              if (p.phone)   html += '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p>';
+              if (p.link) {
+                  // Handle pipe-separated links
+                  var links = p.link.split('|');
+                  html += '<p><span class="label">Link:</span> ';
+                  links.forEach(function(link, i) {
+                    html += '<a href="' + esc(link) + '" target="_blank" rel="noopener">Link ' + (i+1) + '</a>' + (i < links.length - 1 ? ', ' : '');
+                  });
+                  html += '</p>';
+              }
+              html += '</div>';
+              layer.bindPopup(html, { maxWidth: 300 });
+            }
+          });
+          
+          markers.addLayer(geoJsonLayer);
+          map.addLayer(markers);
+
+          if (markers.getLayers().length > 0) {
+            map.fitBounds(markers.getBounds().pad(0.1));
+          }
+        })
+        .catch(function (err) {
+          status.textContent = 'Failed to load map data: ' + err.message;
+          status.style.background = 'rgba(180,0,0,0.85)';
+        });
+    })();
+  </script>
+</body>
+</html>

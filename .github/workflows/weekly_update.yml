@@ -1,0 +1,34 @@
+name: Weekly Data Update and Deploy
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # 매주 월요일 0시
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 pandas geopy
+      - name: Run collection scripts
+        run: |
+          python goods_tools/redtable.py
+          python goods_tools/ydp.py
+          python goods_tools/benepia.py
+      - name: Consolidate data
+        run: python webapp/scripts/consolidate.py
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add webapp/data/map_data.json
+          git commit -m "chore: weekly data update" || exit 0
+          git push

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Cache
+webapp/scripts/.geocode_cache.json
+
+# Environment/OS
+.DS_Store
+.env
+.venv
+env/
+venv/
+*.log
+
+# Project specific
+.serena/
