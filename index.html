@@ -29,7 +29,33 @@
   <script>
     (function () {
       var map = L.map('map', { zoomControl: true }).setView([37.535, 126.897], 13);
-      var markers = L.markerClusterGroup();
+      var markers = L.markerClusterGroup({ maxClusterRadius: 50, disableClusteringAtZoom: 16 });
+
+      // Category mapping
+      var categoryColors = {
+        "한식": "#e74c3c",
+        "양식": "#2980b9",
+        "카페": "#f1c40f",
+        "중식": "#27ae60",
+        "뷰티": "#8e44ad",
+        "기타": "#7f8c8d"
+      };
+
+      markers.on('clusterclick', function (a) {
+        var childMarkers = a.layer.getAllChildMarkers();
+        var titles = childMarkers.map(function(m) {
+          return m.feature.properties.title;
+        });
+        
+        var popupContent = '<div class="popup-content"><h3>Cluster (' + titles.length + ' stores)</h3><ul>' + 
+          titles.map(function(t) { return '<li>' + esc(t) + '</li>'; }).join('') + 
+          '</ul></div>';
+          
+        L.popup()
+          .setLatLng(a.latlng)
+          .setContent(popupContent)
+          .openOn(map);
+      });
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -54,6 +80,18 @@
           status.style.display = 'none';
 
           var geoJsonLayer = L.geoJSON(geojson, {
+            pointToLayer: function (feature, latlng) {
+              var category = feature.properties.category || "기타";
+              var color = categoryColors[category] || "#333";
+              
+              var icon = L.divIcon({
+                className: 'custom-icon',
+                html: '<div style="background-color: ' + color + '; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.3);"></div>',
+                iconSize: [20, 20]
+              });
+              
+              return L.marker(latlng, { icon: icon });
+            },
             onEachFeature: function (feature, layer) {
               var p = feature.properties || {};
               var html = '<div class="popup-content">';

@@ -7,7 +7,7 @@ geocodes missing coordinates via Nominatim (no API key needed), and
 outputs a unified GeoJSON FeatureCollection ready for a web frontend.
 
 Usage:
-    python3 webapp/scripts/consolidate.py
+    python3 scripts/consolidate.py
 """
 
 import os
@@ -26,7 +26,7 @@ from geopy.extra.rate_limiter import RateLimiter
 # ---------------------------------------------------------------------------
 GOODS_TOOLS_DIR = "/Users/sysilion/goods_tools"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.dirname(SCRIPT_DIR)  # webapp/
+PROJECT_DIR = os.path.dirname(SCRIPT_DIR)  # project root
 OUTPUT_FILE = os.path.join(PROJECT_DIR, "data", "map_data.json")
 CACHE_FILE = os.path.join(SCRIPT_DIR, ".geocode_cache.json")
 
