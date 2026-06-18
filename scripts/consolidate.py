@@ -317,7 +317,7 @@ def main():
             'source': 'combined'
         })
 
-    combined = combined.groupby(['clean_title', 'clean_address'], group_keys=False).apply(consolidate_group).reset_index(drop=True)
+    combined = combined.groupby(['clean_title', 'clean_address'], group_keys=False).apply(consolidate_group, include_groups=False).reset_index(drop=True)
 
     # Apply jitter to identical coordinates to ensure clickability
     import math
