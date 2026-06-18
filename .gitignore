@@ -4,9 +4,6 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Cache
-webapp/scripts/.geocode_cache.json
-
 # Environment/OS
 .DS_Store
 .env
