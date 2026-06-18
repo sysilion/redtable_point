@@ -221,12 +221,14 @@
           });
 
           function updateMarkers() {
-            markers.clearLayers();
+            var filtered = [];
             geoJsonLayer.eachLayer(function(layer) {
               if (activeCategories.has(layer.feature.properties.category || "기타")) {
-                markers.addLayer(layer);
+                filtered.push(layer);
               }
             });
+            markers.clearLayers();
+            markers.addLayers(filtered);
           }
 
           if (markers.getLayers().length > 0) {
