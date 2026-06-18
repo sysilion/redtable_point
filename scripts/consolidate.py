@@ -262,15 +262,29 @@ def main():
     # Combine all data
     combined = pd.concat(source_dfs, ignore_index=True)
     
-    # Deduplicate by title and address
-    combined = combined.groupby(['title', 'address']).agg({
-        'phone': 'first',
-        'category': 'first',
-        'link': lambda x: '|'.join(set(str(l) for l in x if pd.notna(l))),
-        'lat': 'first',
-        'lon': 'first',
-        'source': lambda x: '|'.join(set(str(s) for s in x))
-    }).reset_index()
+    def consolidate_group(group):
+        items = []
+        for _, row in group.iterrows():
+            if pd.notna(row['link']):
+                items.append({'link': str(row['link']), 'source': str(row['source'])})
+        unique_items = []
+        seen = set()
+        for item in items:
+            key = (item['link'], item['source'])
+            if key not in seen:
+                unique_items.append(item)
+                seen.add(key)
+        
+        return pd.Series({
+            'phone': group['phone'].iloc[0],
+            'category': group['category'].iloc[0],
+            'link': json.dumps(unique_items),
+            'lat': group['lat'].iloc[0],
+            'lon': group['lon'].iloc[0],
+            'source': 'combined'
+        })
+
+    combined = combined.groupby(['title', 'address'], group_keys=False).apply(consolidate_group).reset_index()
 
     # Apply jitter to identical coordinates to ensure clickability
     import math

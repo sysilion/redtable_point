@@ -104,13 +104,16 @@
               if (p.address) html += '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>';
               if (p.phone)   html += '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p>';
               if (p.link) {
-                  // Handle pipe-separated links
-                  var links = p.link.split('|');
-                  html += '<p><span class="label">Link:</span> ';
-                  links.forEach(function(link, i) {
-                    html += '<a href="' + esc(link) + '" target="_blank" rel="noopener">Link ' + (i+1) + '</a>' + (i < links.length - 1 ? ', ' : '');
-                  });
-                  html += '</p>';
+                  try {
+                    var links = JSON.parse(p.link);
+                    html += '<p><span class="label">Link:</span> ';
+                    links.forEach(function(item, i) {
+                      html += '<a href="' + esc(item.link) + '" target="_blank" rel="noopener">' + esc(item.source) + '</a>' + (i < links.length - 1 ? ', ' : '');
+                    });
+                    html += '</p>';
+                  } catch (e) {
+                    html += '<p><span class="label">Link:</span> <a href="' + esc(p.link) + '" target="_blank" rel="noopener">Visit</a></p>';
+                  }
               }
               html += '</div>';
               layer.bindPopup(html, { maxWidth: 300 });
