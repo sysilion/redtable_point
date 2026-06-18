@@ -271,8 +271,22 @@ def main():
         'lon': 'first',
         'source': lambda x: '|'.join(set(str(s) for s in x))
     }).reset_index()
+
+    # Apply jitter to identical coordinates to ensure clickability
+    import math
+    coord_counts = combined.groupby(['lat', 'lon']).size()
+    for (lat, lon), count in coord_counts.items():
+        if count > 1 and pd.notna(lat) and pd.notna(lon):
+            mask = (combined['lat'] == lat) & (combined['lon'] == lon)
+            indices = combined[mask].index
+            for idx, row_idx in enumerate(indices):
+                # Deterministic jitter: 0.00005 deg (~5m)
+                angle = (idx / count) * 2 * math.pi
+                magnitude = 0.00005
+                combined.at[row_idx, 'lat'] += math.cos(angle) * magnitude
+                combined.at[row_idx, 'lon'] += math.sin(angle) * magnitude
     
-    print(f"\n📊 Combined (deduplicated): {len(combined)} entries | "
+    print(f"\n📊 Combined (deduplicated & jittered): {len(combined)} entries | "
           f"With coordinates: {combined['lat'].notna().sum()}")
 
     geojson = to_geojson(combined)
