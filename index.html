@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-sidebar-v2@3.2.3/css/leaflet-sidebar.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -18,18 +21,77 @@
     .popup-content a:hover { text-decoration: underline; }
     .popup-content .category { display: inline-block; background: #e74c3c; color: #fff; padding: 1px 8px; border-radius: 10px; font-size: 11px; margin-bottom: 4px; }
     #status { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: 6px 16px; border-radius: 6px; font-size: 13px; z-index: 1000; display: none; }
+    .sidebar-item { cursor: pointer; padding: 10px; border-bottom: 1px solid #eee; }
+    .sidebar-item:hover { background: #f9f9f9; }
+    .sidebar-item h3 { font-size: 15px; margin: 0 0 4px; }
+    .sidebar-item p { font-size: 12px; color: #666; margin: 0; }
   </style>
 </head>
 <body>
-  <div id="map"></div>
+  <div id="sidebar" class="leaflet-sidebar collapsed">
+    <div class="leaflet-sidebar-tabs">
+      <ul role="tablist">
+        <li><a href="#home" role="tab">☰</a></li>
+        <li><a href="#filter" role="tab">🏷️</a></li>
+      </ul>
+    </div>
+    <div class="leaflet-sidebar-content">
+      <div class="leaflet-sidebar-pane" id="home">
+        <h1 class="leaflet-sidebar-header">
+          Stores
+          <span class="leaflet-sidebar-close">◀</span>
+        </h1>
+        <div id="sidebar-content"></div>
+      </div>
+      <div class="leaflet-sidebar-pane" id="filter">
+        <h1 class="leaflet-sidebar-header">
+          Filter
+          <span class="leaflet-sidebar-close">◀</span>
+        </h1>
+        <div id="filter-content"></div>
+      </div>
+    </div>
+  </div>
+  <div id="map" class="leaflet-sidebar-map"></div>
   <div id="status">Loading map data...</div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/leaflet-sidebar-v2@3.2.3/js/leaflet-sidebar.min.js"></script>
+  <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.umd.js"></script>
+  <script src="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.js"></script>
   <script>
     (function () {
       var map = L.map('map', { zoomControl: true }).setView([37.535, 126.897], 13);
-      var markers = L.markerClusterGroup({ maxClusterRadius: 50, disableClusteringAtZoom: 16 });
+      var sidebar = L.control.sidebar({
+        container: 'sidebar',
+        position: 'left'
+      }).addTo(map);
+
+      var searchControl = new GeoSearch.GeoSearchControl({
+        provider: new GeoSearch.OpenStreetMapProvider(),
+        style: 'bar',
+        showMarker: true,
+        showPopup: false,
+        marker: {
+          icon: new L.Icon.Default(),
+          draggable: false,
+        },
+        popupFormat: ({ query, result }) => result.label,
+        maxMarkers: 1,
+        retainZoomLevel: false,
+        animateZoom: true,
+        autoClose: false,
+        searchLabel: 'Enter address',
+        keepResult: true
+      }).addTo(map);
+
+      L.control.locate({
+        position: 'topleft',
+        strings: {
+          title: "Show me where I am"
+        }
+      }).addTo(map);
 
       // Category mapping to icons
       var categoryIcons = {
@@ -83,6 +145,8 @@
         .then(function (geojson) {
           status.style.display = 'none';
 
+          var sidebarContent = document.getElementById('sidebar-content');
+
           var geoJsonLayer = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
               var category = feature.properties.category || "기타";
@@ -117,11 +181,53 @@
               }
               html += '</div>';
               layer.bindPopup(html, { maxWidth: 300 });
+
+              // Add to sidebar
+              var item = document.createElement('div');
+              item.className = 'sidebar-item';
+              item.innerHTML = '<h3>' + esc(p.title || 'Untitled') + '</h3><p>' + esc(p.address || '') + '</p>';
+              item.onclick = function() {
+                markers.zoomToShowLayer(layer, function() {
+                  layer.openPopup();
+                });
+                sidebar.close();
+              };
+              sidebarContent.appendChild(item);
             }
           });
           
           markers.addLayer(geoJsonLayer);
           map.addLayer(markers);
+
+          var filterContent = document.getElementById('filter-content');
+          var categories = Object.keys(categoryIcons);
+          var activeCategories = new Set(categories);
+
+          categories.forEach(function(cat) {
+            var label = document.createElement('label');
+            label.style.display = 'block';
+            label.style.padding = '10px';
+            label.style.borderBottom = '1px solid #eee';
+            label.innerHTML = '<input type="checkbox" checked value="' + cat + '"> ' + cat;
+            label.querySelector('input').onchange = function(e) {
+              if (e.target.checked) {
+                activeCategories.add(cat);
+              } else {
+                activeCategories.delete(cat);
+              }
+              updateMarkers();
+            };
+            filterContent.appendChild(label);
+          });
+
+          function updateMarkers() {
+            markers.clearLayers();
+            geoJsonLayer.eachLayer(function(layer) {
+              if (activeCategories.has(layer.feature.properties.category || "기타")) {
+                markers.addLayer(layer);
+              }
+            });
+          }
 
           if (markers.getLayers().length > 0) {
             map.fitBounds(markers.getBounds().pad(0.1));
