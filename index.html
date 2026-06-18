@@ -43,9 +43,10 @@
 
       // 마커 클러스터링 설정 (동일 좌표 이슈 대응)
       var markers = L.markerClusterGroup({ 
-        maxClusterRadius: 50, 
-        disableClusteringAtZoom: 16,
-        spiderfyOnMaxZoom: true 
+        maxClusterRadius: 40, 
+        disableClusteringAtZoom: 17,
+        spiderfyOnMaxZoom: true,
+        spiderfyDistanceMultiplier: 2.0
       });
 
       markers.on('clusterclick', function (a) {
