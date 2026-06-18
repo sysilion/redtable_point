@@ -262,6 +262,10 @@ def main():
     # Combine all data
     combined = pd.concat(source_dfs, ignore_index=True)
     
+    # Deduplicate by title and address (ignoring whitespace)
+    combined['clean_title'] = combined['title'].astype(str).str.replace(r'\s+', '', regex=True).str.lower()
+    combined['clean_address'] = combined['address'].astype(str).str.replace(r'\s+', '', regex=True).str.lower()
+
     def consolidate_group(group):
         items = []
         for _, row in group.iterrows():
@@ -276,6 +280,8 @@ def main():
                 seen.add(key)
         
         return pd.Series({
+            'title': group['title'].iloc[0],
+            'address': group['address'].iloc[0],
             'phone': group['phone'].iloc[0],
             'category': group['category'].iloc[0],
             'link': json.dumps(unique_items),
@@ -284,7 +290,7 @@ def main():
             'source': 'combined'
         })
 
-    combined = combined.groupby(['title', 'address'], group_keys=False).apply(consolidate_group).reset_index()
+    combined = combined.groupby(['clean_title', 'clean_address'], group_keys=False).apply(consolidate_group).reset_index(drop=True)
 
     # Apply jitter to identical coordinates to ensure clickability
     import math

@@ -150,24 +150,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.713867941414,
-          35.1556630084697
-        ]
-      },
-      "properties": {
-        "title": "감자꽃피는감자탕 (자은점)",
-        "address": "경상남도 창원시 진해구 냉천로 160 3층",
-        "phone": "055-545-8800",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/543736\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           128.7183475,
           35.1565181
         ]
@@ -178,6 +160,24 @@
         "phone": "055-545-8800",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/543736\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.713867941414,
+          35.1556630084697
+        ]
+      },
+      "properties": {
+        "title": "감자꽃피는감자탕 (자은점)",
+        "address": "경상남도 창원시 진해구 냉천로 160 3층",
+        "phone": "055-545-8800",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/543736\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -312,24 +312,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9480108,
-          37.5401688
-        ]
-      },
-      "properties": {
-        "title": "고반식당블랙 (마포본점)",
-        "address": "서울특별시 마포구 도화길 16 1층 고반식당블랙 마포본점",
-        "phone": "0507-1493-6712",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634886\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9483488,
           37.5402361
         ]
@@ -348,6 +330,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.9480108,
+          37.5401688
+        ]
+      },
+      "properties": {
+        "title": "고반식당블랙 (마포본점)",
+        "address": "서울특별시 마포구 도화길 16 1층 고반식당블랙 마포본점",
+        "phone": "0507-1493-6712",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634886\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.98561080516,
           37.5630698136517
         ]
@@ -357,79 +357,7 @@
         "address": "서울특별시 중구 명동10길 19-3",
         "phone": "02-756-3449",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10026\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9856152,
-          37.5630675
-        ]
-      },
-      "properties": {
-        "title": "곰국시집(명동점)",
-        "address": "서울특별시 중구 명동10길 19-3",
-        "phone": "02-756-3449",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10026\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.031570900261,
-          37.4943834704341
-        ]
-      },
-      "properties": {
-        "title": "곱 (강남점)",
-        "address": "서울특별시 강남구 역삼로3길 12 1, 2층",
-        "phone": "0507-1343-7592",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/90435\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.949350984102,
-          37.5410324056867
-        ]
-      },
-      "properties": {
-        "title": "곱 (마포점)",
-        "address": "서울특별시 마포구 도화길 31-1 1층",
-        "phone": "0507-1324-5201",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/116107\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.896467504418,
-          37.5174782293181
-        ]
-      },
-      "properties": {
-        "title": "곱 (문래점)",
-        "address": "서울특별시 영등포구 당산로 34 118호",
-        "phone": "0507-1435-5201",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/36247\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10026\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10026\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -456,6 +384,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.031570900261,
+          37.4943834704341
+        ]
+      },
+      "properties": {
+        "title": "곱 (강남점)",
+        "address": "서울특별시 강남구 역삼로3길 12 1, 2층",
+        "phone": "0507-1343-7592",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/90435\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9493581,
           37.5410393
         ]
@@ -466,6 +412,24 @@
         "phone": "0507-1324-5201",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/116107\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.949350984102,
+          37.5410324056867
+        ]
+      },
+      "properties": {
+        "title": "곱 (마포점)",
+        "address": "서울특별시 마포구 도화길 31-1 1층",
+        "phone": "0507-1324-5201",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/116107\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -492,6 +456,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.896467504418,
+          37.5174782293181
+        ]
+      },
+      "properties": {
+        "title": "곱 (문래점)",
+        "address": "서울특별시 영등포구 당산로 34 118호",
+        "phone": "0507-1435-5201",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/36247\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9204241,
           37.5285292
         ]
@@ -510,24 +492,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.985394525951,
-          37.5641417024991
-        ]
-      },
-      "properties": {
-        "title": "광화문특고기 (명동점)",
-        "address": "서울특별시 중구 명동길 55 태흥빌딩  3층",
-        "phone": "02-318-9221",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948524\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9856943,
           37.563641600000004
         ]
@@ -538,6 +502,24 @@
         "phone": "02-318-9221",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/948524\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.985394525951,
+          37.5641417024991
+        ]
+      },
+      "properties": {
+        "title": "광화문특고기 (명동점)",
+        "address": "서울특별시 중구 명동길 55 태흥빌딩  3층",
+        "phone": "02-318-9221",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948524\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -636,24 +618,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.899902506754,
-          37.4826840834852
-        ]
-      },
-      "properties": {
-        "title": "금성관나주곰탕 (구로디지털점)",
-        "address": "서울특별시 구로구 디지털로32길 92 1층",
-        "phone": "02-838-7898",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/778086\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.8998726,
           37.4826338
         ]
@@ -672,16 +636,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9836481,
-          37.5629097
+          126.899902506754,
+          37.4826840834852
         ]
       },
       "properties": {
-        "title": "남기남 부대찌개 (명동점)",
-        "address": "서울특별시 중구 명동4길 16-1 2층, 3층",
-        "phone": "070-8800-1234",
+        "title": "금성관나주곰탕 (구로디지털점)",
+        "address": "서울특별시 구로구 디지털로32길 92 1층",
+        "phone": "02-838-7898",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/40916\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/778086\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -700,6 +664,24 @@
         "phone": "070-8800-1234",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/40916\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.9836481,
+          37.5629097
+        ]
+      },
+      "properties": {
+        "title": "남기남 부대찌개 (명동점)",
+        "address": "서울특별시 중구 명동4길 16-1 2층, 3층",
+        "phone": "070-8800-1234",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/40916\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -1140,78 +1122,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.061506,
-          35.1597384
-        ]
-      },
-      "properties": {
-        "title": "더만족 (서면점)",
-        "address": "부산광역시 부산진구 서전로9번길 47 1층 더만족 서면점",
-        "phone": "0507-1470-7886",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/822282\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.3045048,
-          35.5376399
-        ]
-      },
-      "properties": {
-        "title": "더만족 (신정옥동점)",
-        "address": "울산광역시 남구 동산로69번길 14 문수로2차아이파크2단지 아파트상가 103호",
-        "phone": "052-266-7879",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/152977\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.2948495,
-          35.5597827
-        ]
-      },
-      "properties": {
-        "title": "더만족 (우정혁신점)",
-        "address": "울산광역시 중구 종가5길 78-5 1층 더만족 우정혁신점",
-        "phone": "052-242-2505",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/151733\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.2610139,
-          35.5443386
-        ]
-      },
-      "properties": {
-        "title": "더만족 (울산대점)",
-        "address": "울산광역시 남구 대학로108번길 5 1층",
-        "phone": "052-998-5789",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/131769\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           129.0606643,
           35.1581368
         ]
@@ -1222,6 +1132,24 @@
         "phone": "0507-1470-7886",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/822282\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.061506,
+          35.1597384
+        ]
+      },
+      "properties": {
+        "title": "더만족 (서면점)",
+        "address": "부산광역시 부산진구 서전로9번길 47 1층 더만족 서면점",
+        "phone": "0507-1470-7886",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/822282\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -1248,6 +1176,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          129.3045048,
+          35.5376399
+        ]
+      },
+      "properties": {
+        "title": "더만족 (신정옥동점)",
+        "address": "울산광역시 남구 동산로69번길 14 문수로2차아이파크2단지 아파트상가 103호",
+        "phone": "052-266-7879",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/152977\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           129.2963342,
           35.5595817
         ]
@@ -1266,6 +1212,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          129.2948495,
+          35.5597827
+        ]
+      },
+      "properties": {
+        "title": "더만족 (우정혁신점)",
+        "address": "울산광역시 중구 종가5길 78-5 1층 더만족 우정혁신점",
+        "phone": "052-242-2505",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/151733\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           129.2610161,
           35.5442356
         ]
@@ -1276,6 +1240,24 @@
         "phone": "052-998-5789",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/131769\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.2610139,
+          35.5443386
+        ]
+      },
+      "properties": {
+        "title": "더만족 (울산대점)",
+        "address": "울산광역시 남구 대학로108번길 5 1층",
+        "phone": "052-998-5789",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/131769\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -1482,24 +1464,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.971042629285,
-          35.1018968979202
-        ]
-      },
-      "properties": {
-        "title": "동원장수촌 (하단본점)",
-        "address": "부산광역시 사하구 동매로 117 건우리안 상가 B201호",
-        "phone": "051-202-4100",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634871\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           128.9616479,
           35.1041934
         ]
@@ -1510,6 +1474,24 @@
         "phone": "051-202-4100",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634871\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.971042629285,
+          35.1018968979202
+        ]
+      },
+      "properties": {
+        "title": "동원장수촌 (하단본점)",
+        "address": "부산광역시 사하구 동매로 117 건우리안 상가 B201호",
+        "phone": "051-202-4100",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634871\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -1752,24 +1734,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9931163,
-          37.5285648
-        ]
-      },
-      "properties": {
-        "title": "럼퍼스룸 (몬드리안 서울)",
-        "address": "서울특별시 용산구 장문로 23 2층",
-        "phone": "02-2076-2052",
-        "category": "양식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/785790\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.993108,
           37.528566
         ]
@@ -1788,16 +1752,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9854047,
-          37.5694331
+          126.9931163,
+          37.5285648
         ]
       },
       "properties": {
-        "title": "르브와 (종로점)",
-        "address": "서울특별시 종로구 우정국로2길 42 4층",
-        "phone": "02-739-8208",
-        "category": "기타",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/150833\", \"source\": \"redtable\"}]",
+        "title": "럼퍼스룸 (몬드리안 서울)",
+        "address": "서울특별시 용산구 장문로 23 2층",
+        "phone": "02-2076-2052",
+        "category": "양식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/785790\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -1824,6 +1788,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.9854047,
+          37.5694331
+        ]
+      },
+      "properties": {
+        "title": "르브와 (종로점)",
+        "address": "서울특별시 종로구 우정국로2길 42 4층",
+        "phone": "02-739-8208",
+        "category": "기타",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/150833\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9203501,
           37.528936900000005
         ]
@@ -1842,24 +1824,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9851105,
-          37.5688245
-        ]
-      },
-      "properties": {
-        "title": "리파인 (을지로명동점)",
-        "address": "서울특별시 종로구 청계천로 67 2층 리파인 을지로명동점",
-        "phone": "0507-1408-1593",
-        "category": "기타",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634928\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.985104,
           37.568798
         ]
@@ -1870,6 +1834,24 @@
         "phone": "0507-1408-1593",
         "category": "기타",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634928\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.9851105,
+          37.5688245
+        ]
+      },
+      "properties": {
+        "title": "리파인 (을지로명동점)",
+        "address": "서울특별시 종로구 청계천로 67 2층 리파인 을지로명동점",
+        "phone": "0507-1408-1593",
+        "category": "기타",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634928\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -1995,43 +1977,7 @@
         "address": "서울특별시 중구 을지로43길 9-4",
         "phone": "02-2271-0880",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10081\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.984048589216,
-          37.5627677737875
-        ]
-      },
-      "properties": {
-        "title": "만족오향족발 (명동점)",
-        "address": "서울특별시 중구 명동4길 23-3 2층",
-        "phone": "02-752-4800",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948574\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.0064305,
-          37.5657347
-        ]
-      },
-      "properties": {
-        "title": "만족오향족발(동대문점)",
-        "address": "서울특별시 중구 을지로43길 9-4",
-        "phone": "02-2271-0880",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10081\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10081\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10081\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2050,6 +1996,24 @@
         "phone": "02-752-4800",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/948574\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.984048589216,
+          37.5627677737875
+        ]
+      },
+      "properties": {
+        "title": "만족오향족발 (명동점)",
+        "address": "서울특별시 중구 명동4길 23-3 2층",
+        "phone": "02-752-4800",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948574\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -2103,25 +2067,7 @@
         "address": "경상남도 진주시 촉석로 192-2",
         "phone": "055-742-6797",
         "category": "일식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/440336\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          128.0830409,
-          35.1947772
-        ]
-      },
-      "properties": {
-        "title": "메이지(진주본점)",
-        "address": "경상남도 진주시 촉석로 192-2",
-        "phone": "055-742-6797",
-        "category": "일식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/440336\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/440336\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/440336\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2247,25 +2193,7 @@
         "address": "서울특별시 중구 명동9길 37-5",
         "phone": "02-2267-8132",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10016\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9838952,
-          37.5653506
-        ]
-      },
-      "properties": {
-        "title": "명동한우방(명동본점)",
-        "address": "서울특별시 중구 명동9길 37-5",
-        "phone": "02-2267-8132",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10016\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10016\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10016\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2490,24 +2418,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.0086949,
-          37.5529925
-        ]
-      },
-      "properties": {
-        "title": "미분당 (약수점)",
-        "address": "서울특별시 중구 동호로11길 53 1층",
-        "phone": "0507-1375-0202",
-        "category": "기타",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634916\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.0087245,
           37.552952
         ]
@@ -2518,6 +2428,24 @@
         "phone": "0507-1375-0202",
         "category": "기타",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634916\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.0086949,
+          37.5529925
+        ]
+      },
+      "properties": {
+        "title": "미분당 (약수점)",
+        "address": "서울특별시 중구 동호로11길 53 1층",
+        "phone": "0507-1375-0202",
+        "category": "기타",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634916\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -2607,25 +2535,7 @@
         "address": "제주특별자치도 제주시 서해안로 654",
         "phone": "064-711-7992",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1179713\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.5032293,
-          33.5165892
-        ]
-      },
-      "properties": {
-        "title": "바다풍경 정육식당(제주공항본점)",
-        "address": "제주특별자치도 제주시 서해안로 654",
-        "phone": "064-711-7992",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1179713\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1179713\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/1179713\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2850,24 +2760,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.0556184,
-          37.5430006
-        ]
-      },
-      "properties": {
-        "title": "보카도버터 성수 (본점)",
-        "address": "서울특별시 성동구 연무장7가길 11 1층 101호 보카도버터",
-        "phone": "0507-1393-1399",
-        "category": "카페",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634950\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.0556427,
           37.5429997
         ]
@@ -2878,6 +2770,24 @@
         "phone": "0507-1393-1399",
         "category": "카페",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634950\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.0556184,
+          37.5430006
+        ]
+      },
+      "properties": {
+        "title": "보카도버터 성수 (본점)",
+        "address": "서울특별시 성동구 연무장7가길 11 1층 101호 보카도버터",
+        "phone": "0507-1393-1399",
+        "category": "카페",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634950\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -2931,25 +2841,7 @@
         "address": "서울특별시 중구 명동8나길 47",
         "phone": "02-3789-9381",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10014\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9845773,
-          37.5616412
-        ]
-      },
-      "properties": {
-        "title": "봉추찜닭(명동중앙우체국점)",
-        "address": "서울특별시 중구 명동8나길 47",
-        "phone": "02-3789-9381",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10014\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10014\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10014\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2994,24 +2886,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.996360956208,
-          37.5591649034873
-        ]
-      },
-      "properties": {
-        "title": "붓골집 (필동점)",
-        "address": "서울특별시 중구 필동로 27 1층",
-        "phone": "070-4231-9199",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634883\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9962797,
           37.5586971
         ]
@@ -3022,6 +2896,24 @@
         "phone": "070-4231-9199",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634883\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.996360956208,
+          37.5591649034873
+        ]
+      },
+      "properties": {
+        "title": "붓골집 (필동점)",
+        "address": "서울특별시 중구 필동로 27 1층",
+        "phone": "070-4231-9199",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634883\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -3084,24 +2976,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.983947956746,
-          37.5617166628255
-        ]
-      },
-      "properties": {
-        "title": "빤닭빤닭 (명동점)",
-        "address": "서울특별시 중구 명동4길 46 2층",
-        "phone": "02-6953-0012",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1116545\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.983471,
           37.5633615
         ]
@@ -3112,6 +2986,24 @@
         "phone": "02-6953-0012",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1116545\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.983947956746,
+          37.5617166628255
+        ]
+      },
+      "properties": {
+        "title": "빤닭빤닭 (명동점)",
+        "address": "서울특별시 중구 명동4길 46 2층",
+        "phone": "02-6953-0012",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1116545\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -3570,24 +3462,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.102766350458,
-          37.4883753516917
-        ]
-      },
-      "properties": {
-        "title": "세광양대창 (수서점)",
-        "address": "서울특별시 강남구 광평로51길 6-5 2층",
-        "phone": "02-445-0814",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/35505\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.1026841,
           37.4883489
         ]
@@ -3598,6 +3472,24 @@
         "phone": "02-445-0814",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/35505\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.102766350458,
+          37.4883753516917
+        ]
+      },
+      "properties": {
+        "title": "세광양대창 (수서점)",
+        "address": "서울특별시 강남구 광평로51길 6-5 2층",
+        "phone": "02-445-0814",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/35505\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -3903,25 +3795,7 @@
         "address": "서울특별시 중구 을지로43길 38",
         "phone": "02-2268-2059",
         "category": "기타",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10071\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.0067626,
-          37.5667706
-        ]
-      },
-      "properties": {
-        "title": "순미네 행복게장(동대문점)",
-        "address": "서울특별시 중구 을지로43길 38",
-        "phone": "02-2268-2059",
-        "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10071\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10071\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10071\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -4146,24 +4020,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.984225879301,
-          37.5646592645979
-        ]
-      },
-      "properties": {
-        "title": "신의주찹쌀순대 (명동점)",
-        "address": "서울특별시 중구 명동7길 19 지하 1층",
-        "phone": "02-3789-8320",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/43699\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9842258,
           37.5646581
         ]
@@ -4174,6 +4030,24 @@
         "phone": "02-3789-8320",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/43699\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.984225879301,
+          37.5646592645979
+        ]
+      },
+      "properties": {
+        "title": "신의주찹쌀순대 (명동점)",
+        "address": "서울특별시 중구 명동7길 19 지하 1층",
+        "phone": "02-3789-8320",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/43699\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -4434,24 +4308,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.98475289996,
-          37.564558061859
-        ]
-      },
-      "properties": {
-        "title": "양궈푸마라탕 (명동점)",
-        "address": "서울특별시 중구 명동9길 15 2층",
-        "phone": "02-3789-6678",
-        "category": "중식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948576\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9852278,
           37.5646433
         ]
@@ -4462,6 +4318,24 @@
         "phone": "02-3789-6678",
         "category": "중식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/948576\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.98475289996,
+          37.564558061859
+        ]
+      },
+      "properties": {
+        "title": "양궈푸마라탕 (명동점)",
+        "address": "서울특별시 중구 명동9길 15 2층",
+        "phone": "02-3789-6678",
+        "category": "중식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948576\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -4596,24 +4470,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.0581183,
-          35.1531224
-        ]
-      },
-      "properties": {
-        "title": "어쭈 (서면본점)",
-        "address": "부산광역시 부산진구 서면로 26 1층",
-        "phone": "051-803-5244",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/238190\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           129.057867,
           35.1508853
         ]
@@ -4632,6 +4488,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          129.0581183,
+          35.1531224
+        ]
+      },
+      "properties": {
+        "title": "어쭈 (서면본점)",
+        "address": "부산광역시 부산진구 서면로 26 1층",
+        "phone": "051-803-5244",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/238190\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           129.0429844,
           35.3548813
         ]
@@ -4641,25 +4515,7 @@
         "address": "경상남도 양산시 중앙로 278",
         "phone": "055-367-6271",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/434629\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.0428698,
-          35.3548902
-        ]
-      },
-      "properties": {
-        "title": "언덕집(북정점)",
-        "address": "경상남도 양산시 중앙로 278",
-        "phone": "055-367-6271",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/434629\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/434629\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/434629\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -4830,24 +4686,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.0232205,
-          37.5208899
-        ]
-      },
-      "properties": {
-        "title": "옥게장 (신사본점)",
-        "address": "서울특별시 강남구 도산대로15길 41 지하1층 B01호",
-        "phone": "0507-1326-7912",
-        "category": "일식,한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1071607\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.0231955,
           37.5208861
         ]
@@ -4866,16 +4704,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.037995569644,
-          37.5248824767007
+          127.0232205,
+          37.5208899
         ]
       },
       "properties": {
-        "title": "온화다이닝 (도산점)",
-        "address": "서울특별시 강남구 선릉로153길 18 2층",
-        "phone": "02-208-0160",
-        "category": "양식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634880\", \"source\": \"redtable\"}]",
+        "title": "옥게장 (신사본점)",
+        "address": "서울특별시 강남구 도산대로15길 41 지하1층 B01호",
+        "phone": "0507-1326-7912",
+        "category": "일식,한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1071607\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -4902,6 +4740,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.037995569644,
+          37.5248824767007
+        ]
+      },
+      "properties": {
+        "title": "온화다이닝 (도산점)",
+        "address": "서울특별시 강남구 선릉로153길 18 2층",
+        "phone": "02-208-0160",
+        "category": "양식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634880\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           128.6856607,
           35.2358238
         ]
@@ -4911,25 +4767,7 @@
         "address": "경상남도 창원시 의창구 용지로239번길 12",
         "phone": "0552628421",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/541099\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          128.68545,
-          35.2358047
-        ]
-      },
-      "properties": {
-        "title": "올바릇식당(창원점)",
-        "address": "경상남도 창원시 의창구 용지로239번길 12",
-        "phone": "0552628421",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/541099\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/541099\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/541099\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -4983,25 +4821,7 @@
         "address": "서울특별시 종로구 삼일대로15길 24",
         "phone": "02-720-3066",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/15004\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9866641,
-          37.5688904
-        ]
-      },
-      "properties": {
-        "title": "왕비집(종로점)",
-        "address": "서울특별시 종로구 삼일대로15길 24",
-        "phone": "02-720-3066",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/15004\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/15004\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/15004\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -5172,24 +4992,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9836806,
-          37.564238
-        ]
-      },
-      "properties": {
-        "title": "원할머니보쌈족발&박가부대 (명동점)",
-        "address": "서울특별시 중구 명동9길 21 2층",
-        "phone": "02-318-5352 , 010-3735-1591",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/41309\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9845365,
           37.564762
         ]
@@ -5200,6 +5002,24 @@
         "phone": "010-3735-1591",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/41309\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.9836806,
+          37.564238
+        ]
+      },
+      "properties": {
+        "title": "원할머니보쌈족발&박가부대 (명동점)",
+        "address": "서울특별시 중구 명동9길 21 2층",
+        "phone": "02-318-5352 , 010-3735-1591",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/41309\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -5280,6 +5100,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.8960876012702,
+          37.5176236
+        ]
+      },
+      "properties": {
+        "title": "월화고기(문래점)",
+        "address": "서울특별시 영등포구 당산로 34",
+        "phone": "0507-1407-7592",
+        "category": "한식",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37594\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/37594\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.896467504418,
           37.5173782293181
         ]
@@ -5307,61 +5145,7 @@
         "address": "서울특별시 관악구 보라매로3길 16",
         "phone": "0507-1403-7592",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/55675\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.89445067275,
-          37.5780838205861
-        ]
-      },
-      "properties": {
-        "title": "월화고기 (상암점)",
-        "address": "서울특별시 마포구 매봉산로2안길 12-6 1층",
-        "phone": "0507-1408-7592",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/108103\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.8960876012702,
-          37.5176236
-        ]
-      },
-      "properties": {
-        "title": "월화고기(문래점)",
-        "address": "서울특별시 영등포구 당산로 34",
-        "phone": "0507-1407-7592",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37594\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/37594\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9264673,
-          37.4913699
-        ]
-      },
-      "properties": {
-        "title": "월화고기(보라매점)",
-        "address": "서울특별시 관악구 보라매로3길 16",
-        "phone": "0507-1403-7592",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/55675\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/55675\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/55675\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -5388,16 +5172,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.949154650587,
-          37.5408887019512
+          126.89445067275,
+          37.5780838205861
         ]
       },
       "properties": {
-        "title": "월화식당 (마포점)",
-        "address": "서울특별시 마포구 도화길 29 1,2층",
-        "phone": "0507-1410-7596",
+        "title": "월화고기 (상암점)",
+        "address": "서울특별시 마포구 매봉산로2안길 12-6 1층",
+        "phone": "0507-1408-7592",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/843773\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/108103\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -5416,6 +5200,24 @@
         "phone": "0507-1410-7596",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/843773\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.949154650587,
+          37.5408887019512
+        ]
+      },
+      "properties": {
+        "title": "월화식당 (마포점)",
+        "address": "서울특별시 마포구 도화길 29 1,2층",
+        "phone": "0507-1410-7596",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/843773\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -5487,25 +5289,7 @@
         "address": "서울특별시 강남구 학동로4길 49",
         "phone": "02-547-1555",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/96518\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.0229541,
-          37.5107653
-        ]
-      },
-      "properties": {
-        "title": "육덕등심(본점)",
-        "address": "서울특별시 강남구 학동로4길 49",
-        "phone": "02-547-1555",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/96518\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/96518\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/96518\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -5532,42 +5316,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.1018199,
-          37.4878026
-        ]
-      },
-      "properties": {
-        "title": "육전면사무소 (수서역점)",
-        "address": "서울특별시 강남구 밤고개로1길 10 수서현대벤쳐빌 지하1층 B121호",
-        "phone": "02-451-7790",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/117159\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.912511,
-          37.5499184
-        ]
-      },
-      "properties": {
-        "title": "육전면사무소 (합정역점)",
-        "address": "서울특별시 마포구 월드컵로1길 14 딜라이트스퀘어1차 L층 115-2호",
-        "phone": "0507-1459-7688",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/113717\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.101667,
           37.488004
         ]
@@ -5586,6 +5334,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.1018199,
+          37.4878026
+        ]
+      },
+      "properties": {
+        "title": "육전면사무소 (수서역점)",
+        "address": "서울특별시 강남구 밤고개로1길 10 수서현대벤쳐빌 지하1층 B121호",
+        "phone": "02-451-7790",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/117159\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9124636,
           37.5499949
         ]
@@ -5596,6 +5362,24 @@
         "phone": "0507-1459-7688",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/113717\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.912511,
+          37.5499184
+        ]
+      },
+      "properties": {
+        "title": "육전면사무소 (합정역점)",
+        "address": "서울특별시 마포구 월드컵로1길 14 딜라이트스퀘어1차 L층 115-2호",
+        "phone": "0507-1459-7688",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/113717\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -5739,25 +5523,7 @@
         "address": "서울특별시 영등포구 도신로 191",
         "phone": "02-3789-7772",
         "category": "기타",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/105890\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9123135,
-          37.5114066
-        ]
-      },
-      "properties": {
-        "title": "이선생 미국가주우육면(신길점)",
-        "address": "서울특별시 영등포구 도신로 191",
-        "phone": "02-3789-7772",
-        "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/105890\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/105890\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/105890\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/105890\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/105890\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -5829,25 +5595,7 @@
         "address": "서울특별시 마포구 동교로 262-8",
         "phone": "02-6404-4966",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1151335\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9254986,
-          37.5627558
-        ]
-      },
-      "properties": {
-        "title": "잊힐리야(연남)",
-        "address": "서울특별시 마포구 동교로 262-8",
-        "phone": "02-6404-4966",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1151335\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1151335\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/1151335\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -5928,24 +5676,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.985430755354,
-          37.5640917917797
-        ]
-      },
-      "properties": {
-        "title": "정동집 (명동점)",
-        "address": "서울특별시 중구 명동길 55 태흥빌딩 3층",
-        "phone": "02-318-9221",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948528\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9856943,
           37.5635416
         ]
@@ -5964,16 +5694,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.984048589216,
-          37.562667773787496
+          126.985430755354,
+          37.5640917917797
         ]
       },
       "properties": {
-        "title": "정성본샤브샤브 (명동점)",
-        "address": "서울특별시 중구 명동4길 23-3 2층",
-        "phone": "02-752-4800",
+        "title": "정동집 (명동점)",
+        "address": "서울특별시 중구 명동길 55 태흥빌딩 3층",
+        "phone": "02-318-9221",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/35384\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948528\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -5992,6 +5722,24 @@
         "phone": "02-752-4800",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/35384\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.984048589216,
+          37.562667773787496
+        ]
+      },
+      "properties": {
+        "title": "정성본샤브샤브 (명동점)",
+        "address": "서울특별시 중구 명동4길 23-3 2층",
+        "phone": "02-752-4800",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/35384\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -6037,7 +5785,7 @@
         "type": "Point",
         "coordinates": [
           126.5032293,
-          33.516489199999995
+          33.5165392
         ]
       },
       "properties": {
@@ -6126,24 +5874,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.8667102,
-          37.5009995
-        ]
-      },
-      "properties": {
-        "title": "제주몰빵 (동양미래대점)",
-        "address": "서울특별시 구로구 경인로 445 동양미래대학교 8호관 2층",
-        "phone": "070-5175-7214",
-        "category": "베이커리",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/87016\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.8681697,
           37.4999958
         ]
@@ -6162,16 +5892,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9842098,
-          37.5650933
+          126.8667102,
+          37.5009995
         ]
       },
       "properties": {
-        "title": "조가비 (명동점)",
-        "address": "서울특별시 중구 명동9길 29 1층 조가비",
-        "phone": "02-755-7555",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/43947\", \"source\": \"redtable\"}]",
+        "title": "제주몰빵 (동양미래대점)",
+        "address": "서울특별시 구로구 경인로 445 동양미래대학교 8호관 2층",
+        "phone": "070-5175-7214",
+        "category": "베이커리",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/87016\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -6190,6 +5920,24 @@
         "phone": "02-755-7555",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/43947\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.9842098,
+          37.5650933
+        ]
+      },
+      "properties": {
+        "title": "조가비 (명동점)",
+        "address": "서울특별시 중구 명동9길 29 1층 조가비",
+        "phone": "02-755-7555",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/43947\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -6270,42 +6018,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.657544250577,
-          34.7571543026741
-        ]
-      },
-      "properties": {
-        "title": "지노한우 목장 (본점)",
-        "address": "전라남도 여수시 시청서3길 25-2",
-        "phone": "061-921-9285",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10495\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.6579629,
-          34.7572221
-        ]
-      },
-      "properties": {
-        "title": "지노한우 목장(본점)",
-        "address": "전라남도 여수시 시청서3길 25-2",
-        "phone": "061-921-9285",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10495\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.6579888,
           34.7572017
         ]
@@ -6324,6 +6036,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.657544250577,
+          34.7571543026741
+        ]
+      },
+      "properties": {
+        "title": "지노한우 목장 (본점)",
+        "address": "전라남도 여수시 시청서3길 25-2",
+        "phone": "061-921-9285",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10495\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10495\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.969396975611,
           37.5870908444884
         ]
@@ -6333,25 +6063,7 @@
         "address": "서울특별시 종로구 자하문로 125",
         "phone": "02-2269-5834",
         "category": "비건프렌들리,한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10035\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9694101,
-          37.587101
-        ]
-      },
-      "properties": {
-        "title": "지화자(청운점)",
-        "address": "서울특별시 종로구 자하문로 125",
-        "phone": "02-2269-5834",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10035\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10035\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10035\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -6423,25 +6135,7 @@
         "address": "서울특별시 종로구 삼일대로15길 25",
         "phone": "010-4868-3851",
         "category": "중식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948205\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9866641,
-          37.5687904
-        ]
-      },
-      "properties": {
-        "title": "짬뽕지존(종로점)",
-        "address": "서울특별시 종로구 삼일대로15길 25",
-        "phone": "010-4868-3851",
-        "category": "중식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948205\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948205\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/948205\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -6459,25 +6153,7 @@
         "address": "서울특별시 강남구 선릉로93길 8",
         "phone": "02-558-8806",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1631457\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.047714,
-          37.505554
-        ]
-      },
-      "properties": {
-        "title": "차돌박힌쭈꾸미(선릉점)",
-        "address": "서울특별시 강남구 선릉로93길 8",
-        "phone": "02-558-8806",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1631457\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1631457\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/1631457\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -6612,24 +6288,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.983421574222,
-          37.5646420354682
-        ]
-      },
-      "properties": {
-        "title": "천하제일솥뚜껑 (명동점)",
-        "address": "서울특별시 중구 명동3길 21 3층",
-        "phone": "0507-1403-8293",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948438\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9834215,
           37.5646408
         ]
@@ -6640,6 +6298,24 @@
         "phone": "0507-1403-8293",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/948438\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.983421574222,
+          37.5646420354682
+        ]
+      },
+      "properties": {
+        "title": "천하제일솥뚜껑 (명동점)",
+        "address": "서울특별시 중구 명동3길 21 3층",
+        "phone": "0507-1403-8293",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948438\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -6666,6 +6342,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.012064,
+          37.491404
+        ]
+      },
+      "properties": {
+        "title": "청기와타운(교대점)",
+        "address": "서울특별시 서초구 서초대로48길 33",
+        "phone": "02-597-1474",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/12546\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           127.0120621,
           37.4914197
         ]
@@ -6684,6 +6378,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.9727378,
+          37.5436364
+        ]
+      },
+      "properties": {
+        "title": "청기와타운(남영점)",
+        "address": "서울특별시 용산구 한강대로 284",
+        "phone": "02-2678-1474",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/839557\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9726902,
           37.5437059
         ]
@@ -6694,6 +6406,24 @@
         "phone": "02-2678-1474",
         "category": "한식",
         "link": "[{\"link\": \"https://redtable.global/ko/food/839557\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.9423406,
+          37.5412996
+        ]
+      },
+      "properties": {
+        "title": "청기와타운(마포점)",
+        "address": "서울특별시 마포구 토정로 296",
+        "phone": "0507-1345-1508",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/770394\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -6729,169 +6459,7 @@
         "address": "서울특별시 관악구 남부순환로 1838",
         "phone": "02-3285-1474",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948567\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.051440761262,
-          37.5033351942461
-        ]
-      },
-      "properties": {
-        "title": "청기와타운 (선릉점)",
-        "address": "서울특별시 강남구 테헤란로64길 24 Global Takson 빌딩 지하1층",
-        "phone": "02-557-1474",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948569\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.654697589238,
-          37.4116173235866
-        ]
-      },
-      "properties": {
-        "title": "청기와타운 (송도점)",
-        "address": "인천광역시 연수구 앵고개로 80 1층",
-        "phone": "032-833-1474",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948568\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.908411335519,
-          37.5184143316306
-        ]
-      },
-      "properties": {
-        "title": "청기와타운 (영등포본점)",
-        "address": "서울특별시 영등포구 영중로10길 32-4 1층, 2층",
-        "phone": "0507-1316-1474",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/38512\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9931798,
-          37.563146
-        ]
-      },
-      "properties": {
-        "title": "청기와타운 (충무로점)",
-        "address": "서울특별시 중구 충무로 22 1층",
-        "phone": "0507-1470-1583",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634911\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.920997802873,
-          37.554333600416
-        ]
-      },
-      "properties": {
-        "title": "청기와타운 (홍대점)",
-        "address": "서울특별시 마포구 양화로 128 1층",
-        "phone": "0507-1340-8145",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/96829\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.012064,
-          37.491404
-        ]
-      },
-      "properties": {
-        "title": "청기와타운(교대점)",
-        "address": "서울특별시 서초구 서초대로48길 33",
-        "phone": "02-597-1474",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/12546\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9727378,
-          37.5436364
-        ]
-      },
-      "properties": {
-        "title": "청기와타운(남영점)",
-        "address": "서울특별시 용산구 한강대로 284",
-        "phone": "02-2678-1474",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/839557\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9423406,
-          37.5412996
-        ]
-      },
-      "properties": {
-        "title": "청기와타운(마포점)",
-        "address": "서울특별시 마포구 토정로 296",
-        "phone": "0507-1345-1508",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/770394\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9539747,
-          37.4804311
-        ]
-      },
-      "properties": {
-        "title": "청기와타운(서울대점)",
-        "address": "서울특별시 관악구 남부순환로 1838",
-        "phone": "02-3285-1474",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948567\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948567\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/948567\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -6918,6 +6486,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.051440761262,
+          37.5033351942461
+        ]
+      },
+      "properties": {
+        "title": "청기와타운 (선릉점)",
+        "address": "서울특별시 강남구 테헤란로64길 24 Global Takson 빌딩 지하1층",
+        "phone": "02-557-1474",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948569\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.6637831,
           37.4124741
         ]
@@ -6928,6 +6514,24 @@
         "phone": "032-833-1474",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/948568\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.654697589238,
+          37.4116173235866
+        ]
+      },
+      "properties": {
+        "title": "청기와타운 (송도점)",
+        "address": "인천광역시 연수구 앵고개로 80 1층",
+        "phone": "032-833-1474",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948568\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -6954,6 +6558,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.908411335519,
+          37.5184143316306
+        ]
+      },
+      "properties": {
+        "title": "청기와타운 (영등포본점)",
+        "address": "서울특별시 영등포구 영중로10길 32-4 1층, 2층",
+        "phone": "0507-1316-1474",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/38512\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9913791,
           37.5655052
         ]
@@ -6972,6 +6594,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.9931798,
+          37.563146
+        ]
+      },
+      "properties": {
+        "title": "청기와타운 (충무로점)",
+        "address": "서울특별시 중구 충무로 22 1층",
+        "phone": "0507-1470-1583",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634911\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9209444,
           37.5543295
         ]
@@ -6982,6 +6622,24 @@
         "phone": "0507-1340-8145",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/96829\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.920997802873,
+          37.554333600416
+        ]
+      },
+      "properties": {
+        "title": "청기와타운 (홍대점)",
+        "address": "서울특별시 마포구 양화로 128 1층",
+        "phone": "0507-1340-8145",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/96829\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -7116,24 +6774,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.0428418,
-          37.5476017
-        ]
-      },
-      "properties": {
-        "title": "최가네샤브버섯칼국수 (성수점)",
-        "address": "서울특별시 성동구 서울숲6길 12 1층",
-        "phone": "0507-1379-2194",
-        "category": "양식,한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1065766\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.0428274,
           37.5475978
         ]
@@ -7152,6 +6792,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          127.0428418,
+          37.5476017
+        ]
+      },
+      "properties": {
+        "title": "최가네샤브버섯칼국수 (성수점)",
+        "address": "서울특별시 성동구 서울숲6길 12 1층",
+        "phone": "0507-1379-2194",
+        "category": "양식,한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1065766\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.4981489,
           33.4854203
         ]
@@ -7161,25 +6819,7 @@
         "address": "제주특별자치도 제주시 선덕로 14-1",
         "phone": "064-747-1115",
         "category": "일식,한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/228004\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.5011767,
-          33.4876409
-        ]
-      },
-      "properties": {
-        "title": "추자본섬(연동점)",
-        "address": "제주특별자치도 제주시 선덕로 14-1",
-        "phone": "064-747-1115",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/228004\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/228004\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/228004\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -7233,25 +6873,7 @@
         "address": "서울특별시 강남구 선릉로 523",
         "phone": "02-6953-7827",
         "category": "기타,양식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/982139\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.0414244,
-          37.516812
-        ]
-      },
-      "properties": {
-        "title": "칙바이칙(선릉역점)",
-        "address": "서울특별시 강남구 선릉로 523",
-        "phone": "02-6953-7827",
-        "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/982139\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/982139\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/982139\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -7288,60 +6910,6 @@
         "phone": "0507-1346-2739",
         "category": "일식",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/1050155\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.8977396,
-          37.5255299
-        ]
-      },
-      "properties": {
-        "title": "카페 보드가야",
-        "address": "서울특별시 영등포구 당산로30길 7",
-        "phone": "0507-1496-9933",
-        "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/973877\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.8931502,
-          37.540270199999995
-        ]
-      },
-      "properties": {
-        "title": "카페 이파네마",
-        "address": "서울특별시 영등포구 양평로22라길 1",
-        "phone": "0507-1430-9699",
-        "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/35884\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.8843975,
-          37.5264127
-        ]
-      },
-      "properties": {
-        "title": "카페 쿠수키",
-        "address": "서울특별시 영등포구 양산로 136-1",
-        "phone": "0507-1379-0542",
-        "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/845937\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -7404,6 +6972,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.8977396,
+          37.5255299
+        ]
+      },
+      "properties": {
+        "title": "카페 보드가야",
+        "address": "서울특별시 영등포구 당산로30길 7",
+        "phone": "0507-1496-9933",
+        "category": "기타",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/973877\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.8912891,
           37.5232458
         ]
@@ -7440,6 +7026,42 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.8931502,
+          37.540270199999995
+        ]
+      },
+      "properties": {
+        "title": "카페 이파네마",
+        "address": "서울특별시 영등포구 양평로22라길 1",
+        "phone": "0507-1430-9699",
+        "category": "카페",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35884\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.8843975,
+          37.5264127
+        ]
+      },
+      "properties": {
+        "title": "카페 쿠수키",
+        "address": "서울특별시 영등포구 양산로 136-1",
+        "phone": "0507-1379-0542",
+        "category": "카페",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/845937\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           129.158453369505,
           35.1629633489452
         ]
@@ -7467,25 +7089,7 @@
         "address": "부산광역시 연제구 고분로 63",
         "phone": "051-867-1994",
         "category": "카페",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948554\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.0859143,
-          35.186794
-        ]
-      },
-      "properties": {
-        "title": "카페해운대1994(연산 로스터리점)",
-        "address": "부산광역시 연제구 고분로 63",
-        "phone": "051-867-1994",
-        "category": "카페",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948554\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948554\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/948554\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -7629,7 +7233,7 @@
         "address": "서울특별시 구로구 디지털로32가길 25",
         "phone": "02-6083-7388",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/81181\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/81181\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/81181\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -7647,7 +7251,7 @@
         "address": "서울특별시 영등포구 도신로 42",
         "phone": "02-839-4888",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/37575\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/37575\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/37575\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/37575\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -7665,61 +7269,7 @@
         "address": "서울특별시 중구 동호로24길 27-4",
         "phone": "02-2269-9968",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10022\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.898941,
-          37.4821656
-        ]
-      },
-      "properties": {
-        "title": "크랩회피쉬(구로디지털점)",
-        "address": "서울특별시 구로구 디지털로32가길 25",
-        "phone": "02-6083-7388",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/81181\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9080805,
-          37.5123264
-        ]
-      },
-      "properties": {
-        "title": "크랩회피쉬(신도림점)",
-        "address": "서울특별시 영등포구 도신로 42",
-        "phone": "02-839-4888",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37575\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/37575\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.0051591,
-          37.5606541
-        ]
-      },
-      "properties": {
-        "title": "크랩회피쉬(장충동본점)",
-        "address": "서울특별시 중구 동호로24길 27-4",
-        "phone": "02-2269-9968",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10022\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10022\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10022\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -7836,24 +7386,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.922534609101,
-          37.5535214682884
-        ]
-      },
-      "properties": {
-        "title": "트라이브 (홍대점)",
-        "address": "서울특별시 마포구 어울마당로 100-12 지하1층",
-        "phone": "02-334-1033",
-        "category": "카페",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/948223\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9224817,
           37.5535123
         ]
@@ -7864,6 +7396,24 @@
         "phone": "02-334-1033",
         "category": "카페",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/948223\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.922534609101,
+          37.5535214682884
+        ]
+      },
+      "properties": {
+        "title": "트라이브 (홍대점)",
+        "address": "서울특별시 마포구 어울마당로 100-12 지하1층",
+        "phone": "02-334-1033",
+        "category": "카페",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/948223\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -7944,24 +7494,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.3231068,
-          34.9727223
-        ]
-      },
-      "properties": {
-        "title": "풍년옥 (고성점)",
-        "address": "경상남도 고성군 고성읍 성내로112번길 75-7 풍년옥 고성점",
-        "phone": "nan",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/432055\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           128.3234953,
           34.9723351
         ]
@@ -7972,6 +7504,24 @@
         "phone": "75-7",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/432055\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.3231068,
+          34.9727223
+        ]
+      },
+      "properties": {
+        "title": "풍년옥 (고성점)",
+        "address": "경상남도 고성군 고성읍 성내로112번길 75-7 풍년옥 고성점",
+        "phone": "nan",
+        "category": "한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/432055\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -8061,25 +7611,7 @@
         "address": "전북특별자치도 전주시 완산구 장승배기로 224",
         "phone": "063-225-0933",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10760\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.1437447,
-          35.7995302
-        ]
-      },
-      "properties": {
-        "title": "한상바오와갈비(평화본점)",
-        "address": "전북특별자치도 전주시 완산구 장승배기로 224",
-        "phone": "063-225-0933",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10760\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10760\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10760\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -8142,24 +7674,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9836829,
-          37.5645725
-        ]
-      },
-      "properties": {
-        "title": "한식왕비집 (을지로점)",
-        "address": "서울특별시 중구 명동7길 21 지하1층 B101호",
-        "phone": "02-3789-9991",
-        "category": "기타,한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634927\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9838429,
           37.5646918
         ]
@@ -8170,6 +7684,24 @@
         "phone": "02-3789-9991",
         "category": "한식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634927\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.9836829,
+          37.5645725
+        ]
+      },
+      "properties": {
+        "title": "한식왕비집 (을지로점)",
+        "address": "서울특별시 중구 명동7길 21 지하1층 B101호",
+        "phone": "02-3789-9991",
+        "category": "기타,한식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1634927\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -8340,24 +7872,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.197819780211,
-          35.1779350542868
-        ]
-      },
-      "properties": {
-        "title": "홀리라운지 (송정본점)",
-        "address": "부산광역시 해운대구 송정중앙로6번길 143 2, 3층",
-        "phone": "070-4203-0960",
-        "category": "양식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1074708\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           129.1245857,
           35.1851731
         ]
@@ -8368,6 +7882,24 @@
         "phone": "070-4203-0960",
         "category": "양식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1074708\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.197819780211,
+          35.1779350542868
+        ]
+      },
+      "properties": {
+        "title": "홀리라운지 (송정본점)",
+        "address": "부산광역시 해운대구 송정중앙로6번길 143 2, 3층",
+        "phone": "070-4203-0960",
+        "category": "양식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/1074708\", \"source\": \"redtable\"}]",
         "source": "combined"
       }
     },
@@ -8412,24 +7944,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.0814933,
-          35.1878925
-        ]
-      },
-      "properties": {
-        "title": "홍콩반점 (연산동역점/매장 식사에 한함)",
-        "address": "부산광역시 연제구 중앙대로 1124 1층",
-        "phone": "051-861-0410",
-        "category": "중식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/230276\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           129.0820769,
           35.1882701
         ]
@@ -8448,6 +7962,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          129.0814933,
+          35.1878925
+        ]
+      },
+      "properties": {
+        "title": "홍콩반점 (연산동역점/매장 식사에 한함)",
+        "address": "부산광역시 연제구 중앙대로 1124 1층",
+        "phone": "051-861-0410",
+        "category": "중식",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/230276\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           128.6622757,
           35.2391731
         ]
@@ -8458,6 +7990,24 @@
         "phone": "070-7363-8076",
         "category": "중식",
         "link": "[{\"link\": \"https://redtable.global/ko/food/477337\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/477337\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.9239768,
+          35.1047272
+        ]
+      },
+      "properties": {
+        "title": "화남정돼지국밥(명지점)",
+        "address": "부산광역시 강서구 명지국제12로 3-16",
+        "phone": "0507-1491-0780",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634915\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -8493,43 +8043,7 @@
         "address": "부산광역시 부산진구 성지로 50",
         "phone": "0507-1330-8853",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/250698\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          128.9239768,
-          35.1047272
-        ]
-      },
-      "properties": {
-        "title": "화남정돼지국밥(명지점)",
-        "address": "부산광역시 강서구 명지국제12로 3-16",
-        "phone": "0507-1491-0780",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634915\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.052828,
-          35.1777695
-        ]
-      },
-      "properties": {
-        "title": "화남정돼지국밥(부산본점)",
-        "address": "부산광역시 부산진구 성지로 50",
-        "phone": "0507-1330-8853",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/250698\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/250698\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/250698\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -8565,7 +8079,7 @@
         "address": "서울특별시 중구 명동10길 23",
         "phone": "02-318-2426",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/648864\", \"source\": \"redtable\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/648864\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/648864\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -8583,43 +8097,7 @@
         "address": "서울특별시 중구 명동8나길 6",
         "phone": "02-753-3536",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/13037\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9856509,
-          37.5628596
-        ]
-      },
-      "properties": {
-        "title": "황금목장(명동성당점)",
-        "address": "서울특별시 중구 명동10길 23",
-        "phone": "02-318-2426",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/648864\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9844321,
-          37.5612893
-        ]
-      },
-      "properties": {
-        "title": "황금목장(본점)",
-        "address": "서울특별시 중구 명동8나길 6",
-        "phone": "02-753-3536",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/13037\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/13037\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/13037\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
