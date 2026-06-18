@@ -148,30 +148,71 @@
             onEachFeature: function (feature, layer) {
               var p = feature.properties || {};
               feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
-              var html = '<div class="popup-content">';
-              html += '<h3>' + esc(p.title || 'Untitled') + '</h3>';
-              if (p.category) html += '<span class="category">' + esc(p.category) + '</span>';
-              if (p.address) html += '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>';
-              if (p.phone)   html += '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p>';
+              // Use DOM methods for safe rendering instead of innerHTML
+              var popupDiv = document.createElement('div');
+              popupDiv.className = 'popup-content';
+              
+              var title = document.createElement('h3');
+              title.textContent = p.title || 'Untitled';
+              popupDiv.appendChild(title);
+              
+              if (p.category) {
+                var catSpan = document.createElement('span');
+                catSpan.className = 'category';
+                catSpan.textContent = p.category;
+                popupDiv.appendChild(catSpan);
+              }
+              
+              if (p.address) {
+                var addrP = document.createElement('p');
+                addrP.innerHTML = '<span class="label">Address:</span> ' + esc(p.address);
+                popupDiv.appendChild(addrP);
+              }
+              
+              if (p.phone) {
+                var phoneP = document.createElement('p');
+                phoneP.innerHTML = '<span class="label">Phone:</span> ' + esc(p.phone);
+                popupDiv.appendChild(phoneP);
+              }
+              
               if (p.link) {
+                  var linkP = document.createElement('p');
+                  linkP.innerHTML = '<span class="label">Link:</span> ';
                   try {
                     var links = JSON.parse(p.link);
-                    html += '<p><span class="label">Link:</span> ';
                     links.forEach(function(item, i) {
-                      html += '<a href="' + esc(item.link) + '" target="_blank" rel="noopener">' + esc(item.source) + '</a>' + (i < links.length - 1 ? ', ' : '');
+                      var a = document.createElement('a');
+                      a.href = item.link;
+                      a.target = '_blank';
+                      a.rel = 'noopener';
+                      a.textContent = item.source;
+                      linkP.appendChild(a);
+                      if (i < links.length - 1) linkP.appendChild(document.createTextNode(', '));
                     });
-                    html += '</p>';
                   } catch (e) {
-                    html += '<p><span class="label">Link:</span> <a href="' + esc(p.link) + '" target="_blank" rel="noopener">Visit</a></p>';
+                      var a = document.createElement('a');
+                      a.href = p.link;
+                      a.target = '_blank';
+                      a.rel = 'noopener';
+                      a.textContent = 'Visit';
+                      linkP.appendChild(a);
                   }
+                  popupDiv.appendChild(linkP);
               }
-              html += '</div>';
-              layer.bindPopup(html, { maxWidth: 300 });
+              layer.bindPopup(popupDiv, { maxWidth: 300 });
 
               // Add to sidebar
               var item = document.createElement('div');
               item.className = 'sidebar-item';
-              item.innerHTML = '<h3>' + esc(p.title || 'Untitled') + '</h3><p>' + esc(p.address || '') + '</p>';
+              
+              var itemTitle = document.createElement('h3');
+              itemTitle.textContent = p.title || 'Untitled';
+              item.appendChild(itemTitle);
+              
+              var itemAddr = document.createElement('p');
+              itemAddr.textContent = p.address || '';
+              item.appendChild(itemAddr);
+              
               item.onclick = function() {
                 markers.zoomToShowLayer(layer, function() {
                   layer.openPopup();
