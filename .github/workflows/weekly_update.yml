@@ -20,9 +20,9 @@ jobs:
         run: pip install requests beautifulsoup4 pandas geopy
       - name: Run collection scripts
         run: |
-          python goods_tools/redtable.py
-          python goods_tools/ydp.py
-          python goods_tools/benepia.py
+          python collectors/redtable.py
+          python collectors/ydp.py
+          python collectors/benepia.py
       - name: Consolidate data
         env:
           GOODS_TOOLS_DIR: .
