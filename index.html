@@ -91,7 +91,9 @@
         maxClusterRadius: 40, 
         disableClusteringAtZoom: 17,
         spiderfyOnMaxZoom: true,
-        spiderfyDistanceMultiplier: 2.0
+        spiderfyDistanceMultiplier: 2.0,
+        zoomToBoundsOnClick: false,
+        animate: false
       });
 
       markers.on('clusterclick', function (a) {
@@ -216,14 +218,19 @@
           });
 
           function updateMarkers() {
-            var filtered = [];
             geoJsonLayer.eachLayer(function(layer) {
-              if (activeCategories.has(layer.feature.properties.category || "기타")) {
-                filtered.push(layer);
+              var shouldShow = activeCategories.has(layer.feature.properties.category || "기타");
+              var inCluster = markers.hasLayer(layer);
+              if (shouldShow && !inCluster) {
+                markers.addLayer(layer);
+              } else if (!shouldShow && inCluster) {
+                markers.removeLayer(layer);
               }
             });
-            markers.clearLayers();
-            markers.addLayers(filtered);
+            // 줌/이동 애니메이션 종료 후 상태 동기화 강제
+            setTimeout(function() {
+                markers.refreshClusters();
+            }, 300);
           }
 
           if (markers.getLayers().length > 0) {
