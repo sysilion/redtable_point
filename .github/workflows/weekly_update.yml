@@ -24,6 +24,8 @@ jobs:
           python goods_tools/ydp.py
           python goods_tools/benepia.py
       - name: Consolidate data
+        env:
+          GOODS_TOOLS_DIR: .
         run: python scripts/consolidate.py
       - name: Commit and Push
         run: |
