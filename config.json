@@ -1,0 +1,10 @@
+{
+    "GOODS_TOOLS_DIR": "/Users/sysilion/goods_tools",
+    "CSV_PATTERNS": [
+        ["must_eat_data_*.csv", "redtable", true],
+        ["ydp_store_data_*.csv", "ydp", false],
+        ["store_data_*.csv", "benepia", false]
+    ],
+    "GEOCODE_DELAY_S": 1.0,
+    "GEOCODE_TIMEOUT_S": 10
+}

@@ -22,23 +22,48 @@ from geopy.geocoders import Photon
 from geopy.extra.rate_limiter import RateLimiter
 
 # ---------------------------------------------------------------------------
-# Configuration
-# ---------------------------------------------------------------------------
-GOODS_TOOLS_DIR = "/Users/sysilion/goods_tools"
+import os
+import glob
+import json
+import sys
+import time
+import re
+from datetime import datetime
+
+import pandas as pd
+from geopy.geocoders import Photon
+from geopy.extra.rate_limiter import RateLimiter
+from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
+
+# Load configuration
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.dirname(SCRIPT_DIR)  # project root
+PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
+CONFIG_FILE = os.path.join(PROJECT_DIR, "config.json")
+
+def load_config():
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {
+        "GOODS_TOOLS_DIR": "/Users/sysilion/goods_tools",
+        "CSV_PATTERNS": [
+            ["must_eat_data_*.csv", "redtable", True],
+            ["ydp_store_data_*.csv", "ydp", False],
+            ["store_data_*.csv", "benepia", False],
+        ],
+        "GEOCODE_DELAY_S": 1.0,
+        "GEOCODE_TIMEOUT_S": 10
+    }
+
+CONFIG = load_config()
+GOODS_TOOLS_DIR = os.environ.get("GOODS_TOOLS_DIR", CONFIG["GOODS_TOOLS_DIR"])
+CSV_PATTERNS = CONFIG["CSV_PATTERNS"]
+GEOCODE_DELAY_S = CONFIG["GEOCODE_DELAY_S"]
+GEOCODE_TIMEOUT_S = CONFIG["GEOCODE_TIMEOUT_S"]
+
 OUTPUT_FILE = os.path.join(PROJECT_DIR, "data", "map_data.json")
 CACHE_FILE = os.path.join(SCRIPT_DIR, ".geocode_cache.json")
 
-# Each entry: (glob_pattern, source_label, has_latlon_in_csv)
-CSV_PATTERNS = [
-    ("must_eat_data_*.csv", "redtable", True),   # redtable.py already has Lat/Lon
-    ("ydp_store_data_*.csv", "ydp", False),       # ydp.py — no coordinates
-    ("store_data_*.csv", "benepia", False),       # benepia.py — no coordinates
-]
-
-GEOCODE_DELAY_S = 1.0  # seconds between geocoding requests
-GEOCODE_TIMEOUT_S = 10  # per-request timeout
 
 
 # ---------------------------------------------------------------------------
