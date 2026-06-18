@@ -38,24 +38,26 @@
         "카페": "☕",
         "중식": "🍜",
         "뷰티": "💄",
-        "기타": "📍"
+        "기타": "📌"
       };
 
-      markers.on('clusterclick', function (a) {
-        var childMarkers = a.layer.getAllChildMarkers();
-        var titles = childMarkers.map(function(m) {
-          return m.feature.properties.title;
-        });
-        
-        var popupContent = '<div class="popup-content"><h3>Cluster (' + titles.length + ' stores)</h3><ul>' + 
-          titles.map(function(t) { return '<li>' + esc(t) + '</li>'; }).join('') + 
-          '</ul></div>';
-          
-        L.popup()
-          .setLatLng(a.latlng)
-          .setContent(popupContent)
-          .openOn(map);
+      // 마커 클러스터링 설정 (동일 좌표 이슈 대응)
+      var markers = L.markerClusterGroup({ 
+        maxClusterRadius: 50, 
+        disableClusteringAtZoom: 16,
+        spiderfyOnMaxZoom: true 
       });
+
+      markers.on('clusterclick', function (a) {
+        var bounds = a.layer.getBounds();
+        // 동일 좌표인 경우 (bounds가 유효하지 않음) spiderfy 호출
+        if (!bounds.isValid()) {
+          a.layer.spiderfy();
+        } else {
+          a.layer.zoomToBounds({ padding: [30, 30] });
+        }
+      });
+
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
