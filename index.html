@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-sidebar-v2@3.2.3/css/leaflet-sidebar.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,7 +58,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script src="https://unpkg.com/leaflet-sidebar-v2@3.2.3/js/leaflet-sidebar.min.js"></script>
-  <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.umd.js"></script>
+  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.min.js"></script>
   <script src="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.js"></script>
   <script>
     (function () {
@@ -68,23 +68,6 @@
         position: 'left'
       }).addTo(map);
 
-      var searchControl = new GeoSearch.GeoSearchControl({
-        provider: new GeoSearch.OpenStreetMapProvider(),
-        style: 'bar',
-        showMarker: true,
-        showPopup: false,
-        marker: {
-          icon: new L.Icon.Default(),
-          draggable: false,
-        },
-        popupFormat: ({ query, result }) => result.label,
-        maxMarkers: 1,
-        retainZoomLevel: false,
-        animateZoom: true,
-        autoClose: false,
-        searchLabel: 'Enter address',
-        keepResult: true
-      }).addTo(map);
 
       L.control.locate({
         position: 'topleft',
@@ -162,6 +145,7 @@
             },
             onEachFeature: function (feature, layer) {
               var p = feature.properties || {};
+              feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
               var html = '<div class="popup-content">';
               html += '<h3>' + esc(p.title || 'Untitled') + '</h3>';
               if (p.category) html += '<span class="category">' + esc(p.category) + '</span>';
@@ -198,6 +182,17 @@
           
           markers.addLayer(geoJsonLayer);
           map.addLayer(markers);
+
+          map.addControl(new L.Control.Search({
+            layer: geoJsonLayer,
+            propertyName: 'searchField',
+            initial: false,
+            zoom: 17,
+            buildTip: function(textVal, key) {
+                var parts = key.split('|');
+                return '<div>' + parts[0] + ' <small>' + parts[1] + '</small></div>';
+            }
+          }));
 
           var filterContent = document.getElementById('filter-content');
           var categories = Object.keys(categoryIcons);
