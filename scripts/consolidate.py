@@ -3,7 +3,7 @@
 consolidate.py — Merge latest CSV files from goods_tools/ into a single GeoJSON.
 
 Finds the latest CSV for each of redtable, ydp, and benepia patterns,
-geocodes missing coordinates via Nominatim (no API key needed), and
+geocodes missing coordinates via Photon (no API key needed), and
 outputs a unified GeoJSON FeatureCollection ready for a web frontend.
 
 Usage:
@@ -16,18 +16,8 @@ import json
 import sys
 import time
 import re
-
-import pandas as pd
-from geopy.geocoders import Photon
-from geopy.extra.rate_limiter import RateLimiter
-
-# ---------------------------------------------------------------------------
-import os
-import glob
-import json
-import sys
-import time
-import re
+import math
+import unicodedata
 from datetime import datetime
 
 import pandas as pd
@@ -64,11 +54,6 @@ GEOCODE_TIMEOUT_S = CONFIG["GEOCODE_TIMEOUT_S"]
 OUTPUT_FILE = os.path.join(PROJECT_DIR, "data", "map_data.json")
 CACHE_FILE = os.path.join(SCRIPT_DIR, ".geocode_cache.json")
 
-
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 def find_latest_csv(pattern: str) -> str | None:
     """Return the most-recently-modified CSV under `pattern`."""
     files = glob.glob(os.path.join(GOODS_TOOLS_DIR, pattern))
@@ -77,26 +62,19 @@ def find_latest_csv(pattern: str) -> str | None:
     files.sort(key=os.path.getmtime, reverse=True)
     return files[0]
 
-
 def load_and_normalize(filepath: str, source: str) -> pd.DataFrame:
-    """
-    Read a CSV and normalise to columns:
-        title, address, phone, category, link, lat, lon, source
-    """
+    """Read a CSV and normalise columns."""
     df = pd.read_csv(filepath, encoding="utf-8-sig")
     df.columns = [c.strip() for c in df.columns]
-
-    # Case-insensitive column lookup (original CSV column names vary)
     cols = {c.lower(): c for c in df.columns}
-
+    
     out = pd.DataFrame()
     out["title"] = df.get(cols.get("title"), "")
     out["address"] = df.get(cols.get("address"), "")
     out["phone"] = df.get(cols.get("phone"), "")
     out["category"] = df.get(cols.get("category"), "")
     out["link"] = df.get(cols.get("link"), "")
-
-    # Coordinates — only present in redtable CSVs
+    
     lat_col = cols.get("latitude")
     lon_col = cols.get("longitude")
     if lat_col and lon_col:
@@ -105,21 +83,13 @@ def load_and_normalize(filepath: str, source: str) -> pd.DataFrame:
     else:
         out["lat"] = pd.NA
         out["lon"] = pd.NA
-
+    
     out["source"] = source
     return out
 
-
 def _init_geocoder():
-    """Build a rate-limited Photon geocoder (shared across calls).
-
-    Photon (photon.komoot.io) is based on OSM data, free, no API key
-    needed, and has significantly better Korean address coverage than
-    Nominatim.
-    """
     geolocator = Photon(timeout=GEOCODE_TIMEOUT_S)
     return RateLimiter(geolocator.geocode, min_delay_seconds=GEOCODE_DELAY_S)
-
 
 def _load_cache() -> dict:
     if os.path.exists(CACHE_FILE):
@@ -130,115 +100,70 @@ def _load_cache() -> dict:
             pass
     return {}
 
-
 def _save_cache(cache: dict):
     os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
     with open(CACHE_FILE, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
+def normalize_text(text):
+    text = str(text)
+    # Normalize unicode
+    text = unicodedata.normalize('NFKC', text)
+    # Remove parentheses and contents
+    text = re.sub(r'\(.*?\)|（.*?）|\[.*?\]|【.*?】', '', text)
+    # Remove non-alphanumeric
+    text = re.sub(r'[^a-zA-Z0-9가-힣]', '', text)
+    return text.lower()
 
 def _clean_address(raw: str) -> list[str]:
-    """Normalise a Korean address and return variants to try.
-
-    Strips phone numbers, trailing punctuation, building/floors, and
-    returns progressively shorter variants so the geocoder has the best
-    chance of matching.
-    """
     addr = raw.strip()
-
-    # Remove phone numbers like 010-1234-5678, 02-123-4567, 0507-1234-5678
     addr = re.sub(r'\b\d{2,4}-\d{3,4}-\d{4}\b', '', addr)
-    # Remove bare phone-like numbers at end
     addr = re.sub(r'\b\d{9,12}\b', '', addr)
-    # Remove floor/building/unit suffixes (e.g., "1층", "B1", "지하1층", "동", "호")
+    # Remove floor/building/unit suffixes
     addr = re.sub(r'\s*(지하\s*\d*층|\d*층|B\d+|[0-9]+동|[0-9]+호)\b', '', addr)
-    # Remove trailing comma/spaces with phone leftovers
     addr = re.sub(r'[,.\s]*\d{9,}$', '', addr)
-    # Clean up multiple spaces, trailing commas, punctuation
     addr = re.sub(r'[,\s]+', ' ', addr).strip()
     addr = re.sub(r'\s+$', '', addr)
 
-    if not addr:
-        return []
-
-    # Build variants: full address, then address up to first comma,
-    # then address up to last comma if different
+    if not addr: return []
     variants = [f"{addr}, South Korea"]
     if ',' in addr:
         first_part = addr.split(',')[0].strip()
         if first_part != addr:
             variants.append(f"{first_part}, South Korea")
-
     return variants
 
-
 def geocode_missing(df: pd.DataFrame, geocode, cache: dict) -> pd.DataFrame:
-    """Geocode rows that lack valid lat/lon, using cache + Photon."""
     missing = df[df["lat"].isna() | df["lon"].isna()].index
-    if missing.empty:
-        return df
-
+    if missing.empty: return df
+    
     n = len(missing)
-    print(f"  Geocoding {n} entries (rate-limited to 1 req/s) ...")
-
+    print(f"  Geocoding {n} entries ...")
     for i, idx in enumerate(missing, 1):
         raw_addr = str(df.at[idx, "address"] or "").strip()
-        title = str(df.at[idx, "title"] or "").strip()
-
-        if not raw_addr:
-            print(f"  [{i:>3}/{n}] ⚠️  Empty address for '{title}', skipped")
-            continue
-
-        # Cache hit (use raw address as key)
-        if raw_addr in cache:
-            coords = cache[raw_addr]
-            if coords is not None:
-                df.at[idx, "lat"], df.at[idx, "lon"] = coords
-            continue
-
-        # Try progressively cleaner address variants
+        if not raw_addr or raw_addr in cache: continue
         variants = _clean_address(raw_addr)
         location = None
-        best_query = None
-
         for query in variants:
             try:
                 location = geocode(query)
-                if location:
-                    best_query = query
-                    break
-            except Exception:
-                continue
-
+                if location: break
+            except Exception: continue
         if location:
             df.at[idx, "lat"] = location.latitude
             df.at[idx, "lon"] = location.longitude
             cache[raw_addr] = [location.latitude, location.longitude]
-            print(f"  [{i:>3}/{n}] ✅ {raw_addr[:40]:40s} → ({location.latitude:.5f}, {location.longitude:.5f})")
         else:
             cache[raw_addr] = None
-            print(f"  [{i:>3}/{n}] ❌ Not found: {raw_addr[:50]}")
-
-        # Persist cache periodically
-        if i % 50 == 0:
-            _save_cache(cache)
-
     return df
 
-
 def to_geojson(df: pd.DataFrame) -> dict:
-    """Build a GeoJSON FeatureCollection. Skips rows without coordinates."""
     features = []
     for _, row in df.iterrows():
-        if pd.isna(row["lat"]) or pd.isna(row["lon"]):
-            continue
-
+        if pd.isna(row["lat"]) or pd.isna(row["lon"]): continue
         features.append({
             "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [float(row["lon"]), float(row["lat"])],
-            },
+            "geometry": { "type": "Point", "coordinates": [float(row["lon"]), float(row["lat"])] },
             "properties": {
                 "title": str(row["title"] or ""),
                 "address": str(row["address"] or ""),
@@ -248,107 +173,67 @@ def to_geojson(df: pd.DataFrame) -> dict:
                 "source": str(row["source"]),
             },
         })
-
     return {"type": "FeatureCollection", "features": features}
 
+def consolidate_group(group):
+    items = []
+    for _, row in group.iterrows():
+        if pd.notna(row['link']):
+            items.append({'link': str(row['link']), 'source': str(row['source'])})
+    unique_items = []
+    seen = set()
+    for item in items:
+        key = (item['link'], item['source'])
+        if key not in seen:
+            unique_items.append(item)
+            seen.add(key)
+    return pd.Series({
+        'title': group['title'].iloc[0],
+        'address': group['address'].iloc[0],
+        'phone': group['phone'].iloc[0],
+        'category': group['category'].iloc[0],
+        'link': json.dumps(unique_items),
+        'lat': group['lat'].iloc[0],
+        'lon': group['lon'].iloc[0],
+        'source': 'combined'
+    })
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
 def main():
     print("=" * 60)
     print("  Redtable Map Data Consolidator")
     print("=" * 60)
-
+    
     cache = _load_cache()
-    print(f"\n📦 Geocode cache: {len(cache)} entries")
-
     geocode = _init_geocoder()
     source_dfs = []
 
     for pattern, label, has_coords in CSV_PATTERNS:
-        print(f"\n🔍 [{label}] searching …")
         path = find_latest_csv(pattern)
-        if not path:
-            print(f"  ⚠️  No files matched '{pattern}'")
-            continue
-
-        print(f"  File: {os.path.basename(path)}")
+        if not path: continue
         df = load_and_normalize(path, label)
-        print(f"  Rows: {len(df)}")
-
-        if not has_coords:
-            df = geocode_missing(df, geocode, cache)
-
+        if not has_coords: df = geocode_missing(df, geocode, cache)
         source_dfs.append(df)
-
-    if not source_dfs:
-        print("\n❌ No data loaded. Exiting.")
-        sys.exit(1)
-
-    # Combine all data
-    combined = pd.concat(source_dfs, ignore_index=True)
     
-    # Deduplicate by title and address (ignoring whitespace)
-    combined['clean_title'] = combined['title'].astype(str).str.replace(r'\s+', '', regex=True).str.lower()
-    combined['clean_address'] = combined['address'].astype(str).str.replace(r'\s+', '', regex=True).str.lower()
-
-    def consolidate_group(group):
-        items = []
-        for _, row in group.iterrows():
-            if pd.notna(row['link']):
-                items.append({'link': str(row['link']), 'source': str(row['source'])})
-        unique_items = []
-        seen = set()
-        for item in items:
-            key = (item['link'], item['source'])
-            if key not in seen:
-                unique_items.append(item)
-                seen.add(key)
-        
-        return pd.Series({
-            'title': group['title'].iloc[0],
-            'address': group['address'].iloc[0],
-            'phone': group['phone'].iloc[0],
-            'category': group['category'].iloc[0],
-            'link': json.dumps(unique_items),
-            'lat': group['lat'].iloc[0],
-            'lon': group['lon'].iloc[0],
-            'source': 'combined'
-        })
-
+    combined = pd.concat(source_dfs, ignore_index=True)
+    combined['clean_title'] = combined['title'].apply(normalize_text)
+    combined['clean_address'] = combined['address'].apply(normalize_text)
     combined = combined.groupby(['clean_title', 'clean_address'], group_keys=False).apply(consolidate_group, include_groups=False).reset_index(drop=True)
 
-    # Apply jitter to identical coordinates to ensure clickability
-    import math
+    # Jitter
     coord_counts = combined.groupby(['lat', 'lon']).size()
     for (lat, lon), count in coord_counts.items():
         if count > 1 and pd.notna(lat) and pd.notna(lon):
             mask = (combined['lat'] == lat) & (combined['lon'] == lon)
             indices = combined[mask].index
             for idx, row_idx in enumerate(indices):
-                # Deterministic jitter: 0.00005 deg (~5m)
                 angle = (idx / count) * 2 * math.pi
-                magnitude = 0.00005
-                combined.at[row_idx, 'lat'] += math.cos(angle) * magnitude
-                combined.at[row_idx, 'lon'] += math.sin(angle) * magnitude
+                combined.at[row_idx, 'lat'] += math.cos(angle) * 0.00005
+                combined.at[row_idx, 'lon'] += math.sin(angle) * 0.00005
     
-    print(f"\n📊 Combined (deduplicated & jittered): {len(combined)} entries | "
-          f"With coordinates: {combined['lat'].notna().sum()}")
-
-    geojson = to_geojson(combined)
-
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(geojson, f, ensure_ascii=False, indent=2)
-
-    print(f"\n✅ Written → {OUTPUT_FILE}")
-    print(f"   GeoJSON features: {len(geojson['features'])}")
-
+        json.dump(to_geojson(combined), f, ensure_ascii=False, indent=2)
     _save_cache(cache)
-    print(f"   Cache saved: {len(cache)} entries")
-    print("\n✨ Done!")
-
+    print("✨ Done!")
 
 if __name__ == "__main__":
     main()
