@@ -131,6 +131,7 @@
           status.style.display = 'none';
 
           var sidebarContent = document.getElementById('sidebar-content');
+          var searchLayer = L.layerGroup();
 
           var geoJsonLayer = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
@@ -143,7 +144,9 @@
                 iconSize: [20, 20]
               });
               
-              return L.marker(latlng, { icon: icon });
+              var marker = L.marker(latlng, { icon: icon });
+              searchLayer.addLayer(marker);
+              return marker;
             },
             onEachFeature: function (feature, layer) {
               var p = feature.properties || {};
@@ -231,16 +234,19 @@
           markers.addLayers(allMarkers);
           map.addLayer(markers);
 
-          map.addControl(new L.Control.Search({
-            layer: geoJsonLayer,
-            propertyName: 'searchField',
-            initial: false,
-            zoom: 17,
-            buildTip: function(textVal, key) {
-                var parts = key.split('|');
-                return '<div>' + parts[0] + ' <small>' + parts[1] + '</small></div>';
-            }
-          }));
+           var searchControl = new L.Control.Search({
+             layer: searchLayer,
+             propertyName: 'searchField',
+             initial: false,
+             zoom: 17,
+             buildTip: function(textVal, key) {
+                 var parts = key.split('|');
+                 return '<div>' + parts[0] + ' <small>' + parts[1] + '</small></div>';
+             }
+           });
+           map.addControl(searchControl);
+           searchLayer.remove();
+
 
           var filterContent = document.getElementById('filter-content');
           var categories = Object.keys(categoryIcons);
@@ -272,6 +278,12 @@
             });
             markers.clearLayers();
             markers.addLayers(filtered);
+
+            // Re-bind search to only visible markers
+            // setLayer() would add the layer to the map, stealing from MarkerClusterGroup,
+            // so we directly update the internal layer reference instead.
+            // The cache will rebuild on the next user keystroke via _fillRecordsCache.
+            searchControl._layer = L.layerGroup(filtered);
           }
 
           if (markers.getLayers().length > 0) {
