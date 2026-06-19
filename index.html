@@ -223,7 +223,12 @@
             }
           });
           
-          markers.addLayer(geoJsonLayer);
+          var allMarkers = [];
+          geoJsonLayer.eachLayer(function(layer) {
+            allMarkers.push(layer);
+          });
+          
+          markers.addLayers(allMarkers);
           map.addLayer(markers);
 
           map.addControl(new L.Control.Search({
@@ -259,19 +264,14 @@
           });
 
           function updateMarkers() {
+            var filtered = [];
             geoJsonLayer.eachLayer(function(layer) {
-              var shouldShow = activeCategories.has(layer.feature.properties.category || "기타");
-              var inCluster = markers.hasLayer(layer);
-              if (shouldShow && !inCluster) {
-                markers.addLayer(layer);
-              } else if (!shouldShow && inCluster) {
-                markers.removeLayer(layer);
+              if (activeCategories.has(layer.feature.properties.category || "기타")) {
+                filtered.push(layer);
               }
             });
-            // 줌/이동 애니메이션 종료 후 상태 동기화 강제
-            setTimeout(function() {
-                markers.refreshClusters();
-            }, 300);
+            markers.clearLayers();
+            markers.addLayers(filtered);
           }
 
           if (markers.getLayers().length > 0) {
