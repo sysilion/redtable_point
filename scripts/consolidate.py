@@ -216,9 +216,45 @@ def main():
         source_dfs.append(df)
     
     combined = pd.concat(source_dfs, ignore_index=True)
+    
+    # 1. 주소 정제: 층/동/호수/지하 정보 제거
+    def get_base_address(addr):
+        addr = str(addr)
+        addr = re.sub(r'\s*(지하\s*\d*층|\d*층|B\d+|[0-9]+동|[0-9]+호|[0-9]+-[0-9]+호)\b', '', addr)
+        return re.sub(r'\s+', '', addr).lower()
+
+    # 2. 매장 이름 정규화
     combined['clean_title'] = combined['title'].apply(normalize_text)
-    combined['clean_address'] = combined['address'].apply(normalize_text)
-    combined = combined.groupby(['clean_title', 'clean_address'], group_keys=False).apply(consolidate_group, include_groups=False).reset_index(drop=True)
+    combined['base_address'] = combined['address'].apply(get_base_address)
+
+    def consolidate_group(group):
+        # 세부 주소가 포함된 가장 긴 주소를 대표 주소로 채택
+        longest_address = group.loc[group['address'].astype(str).str.len().idxmax(), 'address']
+        
+        items = []
+        for _, row in group.iterrows():
+            if pd.notna(row['link']):
+                items.append({'link': str(row['link']), 'source': str(row['source'])})
+        unique_items = []
+        seen = set()
+        for item in items:
+            key = (item['link'], item['source'])
+            if key not in seen:
+                unique_items.append(item)
+                seen.add(key)
+        
+        return pd.Series({
+            'title': group['title'].iloc[0],
+            'address': longest_address,
+            'phone': group['phone'].iloc[0],
+            'category': group['category'].iloc[0],
+            'link': json.dumps(unique_items),
+            'lat': group['lat'].iloc[0],
+            'lon': group['lon'].iloc[0],
+            'source': 'combined'
+        })
+
+    combined = combined.groupby(['clean_title', 'base_address'], group_keys=False).apply(consolidate_group, include_groups=False).reset_index(drop=True)
 
     # Jitter
     coord_counts = combined.groupby(['lat', 'lon']).size()
