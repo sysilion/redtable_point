@@ -241,6 +241,12 @@ def main():
         # 세부 주소가 포함된 가장 긴 주소를 대표 주소로 채택
         longest_address = group.loc[group['address'].astype(str).str.len().idxmax(), 'address']
         
+        # lat/lon이 존재하는 행을 우선 선택
+        valid_lat = group['lat'].dropna()
+        valid_lon = group['lon'].dropna()
+        lat = valid_lat.iloc[0] if not valid_lat.empty else pd.NA
+        lon = valid_lon.iloc[0] if not valid_lon.empty else pd.NA
+
         items = []
         for _, row in group.iterrows():
             if pd.notna(row['link']):
@@ -259,8 +265,8 @@ def main():
             'phone': group['phone'].iloc[0],
             'category': group['category'].iloc[0],
             'link': json.dumps(unique_items),
-            'lat': group['lat'].iloc[0],
-            'lon': group['lon'].iloc[0],
+            'lat': lat,
+            'lon': lon,
             'source': 'combined'
         })
 
