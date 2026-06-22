@@ -142,7 +142,14 @@ def geocode_missing(df: pd.DataFrame, geocode, cache: dict) -> pd.DataFrame:
     print(f"  Geocoding {n} entries ...")
     for i, idx in enumerate(missing, 1):
         raw_addr = str(df.at[idx, "address"] or "").strip()
-        if not raw_addr or raw_addr in cache: continue
+        if not raw_addr: continue
+        
+        if raw_addr in cache:
+            if cache[raw_addr]:
+                df.at[idx, "lat"] = cache[raw_addr][0]
+                df.at[idx, "lon"] = cache[raw_addr][1]
+            continue
+            
         variants = _clean_address(raw_addr)
         location = None
         for query in variants:
