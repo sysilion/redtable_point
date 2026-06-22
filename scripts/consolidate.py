@@ -289,7 +289,7 @@ def main():
                 if not exists:
                     items.append({
                         'link': url,
-                        'source': f'{source}(reconstructed)'
+                        'source': source
                     })
 
         unique_items = []
