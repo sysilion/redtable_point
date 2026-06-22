@@ -177,6 +177,15 @@ def to_geojson(df: pd.DataFrame) -> dict:
     return {"type": "FeatureCollection", "features": features}
 
 def consolidate_group(group):
+    # 가장 긴 주소를 대표 주소로 선택
+    longest_address = group.loc[group['address'].astype(str).str.len().idxmax(), 'address']
+    
+    # lat/lon이 존재하는 행을 우선 선택
+    valid_lat = group['lat'].dropna()
+    valid_lon = group['lon'].dropna()
+    lat = valid_lat.iloc[0] if not valid_lat.empty else pd.NA
+    lon = valid_lon.iloc[0] if not valid_lon.empty else pd.NA
+
     items = []
     for _, row in group.iterrows():
         if pd.notna(row['link']):
@@ -188,14 +197,15 @@ def consolidate_group(group):
         if key not in seen:
             unique_items.append(item)
             seen.add(key)
+    
     return pd.Series({
         'title': group['title'].iloc[0],
-        'address': group['address'].iloc[0],
+        'address': longest_address,
         'phone': group['phone'].iloc[0],
         'category': group['category'].iloc[0],
         'link': json.dumps(unique_items),
-        'lat': group['lat'].iloc[0],
-        'lon': group['lon'].iloc[0],
+        'lat': lat,
+        'lon': lon,
         'source': 'combined'
     })
 
