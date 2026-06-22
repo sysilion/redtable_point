@@ -255,9 +255,40 @@ def main():
         lon = valid_lon.iloc[0] if not valid_lon.empty else pd.NA
 
         items = []
+        found_redtable = False
+        extracted_id = None
+        
+        # 링크 파싱 및 ID 추출
         for _, row in group.iterrows():
-            if pd.notna(row['link']):
-                items.append({'link': str(row['link']), 'source': str(row['source'])})
+            if pd.isna(row['link']): continue
+            
+            # 단일 링크인 경우를 고려하여 처리
+            link_val = str(row['link'])
+            
+            # 기존 데이터가 리스트 형태인 경우 파싱 시도
+            try:
+                links = json.loads(link_val)
+            except json.JSONDecodeError:
+                links = [{'link': link_val, 'source': str(row['source'])}]
+            
+            for item in links:
+                items.append(item)
+                if 'redtable.global/ko/food/' in item['link']:
+                    found_redtable = True
+                
+                # ID 추출 (YDP/Benepia 링크에서)
+                if not extracted_id and ('ydp.redtable.global/store/' in item['link'] or 'benepia.redtable.global/store/' in item['link']):
+                    match = re.search(r'/store/(\d+)', item['link'])
+                    if match:
+                        extracted_id = match.group(1)
+
+        # Redtable 링크가 없는 경우 추출된 ID로 생성
+        if not found_redtable and extracted_id:
+            items.append({
+                'link': f'https://redtable.global/ko/food/{extracted_id}',
+                'source': 'redtable(reconstructed)'
+            })
+
         unique_items = []
         seen = set()
         for item in items:

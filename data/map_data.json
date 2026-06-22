@@ -15,7 +15,7 @@
         "address": "서울특별시 영등포구 당산로36길 5",
         "phone": "0507-1413-2044",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29455\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29455\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29455\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -69,7 +69,7 @@
         "address": "서울특별시 영등포구 당산로27길 5",
         "phone": "02-6012-1007",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28531\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28531\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28531\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -87,7 +87,7 @@
         "address": "서울특별시 영등포구 선유로49길 24",
         "phone": "02-2677-8403",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1009902\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1009902\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1009902\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -123,7 +123,7 @@
         "address": "서울특별시 영등포구 선유로49길 34",
         "phone": "0507-1321-4344",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28811\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28811\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28811\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -141,7 +141,7 @@
         "address": "경상남도 진주시 순환로553번길 6",
         "phone": "055-744-9922",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/432041\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/432041\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/432041\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -177,7 +177,7 @@
         "address": "서울특별시 영등포구 국회대로34길 20-1",
         "phone": "0507-1331-2813",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1117018\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1117018\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1117018\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -195,7 +195,7 @@
         "address": "울산광역시 울주군 삼남읍 도호길 31",
         "phone": "01053287087",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1132417\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1132417\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1132417\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -231,7 +231,7 @@
         "address": "서울특별시 마포구 도화길 16",
         "phone": "0507-1493-6712",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634886\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634886\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634886\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -267,7 +267,7 @@
         "address": "서울특별시 강남구 역삼로3길 12",
         "phone": "0507-1343-7592",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/90435\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/90435\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/90435\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -321,7 +321,7 @@
         "address": "서울특별시 영등포구 당산로 34",
         "phone": "0507-1435-5201",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36247\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/36247\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36247\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/36247\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/36247\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -339,7 +339,7 @@
         "address": "서울특별시 강남구 강남대로 240",
         "phone": "0507-1307-2396",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/125002\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/125002\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/125002\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -375,7 +375,7 @@
         "address": "서울특별시 영등포구 국회대로68길 23",
         "phone": "02-780-3303",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29537\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29537\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29537\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -393,7 +393,7 @@
         "address": "서울특별시 중구 명동길 55",
         "phone": "02-318-9221",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948524\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/948524\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/948524\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -429,7 +429,7 @@
         "address": "서울특별시 영등포구 양평로21길 1",
         "phone": "02-2676-5442",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/787886\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/787886\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/787886\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -519,7 +519,7 @@
         "address": "서울특별시 중구 명동4길 16-1",
         "phone": "070-8800-1234",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/40916\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/40916\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/40916\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -537,7 +537,7 @@
         "address": "서울특별시 영등포구 국회대로 780",
         "phone": "02-785-8682",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29544\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29544\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29544\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -591,7 +591,7 @@
         "address": "서울특별시 영등포구 국회대로70길 7",
         "phone": "0507-1409-4888",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/840031\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/840031\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/840031\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -609,7 +609,7 @@
         "address": "서울특별시 영등포구 선유로 269",
         "phone": "0507-2093-4388",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/846994\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/846994\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/846994\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -645,7 +645,7 @@
         "address": "서울특별시 영등포구 당산로 34",
         "phone": "0507-1362-5201",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29330\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/29330\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29330\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/29330\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/29330\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -663,7 +663,7 @@
         "address": "서울특별시 영등포구 국회대로54길 53-9",
         "phone": "02-2633-1198",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28294\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28294\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28294\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -717,7 +717,7 @@
         "address": "서울특별시 영등포구 경인로 846",
         "phone": "02-2630-6989",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28896\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28896\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28896\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28896\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/28896\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -753,7 +753,7 @@
         "address": "전라남도 장성군 북하면 백양로 1115-7",
         "phone": "061-392-1515",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10648\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10648\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10648\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -789,7 +789,7 @@
         "address": "서울특별시 영등포구 양평로22길 10",
         "phone": "0507-1407-1143",
         "category": "뷰티",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1165219\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1165219\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1165219\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -825,7 +825,7 @@
         "address": "서울특별시 영등포구 당산로30길 6-1",
         "phone": "0507-1348-0209",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/35609\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/35609\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35609\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/35609\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/35609\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -861,7 +861,7 @@
         "address": "서울특별시 영등포구 선유서로 35",
         "phone": "02-2636-9955",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28250\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28250\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28250\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28250\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/28250\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -879,7 +879,7 @@
         "address": "서울특별시 영등포구 양평로20길 8",
         "phone": "0507-1325-8767",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38184\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38184\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38184\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -897,7 +897,7 @@
         "address": "부산광역시 부산진구 서전로9번길 47",
         "phone": "0507-1470-7886",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/822282\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/822282\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/822282\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -951,7 +951,7 @@
         "address": "울산광역시 남구 동산로69번길 14",
         "phone": "052-266-7879",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/152977\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/152977\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/152977\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -987,7 +987,7 @@
         "address": "울산광역시 중구 종가5길 78-5",
         "phone": "052-242-2505",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/151733\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/151733\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/151733\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1041,7 +1041,7 @@
         "address": "서울특별시 영등포구 양평로17길 9",
         "phone": "0507-1332-9270",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/960618\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/960618\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/960618\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1059,7 +1059,7 @@
         "address": "서울특별시 영등포구 당산로26길 2",
         "phone": "0507-1446-1102",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/967451\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/967451\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/967451\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1077,7 +1077,7 @@
         "address": "경상남도 진주시 내동면 순환로378번길 3",
         "phone": "055-762-5295",
         "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/669562\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/669562\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/669562\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1095,7 +1095,7 @@
         "address": "서울특별시 영등포구 영중로10길 28",
         "phone": "0507-1438-7806",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36405\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36405\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36405\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1131,7 +1131,7 @@
         "address": "서울특별시 영등포구 선유로49길 24",
         "phone": "0507-1425-5857",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38368\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38368\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38368\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1149,7 +1149,7 @@
         "address": "서울특별시 강남구 도산대로45길 8-8 010-9330-7716 ,",
         "phone": "010-5306-6332",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/112956\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/112956\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/112956\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1203,7 +1203,7 @@
         "address": "전라남도 여수시 소호로 486",
         "phone": "061-683-1322",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/23949\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/23949\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/23949\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1221,7 +1221,7 @@
         "address": "부산광역시 사하구 동매로 117",
         "phone": "051-202-4100",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634871\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634871\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634871\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1239,7 +1239,7 @@
         "address": "서울특별시 영등포구 선유로51길 27",
         "phone": "02-2633-1690",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29044\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29044\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29044\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1257,7 +1257,7 @@
         "address": "서울특별시 영등포구 선유로49길 23",
         "phone": "0507-1362-4492",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36230\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36230\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36230\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1275,7 +1275,7 @@
         "address": "서울특별시 영등포구 선유로51길 19-1",
         "phone": "02-2678-7006",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/846252\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/846252\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/846252\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1293,7 +1293,7 @@
         "address": "서울특별시 영등포구 선유로49길 32-1",
         "phone": "02-2678-4060",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28766\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28766\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28766\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1329,7 +1329,7 @@
         "address": "서울특별시 영등포구 영등포로 184-3",
         "phone": "02-2672-9607",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28900\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28900\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28900\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1347,7 +1347,7 @@
         "address": "서울특별시 영등포구 63로 40",
         "phone": "0507-1387-8817",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29026\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29026\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29026\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1365,7 +1365,7 @@
         "address": "서울특별시 영등포구 선유로49길 25",
         "phone": "0507-1446-7703",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37106\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37106\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/37106\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1401,7 +1401,7 @@
         "address": "서울특별시 중구 명동8가길 36",
         "phone": "02-757-9292",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/14417\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/14417\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/14417\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1437,7 +1437,7 @@
         "address": "서울 영등포구 신길로39길 12 1층",
         "phone": "0507-1319-8789",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1636382\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1636382\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1636382\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1491,7 +1491,7 @@
         "address": "서울특별시 영등포구 국회대로70길 18",
         "phone": "0504-0825-9359",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/844095\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/844095\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/844095\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1509,7 +1509,7 @@
         "address": "서울특별시 종로구 청계천로 67",
         "phone": "0507-1408-1593",
         "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634928\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634928\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634928\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1581,7 +1581,7 @@
         "address": "서울특별시 영등포구 당산로27길 22-1",
         "phone": "0507-1365-1709",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/982614\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/982614\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/982614\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1599,7 +1599,7 @@
         "address": "울산광역시 남구 삼산중로74번길 25",
         "phone": "0507-1376-2211",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948508\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/948508\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/948508\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1671,7 +1671,7 @@
         "address": "서울 영등포구 도림로135길 10 1층",
         "phone": "010-8949-6338",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1634966\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1634966\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1634966\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1689,7 +1689,7 @@
         "address": "서울특별시 영등포구 63로 40",
         "phone": "0507-1321-3847",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29123\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29123\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29123\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1725,7 +1725,7 @@
         "address": "서울특별시 영등포구 당산로27길 9-1",
         "phone": "02-2633-7651",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28736\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28736\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28736\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28736\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/28736\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1743,7 +1743,7 @@
         "address": "서울특별시 영등포구 당산로28길 4",
         "phone": "02-2678-2220",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38437\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38437\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38437\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1797,7 +1797,7 @@
         "address": "서울특별시 중구 명동10길 16-1",
         "phone": "02-3789-0999",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1045796\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1045796\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1045796\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1851,7 +1851,7 @@
         "address": "서울특별시 영등포구 은행로 54",
         "phone": "010-5051-9190",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39979\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39979\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39979\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1869,7 +1869,7 @@
         "address": "서울특별시 영등포구 선유로 269",
         "phone": "0507-1380-0076",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1045889\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1045889\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1045889\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1887,7 +1887,7 @@
         "address": "서울특별시 영등포구 도림로 436-11",
         "phone": "0507-1334-5624",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1066069\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1066069\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1066069\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1905,7 +1905,7 @@
         "address": "서울특별시 영등포구 도림로139길 21",
         "phone": "0507-1311-8767",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1068828\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1068828\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1068828\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1923,7 +1923,7 @@
         "address": "서울특별시 영등포구 도림로139길 6",
         "phone": "070-4203-4430",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38320\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38320\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38320\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1941,7 +1941,7 @@
         "address": "서울특별시 영등포구 도림로141가길 24-3",
         "phone": "0507-1382-4430",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/999679\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/999679\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/999679\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1959,7 +1959,7 @@
         "address": "서울특별시 영등포구 도림로 441",
         "phone": "02-6085-6692",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39871\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39871\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39871\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1977,7 +1977,7 @@
         "address": "서울특별시 영등포구 양평로 100",
         "phone": "0507-1360-7673",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37342\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37342\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/37342\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -1995,7 +1995,7 @@
         "address": "서울 영등포구 도림로133길 14 미나리밭 오리사냥 문래점",
         "phone": "0507-1409-4758",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/989697\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/989697\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/989697\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2049,7 +2049,7 @@
         "address": "서울특별시 영등포구 선유로 269",
         "phone": "02-2677-8767",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36261\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36261\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36261\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2085,7 +2085,7 @@
         "address": "전라남도 목포시 원형서로 52",
         "phone": "061-283-7982",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10447\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10447\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10447\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2103,7 +2103,7 @@
         "address": "서울특별시 영등포구 여의대방로67길 22",
         "phone": "02-786-5799",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1068618\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1068618\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1068618\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2139,7 +2139,7 @@
         "address": "서울특별시 영등포구 선유로49길 36",
         "phone": "0507-1368-9839",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36465\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36465\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36465\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2175,7 +2175,7 @@
         "address": "서울특별시 영등포구 디지털로 392",
         "phone": "010-2889-7478",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38186\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38186\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38186\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2193,7 +2193,7 @@
         "address": "서울특별시 영등포구 선유로47길 34",
         "phone": "0507-1399-2583",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38885\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38885\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38885\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2211,7 +2211,7 @@
         "address": "서울특별시 영등포구 63로 50",
         "phone": "02-789-5741",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/10758\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10758\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/10758\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10758\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10758\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2247,7 +2247,7 @@
         "address": "서울특별시 용산구 이태원로 272",
         "phone": "02-796-7223",
         "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/121951\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/121951\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/121951\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2265,7 +2265,7 @@
         "address": "서울특별시 영등포구 선유로49길 29",
         "phone": "02-2675-5837",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36554\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36554\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36554\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2337,7 +2337,7 @@
         "address": "서울특별시 마포구 도화4길 9",
         "phone": "02-701-2680",
         "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/105765\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/105765\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/105765\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2373,7 +2373,7 @@
         "address": "서울특별시 성동구 연무장7가길 11",
         "phone": "0507-1393-1399",
         "category": "카페",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634950\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634950\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634950\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2409,7 +2409,7 @@
         "address": "서울특별시 영등포구 양산로19길 8",
         "phone": "0507-1401-2227",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/12885\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/12885\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/12885\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2427,7 +2427,7 @@
         "address": "서울특별시 영등포구 국회대로 800",
         "phone": "02-786-4282",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29019\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29019\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29019\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2445,7 +2445,7 @@
         "address": "서울특별시 영등포구 영등포로 226",
         "phone": "02-2068-4282",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29461\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29461\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29461\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2463,7 +2463,7 @@
         "address": "서울특별시 영등포구 영중로 145",
         "phone": "02-2633-8001",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28840\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28840\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28840\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2481,7 +2481,7 @@
         "address": "서울특별시 영등포구 국회대로68길 23",
         "phone": "02-761-1606",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36513\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36513\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36513\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2517,7 +2517,7 @@
         "address": "부산광역시 해운대구 해운대해변로 84",
         "phone": "0507-1430-5622",
         "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1630856\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1630856\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1630856\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2535,7 +2535,7 @@
         "address": "경상남도 합천군 합천읍 옥산로 84",
         "phone": "055-931-5885",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/19249\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/19249\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/19249\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2571,7 +2571,7 @@
         "address": "서울특별시 영등포구 양평로22길 18",
         "phone": "0507-1391-1227",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1131119\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1131119\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1131119\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2589,7 +2589,7 @@
         "address": "서울특별시 영등포구 양평로19길 10",
         "phone": "0507-1369-0405",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39933\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39933\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39933\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2607,7 +2607,7 @@
         "address": "서울특별시 영등포구 도림로131길 15",
         "phone": "02-2068-6277",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/40111\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/40111\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/40111\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2661,7 +2661,7 @@
         "address": "서울특별시 영등포구 선유로49길 29-1",
         "phone": "02-2647-3606",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/12278\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/12278\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/12278\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2697,7 +2697,7 @@
         "address": "부산광역시 부산진구 서면문화로 19",
         "phone": "051-819-6677",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/22010\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/22010\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/22010\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2715,7 +2715,7 @@
         "address": "부산광역시 부산진구 서면문화로 32",
         "phone": "051-714-4457",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/275605\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/275605\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/275605\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2751,7 +2751,7 @@
         "address": "서울특별시 영등포구 양평로22길 31",
         "phone": "02-2634-8880",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1054393\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1054393\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1054393\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2769,7 +2769,7 @@
         "address": "서울특별시 영등포구 시흥대로 671",
         "phone": "02-844-9292",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28599\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28599\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28599\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/28599\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/28599\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2787,7 +2787,7 @@
         "address": "서울특별시 영등포구 당산로 139",
         "phone": "02-2633-9279",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28735\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28735\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28735\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2823,7 +2823,7 @@
         "address": "서울특별시 마포구 매봉산로2안길 12-6",
         "phone": "0507-1408-7592",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/108103\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/108103\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/108103\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2859,7 +2859,7 @@
         "address": "서울특별시 영등포구 양평로21길 3",
         "phone": "02-2632-6297",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36043\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36043\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36043\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2877,7 +2877,7 @@
         "address": "서울특별시 영등포구 도림로 435",
         "phone": "0507-1432-0530",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/40107\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/40107\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/40107\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2895,7 +2895,7 @@
         "address": "서울특별시 영등포구 여의대방로29길 9 010-8634-3840 ,",
         "phone": "02-831-3840",
         "category": "일식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/40027\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/40027\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/40027\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2913,7 +2913,7 @@
         "address": "서울특별시 영등포구 양평로20길 4-1",
         "phone": "0507-1353-0836",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1029489\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1029489\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1029489\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2931,7 +2931,7 @@
         "address": "서울특별시 영등포구 국회대로74길 10",
         "phone": "0507-1445-1520",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1116668\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1116668\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1116668\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -2985,7 +2985,7 @@
         "address": "서울특별시 영등포구 당산로30길 9",
         "phone": "0507-1377-8305",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36418\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36418\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36418\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3003,7 +3003,7 @@
         "address": "서울특별시 영등포구 선유로51길 1",
         "phone": "0507-1480-0397",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38138\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38138\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38138\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3021,7 +3021,7 @@
         "address": "서울특별시 영등포구 양평로18길 3",
         "phone": "0507-1339-3552",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39746\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39746\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39746\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3039,7 +3039,7 @@
         "address": "서울특별시 영등포구 선유로49길 36",
         "phone": "02-2636-8590",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37048\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37048\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/37048\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3057,7 +3057,7 @@
         "address": "서울특별시 영등포구 양산로17길 22",
         "phone": "02-2636-2015",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28670\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28670\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28670\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3093,7 +3093,7 @@
         "address": "전라남도 구례군 광의면 매천로 346",
         "phone": "061-781-8989",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/11398\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/11398\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/11398\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3111,7 +3111,7 @@
         "address": "서울특별시 영등포구 국회대로68길 23",
         "phone": "0507-1351-1962",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29557\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29557\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29557\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3147,7 +3147,7 @@
         "address": "서울특별시 영등포구 도림로128길 17-1",
         "phone": "0507-1393-7244",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/980149\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/980149\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/980149\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3165,7 +3165,7 @@
         "address": "서울특별시 영등포구 경인로 801-1",
         "phone": "010-8380-3034",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28923\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28923\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28923\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3183,7 +3183,7 @@
         "address": "전라남도 광양시 사동로 211",
         "phone": "061-794-1256",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10543\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10543\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10543\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3201,7 +3201,7 @@
         "address": "부산광역시 해운대구 송정해변로 50",
         "phone": "0507-1367-8480",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10091\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10091\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10091\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3273,7 +3273,7 @@
         "address": "서울특별시 영등포구 당산로27길 13",
         "phone": "02-6952-3449",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1146824\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1146824\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1146824\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3309,7 +3309,7 @@
         "address": "서울특별시 영등포구 63로 50",
         "phone": "02-789-5751",
         "category": "일식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/10755\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10755\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/10755\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10755\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10755\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3327,7 +3327,7 @@
         "address": "서울특별시 영등포구 여의대방로67길 8",
         "phone": "0507-1417-1207",
         "category": "일식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38954\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38954\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38954\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3345,7 +3345,7 @@
         "address": "부산광역시 부산진구 서면문화로 32",
         "phone": "051-715-7115",
         "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/275611\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/275611\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/275611\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3363,7 +3363,7 @@
         "address": "서울특별시 영등포구 양평로22길 21",
         "phone": "02-2062-5445",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/35923\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35923\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/35923\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3381,7 +3381,7 @@
         "address": "서울특별시 영등포구 양평로22길 14",
         "phone": "070-8877-1515",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39416\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39416\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39416\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3399,7 +3399,7 @@
         "address": "서울특별시 영등포구 양평로12길 13",
         "phone": "0507-1375-6326",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1123602\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1123602\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1123602\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3417,7 +3417,7 @@
         "address": "서울특별시 영등포구 국회대로74길 20",
         "phone": "0507-1478-5029",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1066653\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1066653\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1066653\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3435,7 +3435,7 @@
         "address": "서울특별시 영등포구 양평로 126",
         "phone": "0507-1386-7644",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/846606\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/846606\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/846606\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3453,7 +3453,7 @@
         "address": "서울특별시 영등포구 선유로51길 8",
         "phone": "02-2068-8040",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38016\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38016\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38016\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3471,7 +3471,7 @@
         "address": "서울특별시 영등포구 국회대로 750",
         "phone": "02-782-1468",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29570\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/29570\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29570\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/29570\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/29570\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3489,7 +3489,7 @@
         "address": "서울특별시 영등포구 도림로",
         "phone": "428",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/840197\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/840197\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/840197\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3507,7 +3507,7 @@
         "address": "서울특별시 영등포구 국회대로36길 8-1",
         "phone": "02-2632-8813",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29234\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29234\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29234\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3561,7 +3561,7 @@
         "address": "서울특별시 영등포구 선유로 269",
         "phone": "0507-0289-5323",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/846627\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/846627\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/846627\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3579,7 +3579,7 @@
         "address": "서울특별시 영등포구 신길로39길 8-2",
         "phone": "02-843-3372",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29167\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29167\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29167\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3597,7 +3597,7 @@
         "address": "서울특별시 영등포구 양평로17길 9",
         "phone": "0507-2085-1176",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36859\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36859\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36859\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3633,7 +3633,7 @@
         "address": "서울특별시 영등포구 63로 45",
         "phone": "02-780-9207",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/35476\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35476\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/35476\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3651,7 +3651,7 @@
         "address": "서울특별시 영등포구 국회대로70길 18",
         "phone": "0507-1314-0885",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29657\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29657\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29657\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3669,7 +3669,7 @@
         "address": "서울특별시 영등포구 양평로22길 13",
         "phone": "02-2679-4242",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38692\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38692\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38692\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3687,7 +3687,7 @@
         "address": "서울특별시 영등포구 선유로51길 3",
         "phone": "0507-1362-4957",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1634922\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1634922\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1634922\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3705,7 +3705,7 @@
         "address": "서울특별시 영등포구 경인로77길 12",
         "phone": "0507-1324-3884",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39941\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39941\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39941\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3795,7 +3795,7 @@
         "address": "서울특별시 영등포구 선유로49길 28",
         "phone": "0507-1442-6801",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/811155\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/811155\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/811155\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3813,7 +3813,7 @@
         "address": "서울특별시 영등포구 도림로 434-9",
         "phone": "0507-1390-2819",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28695\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28695\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28695\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3831,7 +3831,7 @@
         "address": "서울특별시 영등포구 양평로 85",
         "phone": "0507-1344-9461",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1067429\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1067429\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1067429\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3849,7 +3849,7 @@
         "address": "서울특별시 중구 퇴계로 15",
         "phone": "0507-1415-8725",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634970\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634970\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634970\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3921,7 +3921,7 @@
         "address": "부산광역시 부산진구 서면로 26",
         "phone": "051-803-5244",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/238190\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/238190\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/238190\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3939,7 +3939,7 @@
         "address": "경상남도 양산시 중앙로 278",
         "phone": "055-367-6271",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/434629\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/434629\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/434629\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3957,7 +3957,7 @@
         "address": "서울특별시 영등포구 영중로 95-1",
         "phone": "010-8100-3433",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28648\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28648\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28648\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -3993,7 +3993,7 @@
         "address": "서울특별시 영등포구 대림로29길 42",
         "phone": "0507-1339-6688",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/798720\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/798720\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/798720\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4011,7 +4011,7 @@
         "address": "서울특별시 영등포구 양평로 126",
         "phone": "0507-1368-0760",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36970\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36970\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36970\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4029,7 +4029,7 @@
         "address": "서울특별시 영등포구 당산로26길 3",
         "phone": "0507-1306-8915",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1175558\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1175558\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1175558\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4083,7 +4083,7 @@
         "address": "서울 영등포구 양평로22길 11",
         "phone": "0507-1350-9559",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1189290\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1189290\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1189290\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4101,7 +4101,7 @@
         "address": "서울 영등포구 당산로 166 1층",
         "phone": "0507-1495-0796",
         "category": "베이커리",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1636381\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1636381\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1636381\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4119,7 +4119,7 @@
         "address": "서울특별시 영등포구 선유로51길 22-1",
         "phone": "070-7576-2739",
         "category": "일식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1634921\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1634921\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1634921\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4137,7 +4137,7 @@
         "address": "서울특별시 강남구 선릉로153길 18",
         "phone": "02-208-0160",
         "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634880\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634880\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634880\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4155,7 +4155,7 @@
         "address": "서울특별시 종로구 종로31길 46-8",
         "phone": "010-3128-4467",
         "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1068957\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1068957\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1068957\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4209,7 +4209,7 @@
         "address": "서울특별시 영등포구 당산로32길 4",
         "phone": "02-2675-1888",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/35936\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35936\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/35936\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4281,7 +4281,7 @@
         "address": "서울특별시 영등포구 양산로 127",
         "phone": "0507-1856-7896",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/845876\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/845876\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/845876\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4299,7 +4299,7 @@
         "address": "서울특별시 영등포구 63로 50",
         "phone": "02-789-5904",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/10757\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10757\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/10757\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10757\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10757\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4317,7 +4317,7 @@
         "address": "서울 영등포구 양평로17길 1 1층",
         "phone": "02-6404-1122",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36116\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36116\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36116\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4335,7 +4335,7 @@
         "address": "서울특별시 영등포구 경인로79길 17-1",
         "phone": "0507-1360-0275",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1074707\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1074707\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1074707\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1074707\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1074707\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4353,7 +4353,7 @@
         "address": "서울특별시 영등포구 양평로 117-1",
         "phone": "02-2676-2849",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36759\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36759\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36759\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4389,7 +4389,7 @@
         "address": "서울특별시 중구 명동9길 21 02-318-5352 ,",
         "phone": "010-3735-1591",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/41309\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/41309\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/41309\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4407,7 +4407,7 @@
         "address": "서울특별시 영등포구 영중로 99",
         "phone": "02-2675-6461",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28842\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28842\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28842\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4443,7 +4443,7 @@
         "address": "서울특별시 영등포구 경인로79길 17",
         "phone": "0507-1480-7335",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1033244\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1033244\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1033244\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1033244\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1033244\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4479,7 +4479,7 @@
         "address": "서울특별시 영등포구 당산로 34",
         "phone": "0507-1407-7592",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37594\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/37594\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37594\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/37594\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/37594\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4497,7 +4497,7 @@
         "address": "서울특별시 마포구 도화길 29",
         "phone": "0507-1410-7596",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/843773\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/843773\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/843773\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4533,7 +4533,7 @@
         "address": "서울 영등포구 경인로79길 14 1층 유어홈커피",
         "phone": "0507-1373-0302",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28921\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28921\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28921\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4569,7 +4569,7 @@
         "address": "서울특별시 중구 명동8나길 45",
         "phone": "02-775-7555",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10070\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10070\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10070\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4605,7 +4605,7 @@
         "address": "서울특별시 영등포구 당산로 160",
         "phone": "02-3667-6011",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/818501\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/818501\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/818501\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4623,7 +4623,7 @@
         "address": "서울특별시 강남구 밤고개로1길 10",
         "phone": "02-451-7790",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/117159\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/117159\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/117159\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4659,7 +4659,7 @@
         "address": "서울특별시 마포구 월드컵로1길 14",
         "phone": "0507-1459-7688",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/113717\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/113717\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/113717\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4695,7 +4695,7 @@
         "address": "서울특별시 영등포구 선유로49길 15-2",
         "phone": "02-2636-8889",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36346\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36346\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36346\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4713,7 +4713,7 @@
         "address": "서울특별시 영등포구 도림로139가길 18-1",
         "phone": "02-2636-0991",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28886\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28886\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28886\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4749,7 +4749,7 @@
         "address": "서울특별시 영등포구 도림로133길 20",
         "phone": "0507-1477-7079",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36179\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36179\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36179\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4767,7 +4767,7 @@
         "address": "서울특별시 영등포구 국회대로 794",
         "phone": "010-8233-6634",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38909\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38909\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38909\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4785,7 +4785,7 @@
         "address": "서울특별시 영등포구 양평로 126",
         "phone": "02-2632-1544",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36826\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36826\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36826\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4803,7 +4803,7 @@
         "address": "서울특별시 영등포구 양평로22길 8",
         "phone": "02-2637-8989",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38931\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38931\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38931\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4839,7 +4839,7 @@
         "address": "서울특별시 마포구 잔다리로6길 34-13",
         "phone": "0507-1419-0812",
         "category": "일식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1636395\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1636395\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1636395\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4893,7 +4893,7 @@
         "address": "서울특별시 영등포구 국회대로50길 20",
         "phone": "0507-1384-9625",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/491602\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/491602\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/491602\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4911,7 +4911,7 @@
         "address": "서울특별시 영등포구 도림로 128",
         "phone": "02-832-8898",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28434\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28434\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28434\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4947,7 +4947,7 @@
         "address": "부산광역시 해운대구 해운대해변로 383",
         "phone": "051-731-6767",
         "category": "중식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/227847\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/227847\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/227847\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -4983,7 +4983,7 @@
         "address": "서울특별시 중구 명동길 55",
         "phone": "02-318-9221",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948528\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/948528\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/948528\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5055,7 +5055,7 @@
         "address": "서울특별시 영등포구 양평로17길 14",
         "phone": "0507-1430-2678",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38645\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38645\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38645\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5091,7 +5091,7 @@
         "address": "서울특별시 영등포구 여의대방로 379",
         "phone": "0507-1414-1712",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28432\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28432\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28432\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5127,7 +5127,7 @@
         "address": "서울특별시 구로구 경인로 445",
         "phone": "070-5175-7214",
         "category": "베이커리",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/87016\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/87016\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/87016\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5163,7 +5163,7 @@
         "address": "서울특별시 중구 명동9길 29",
         "phone": "02-755-7555",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/43947\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/43947\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/43947\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5199,7 +5199,7 @@
         "address": "서울특별시 영등포구 국제금융로 86",
         "phone": "0507-1384-5309",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39463\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39463\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39463\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5253,7 +5253,7 @@
         "address": "전라남도 여수시 화산로 104",
         "phone": "0507-1338-5892",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/269967\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/269967\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/269967\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5307,7 +5307,7 @@
         "address": "서울특별시 종로구 자하문로 125",
         "phone": "02-2269-5834",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10035\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10035\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10035\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5397,7 +5397,7 @@
         "address": "서울특별시 영등포구 국회대로74길 20",
         "phone": "0507-1405-0150",
         "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29214\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29214\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29214\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5415,7 +5415,7 @@
         "address": "서울특별시 영등포구 당산로 111",
         "phone": "0507-1446-9292",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28947\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28947\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28947\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5451,7 +5451,7 @@
         "address": "서울특별시 영등포구 국회대로54길 10",
         "phone": "0507-1381-7377",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28891\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28891\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28891\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5469,7 +5469,7 @@
         "address": "서울특별시 영등포구 국회대로70길 12",
         "phone": "0507-1377-1392",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/994017\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/994017\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/994017\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5505,7 +5505,7 @@
         "address": "서울특별시 영등포구 은행로 3",
         "phone": "02-780-8001",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38310\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38310\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38310\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5541,7 +5541,7 @@
         "address": "서울특별시 영등포구 양평로22길 16",
         "phone": "0507-1448-2074",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37589\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37589\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/37589\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5559,7 +5559,7 @@
         "address": "서울특별시 강남구 테헤란로64길 24",
         "phone": "02-557-1474",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/948569\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/948569\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/948569\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5667,7 +5667,7 @@
         "address": "서울특별시 영등포구 영중로10길 32-4",
         "phone": "0507-1316-1474",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38512\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/38512\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38512\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/38512\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/38512\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5703,7 +5703,7 @@
         "address": "서울특별시 용산구 한강대로 284",
         "phone": "02-2678-1474",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/839557\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/839557\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/839557\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5757,7 +5757,7 @@
         "address": "인천광역시 부평구 경원대로 1407",
         "phone": "0507-1438-3458",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1125553\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1125553\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1125553\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5829,7 +5829,7 @@
         "address": "부산광역시 부산진구 동평로44번길 55",
         "phone": "051-989-9292",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/279217\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/279217\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/279217\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5847,7 +5847,7 @@
         "address": "서울특별시 영등포구 도림로 278-6",
         "phone": "02-845-1259",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29181\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29181\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29181\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5919,7 +5919,7 @@
         "address": "서울특별시 영등포구 당산로27길 5",
         "phone": "0507-1360-5169",
         "category": "일식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28310\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28310\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28310\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5937,7 +5937,7 @@
         "address": "서울특별시 영등포구 여의대방로62길 4",
         "phone": "02-955-0101",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39929\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39929\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39929\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5955,7 +5955,7 @@
         "address": "서울특별시 강남구 선릉로 523",
         "phone": "02-6953-7827",
         "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/982139\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/982139\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/982139\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -5991,7 +5991,7 @@
         "address": "서울특별시 영등포구 양평로22바길 3",
         "phone": "0507-1346-2739",
         "category": "일식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1050155\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1050155\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1050155\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6009,7 +6009,7 @@
         "address": "서울특별시 영등포구 경인로77가길 12",
         "phone": "0507-1324-0504",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28885\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28885\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28885\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6027,7 +6027,7 @@
         "address": "서울특별시 영등포구 당산로27길 23",
         "phone": "0507-1303-4741",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38671\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38671\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38671\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6063,7 +6063,7 @@
         "address": "서울특별시 영등포구 당산로30길 7",
         "phone": "0507-1496-9933",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/973877\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/973877\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/973877\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6081,7 +6081,7 @@
         "address": "서울특별시 영등포구 선유동1로 12",
         "phone": "02-2633-5115",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29263\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29263\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29263\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6099,7 +6099,7 @@
         "address": "서울특별시 영등포구 당산로 34",
         "phone": "0507-1369-4330",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29178\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29178\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29178\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6117,7 +6117,7 @@
         "address": "서울특별시 영등포구 양평로22라길 1",
         "phone": "0507-1430-9699",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/35884\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35884\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/35884\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6135,7 +6135,7 @@
         "address": "서울특별시 영등포구 양산로 136-1",
         "phone": "0507-1379-0542",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/845937\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/845937\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/845937\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6171,7 +6171,7 @@
         "address": "부산광역시 해운대구 해운대로 620, 122호 카페해운대1994",
         "phone": "051-744-1994",
         "category": "카페",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/25520\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/25520\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/25520\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6189,7 +6189,7 @@
         "address": "서울특별시 영등포구 당산로49길 11",
         "phone": "010-6623-7673",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37373\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37373\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/37373\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6207,7 +6207,7 @@
         "address": "서울특별시 영등포구 양평로18길 6",
         "phone": "02-2679-5101",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39952\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39952\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39952\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6225,7 +6225,7 @@
         "address": "서울특별시 영등포구 신풍로 19 010-7621-0914 ,",
         "phone": "02-833-0206",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/37401\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/37401\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/37401\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6243,7 +6243,7 @@
         "address": "서울특별시 영등포구 양평로20길 1",
         "phone": "010-3159-9277",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/832346\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/832346\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/832346\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6261,7 +6261,7 @@
         "address": "서울특별시 영등포구 선유로49길",
         "phone": "32",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/145502\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/145502\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/145502\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6279,7 +6279,7 @@
         "address": "서울특별시 영등포구 신풍로 93",
         "phone": "0507-1372-9159",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/845350\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/845350\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/845350\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6297,7 +6297,7 @@
         "address": "서울특별시 영등포구 63로 45",
         "phone": "02-769-1666",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29274\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29274\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29274\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6369,7 +6369,7 @@
         "address": "서울특별시 영등포구 의사당대로 108",
         "phone": "02-780-4536",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36026\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36026\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36026\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6387,7 +6387,7 @@
         "address": "서울특별시 영등포구 영신로38길 23",
         "phone": "0507-1402-6626",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36599\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36599\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36599\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6423,7 +6423,7 @@
         "address": "서울특별시 영등포구 63로 50",
         "phone": "02-789-5761",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/10756\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/10756\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/10756\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6441,7 +6441,7 @@
         "address": "서울특별시 영등포구 영중로4길 21-1",
         "phone": "02-2671-9285",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29443\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29443\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29443\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6459,7 +6459,7 @@
         "address": "서울특별시 영등포구 여의나루로",
         "phone": "117",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39417\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39417\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39417\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6477,7 +6477,7 @@
         "address": "전라남도 여수시 시청서4길 22-12",
         "phone": "061-920-0015",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/983406\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/983406\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/983406\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6513,7 +6513,7 @@
         "address": "서울특별시 영등포구 양산로23길 6",
         "phone": "0507-1416-1753",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39939\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39939\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39939\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6531,7 +6531,7 @@
         "address": "서울특별시 영등포구 63로 45",
         "phone": "050-7526-2176",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29158\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/29158\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29158\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6549,7 +6549,7 @@
         "address": "서울특별시 영등포구 도림로 440-18",
         "phone": "0507-1327-0397",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28716\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28716\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28716\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6585,7 +6585,7 @@
         "address": "경상남도 고성군 고성읍 성내로112번길",
         "phone": "75-7",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/432055\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/432055\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/432055\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6621,7 +6621,7 @@
         "address": "서울특별시 영등포구 양평로22길 2-1",
         "phone": "0507-1314-5784",
         "category": "베이커리",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38726\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38726\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38726\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6639,7 +6639,7 @@
         "address": "서울특별시 영등포구 도림로 436",
         "phone": "0507-1496-5623",
         "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/847100\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/847100\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/847100\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6675,7 +6675,7 @@
         "address": "서울특별시 영등포구 선유로55길 20-1",
         "phone": "0507-1344-6454",
         "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38453\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38453\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38453\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6711,7 +6711,7 @@
         "address": "서울특별시 영등포구 신풍로 48",
         "phone": "02-831-7517",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/28749\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/28749\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/28749\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6747,7 +6747,7 @@
         "address": "서울특별시 중구 명동7길 21",
         "phone": "02-3789-9991",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634927\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634927\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634927\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6783,7 +6783,7 @@
         "address": "서울특별시 강남구 테헤란로 129",
         "phone": "02-6250-0934",
         "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1631459\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1631459\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1631459\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6873,7 +6873,7 @@
         "address": "서울특별시 영등포구 국회대로72길 11",
         "phone": "02-3775-3309",
         "category": "양식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/39758\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/39758\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39758\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6927,7 +6927,7 @@
         "address": "서울특별시 서초구 서초대로27길 21-1",
         "phone": "0507-1367-9575",
         "category": "카페",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1636402\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1636402\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1636402\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6963,7 +6963,7 @@
         "address": "서울특별시 영등포구 선유로51길 4-5",
         "phone": "02-2633-8487",
         "category": "베이커리",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36904\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36904\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36904\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -6981,7 +6981,7 @@
         "address": "서울특별시 영등포구 양평로 90",
         "phone": "0507-1360-2083",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/821722\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/821722\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/821722\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -7071,7 +7071,7 @@
         "address": "전라남도 화순군 화순읍 서양로 374-7",
         "phone": "070-7769-0121",
         "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/11246\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/11246\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/11246\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -7125,7 +7125,7 @@
         "address": "서울특별시 영등포구 국회대로36길 7",
         "phone": "0507-1405-8937",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36450\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36450\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36450\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     },
@@ -7161,7 +7161,7 @@
         "address": "서울특별시 영등포구 양평로22바길 2",
         "phone": "0507-1391-2386",
         "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/1039340\", \"source\": \"ydp\"}]",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/1039340\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/1039340\", \"source\": \"redtable(reconstructed)\"}]",
         "source": "combined"
       }
     }
