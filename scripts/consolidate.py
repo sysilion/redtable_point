@@ -119,11 +119,12 @@ def _clean_address(raw: str) -> list[str]:
     addr = raw.strip()
     addr = re.sub(r'\b\d{2,4}-\d{3,4}-\d{4}\b', '', addr)
     addr = re.sub(r'\b\d{9,12}\b', '', addr)
-    # Remove floor/building/unit suffixes (e.g., "1층", "B1", "지하1층", "동", "호", "112호")
-    addr = re.sub(r'\s*(지하\s*\d*층|\d*층|B\d+|[0-9]+동|[0-9]+호|[0-9]+-[0-9]+호|[\d]+층)\b', '', addr)
+    # Remove trailing comma/spaces with phone leftovers
     addr = re.sub(r'[,.\s]*\d{9,}$', '', addr)
+    # Clean up multiple spaces, trailing commas, punctuation
     addr = re.sub(r'[,\s]+', ' ', addr).strip()
     addr = re.sub(r'\s+$', '', addr)
+
 
     if not addr: return []
     variants = [f"{addr}, South Korea"]
