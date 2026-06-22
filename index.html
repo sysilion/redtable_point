@@ -279,11 +279,19 @@
             markers.clearLayers();
             markers.addLayers(filtered);
 
-            // Re-bind search to only visible markers
-            // setLayer() would add the layer to the map, stealing from MarkerClusterGroup,
-            // so we directly update the internal layer reference instead.
-            // The cache will rebuild on the next user keystroke via _fillRecordsCache.
-            searchControl._layer = L.layerGroup(filtered);
+            // 검색 컨트롤 갱신 및 캐시 강제 재생성
+            var newSearchLayer = L.layerGroup(filtered);
+            searchControl.setLayer(newSearchLayer);
+            searchControl._recordsCache = searchControl._recordsFromLayer();
+            
+            // 현재 검색어가 있다면 툴팁 즉시 갱신
+            if (searchControl._input.value && searchControl._input.value.length >= searchControl.options.minLength) {
+                var records = searchControl._filterData(
+                    searchControl._input.value,
+                    searchControl._recordsCache
+                );
+                searchControl.showTooltip(records);
+            }
           }
 
           if (markers.getLayers().length > 0) {

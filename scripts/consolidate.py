@@ -258,14 +258,11 @@ def main():
         found_redtable = False
         extracted_id = None
         
-        # 링크 파싱 및 ID 추출
+        # 1. 수집된 링크 파싱 및 ID 추출
         for _, row in group.iterrows():
             if pd.isna(row['link']): continue
             
-            # 단일 링크인 경우를 고려하여 처리
             link_val = str(row['link'])
-            
-            # 기존 데이터가 리스트 형태인 경우 파싱 시도
             try:
                 links = json.loads(link_val)
             except json.JSONDecodeError:
@@ -273,21 +270,27 @@ def main():
             
             for item in links:
                 items.append(item)
-                if 'redtable.global/ko/food/' in item['link']:
-                    found_redtable = True
-                
-                # ID 추출 (YDP/Benepia 링크에서)
-                if not extracted_id and ('ydp.redtable.global/store/' in item['link'] or 'benepia.redtable.global/store/' in item['link']):
-                    match = re.search(r'/store/(\d+)', item['link'])
-                    if match:
-                        extracted_id = match.group(1)
+                # ID 추출 (Redtable/YDP/Benepia 링크에서)
+                match = re.search(r'/(?:food|store)/(\d+)', item['link'])
+                if match and not extracted_id:
+                    extracted_id = match.group(1)
 
-        # Redtable 링크가 없는 경우 추출된 ID로 생성
-        if not found_redtable and extracted_id:
-            items.append({
-                'link': f'https://redtable.global/ko/food/{extracted_id}',
-                'source': 'redtable(reconstructed)'
-            })
+        # 2. 모든 소스에 대해 링크 존재 확인 및 복원
+        if extracted_id:
+            all_sources = {
+                'redtable': f'https://redtable.global/ko/food/{extracted_id}',
+                'ydp': f'https://ydp.redtable.global/store/{extracted_id}',
+                'benepia': f'https://benepia.redtable.global/store/{extracted_id}'
+            }
+            
+            for source, url in all_sources.items():
+                # 이미 존재하는 링크인지 확인
+                exists = any(item['link'] == url for item in items)
+                if not exists:
+                    items.append({
+                        'link': url,
+                        'source': f'{source}(reconstructed)'
+                    })
 
         unique_items = []
         seen = set()
