@@ -145,12 +145,13 @@
               });
               
               var marker = L.marker(latlng, { icon: icon });
+              var p = feature.properties || {};
+              marker.feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
               searchLayer.addLayer(marker);
               return marker;
             },
             onEachFeature: function (feature, layer) {
               var p = feature.properties || {};
-              feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
               // Use DOM methods for safe rendering instead of innerHTML
               var popupDiv = document.createElement('div');
               popupDiv.className = 'popup-content';
@@ -239,13 +240,14 @@
              propertyName: 'searchField',
              initial: false,
              zoom: 17,
-             buildTip: function(textVal, key) {
-                 var parts = key.split('|');
-                 return '<div>' + parts[0] + ' <small>' + parts[1] + '</small></div>';
-             }
+              buildTip: function(textVal, key) {
+                  var stringKey = typeof key === 'string' ? key : String(key || '');
+                  var parts = stringKey.split('|');
+                  return '<div>' + (parts[0] || '') + ' <small>' + (parts[1] || '') + '</small></div>';
+              }
            });
-           map.addControl(searchControl);
-           searchLayer.remove();
+            map.addControl(searchControl);
+
 
 
           var filterContent = document.getElementById('filter-content');
