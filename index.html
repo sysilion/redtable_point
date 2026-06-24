@@ -146,7 +146,7 @@
               
               var marker = L.marker(latlng, { icon: icon });
               var p = feature.properties || {};
-              marker.feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
+              feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
               searchLayer.addLayer(marker);
               return marker;
             },
