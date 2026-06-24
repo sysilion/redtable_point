@@ -131,8 +131,7 @@
           status.style.display = 'none';
 
           var sidebarContent = document.getElementById('sidebar-content');
-          var searchLayer = L.layerGroup();
-
+          
           var geoJsonLayer = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
               var category = feature.properties.category || "기타";
@@ -147,7 +146,6 @@
               var marker = L.marker(latlng, { icon: icon });
               var p = feature.properties || {};
               feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
-              searchLayer.addLayer(marker);
               return marker;
             },
             onEachFeature: function (feature, layer) {
@@ -235,18 +233,19 @@
           markers.addLayers(allMarkers);
           map.addLayer(markers);
 
-           var searchControl = new L.Control.Search({
-             layer: searchLayer,
-             propertyName: 'searchField',
-             initial: false,
-             zoom: 17,
+            var searchControl = new L.Control.Search({
+              layer: markers,
+              propertyName: 'searchField',
+              initial: false,
+              zoom: 17,
               buildTip: function(textVal, key) {
                   var stringKey = typeof key === 'string' ? key : String(key || '');
                   var parts = stringKey.split('|');
                   return '<div>' + (parts[0] || '') + ' <small>' + (parts[1] || '') + '</small></div>';
               }
-           });
+            });
             map.addControl(searchControl);
+
 
 
 
@@ -282,8 +281,7 @@
             markers.addLayers(filtered);
 
             // 검색 컨트롤 갱신 및 캐시 강제 재생성
-            var newSearchLayer = L.layerGroup(filtered);
-            searchControl.setLayer(newSearchLayer);
+            searchControl.setLayer(markers);
             searchControl._recordsCache = searchControl._recordsFromLayer();
             
             // 현재 검색어가 있다면 툴팁 즉시 갱신
