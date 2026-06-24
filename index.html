@@ -131,6 +131,7 @@
           status.style.display = 'none';
 
           var sidebarContent = document.getElementById('sidebar-content');
+          var searchLayer = L.layerGroup();
           
           var geoJsonLayer = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
@@ -145,7 +146,10 @@
               
               var marker = L.marker(latlng, { icon: icon });
               var p = feature.properties || {};
-              feature.properties.searchField = (p.title || '') + '|' + (p.address || '');
+              var searchField = (p.title || '') + '|' + (p.address || '');
+              feature.properties.searchField = searchField;
+              marker.searchField = searchField;
+              searchLayer.addLayer(marker);
               return marker;
             },
             onEachFeature: function (feature, layer) {
@@ -234,7 +238,7 @@
           map.addLayer(markers);
 
             var searchControl = new L.Control.Search({
-              layer: markers,
+              layer: searchLayer,
               propertyName: 'searchField',
               initial: false,
               zoom: 17,
@@ -281,7 +285,11 @@
             markers.addLayers(filtered);
 
             // 검색 컨트롤 갱신 및 캐시 강제 재생성
-            searchControl.setLayer(markers);
+            searchLayer.clearLayers();
+            filtered.forEach(function(layer) {
+                searchLayer.addLayer(layer);
+            });
+            searchControl.setLayer(searchLayer);
             searchControl._recordsCache = searchControl._recordsFromLayer();
             
             // 현재 검색어가 있다면 툴팁 즉시 갱신
