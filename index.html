@@ -98,7 +98,7 @@
         zoomToBoundsOnClick: false,
         animate: false
       });
-      map.addLayer(markers); // 클러스터 그룹을 먼저 지도에 추가
+      // map.addLayer(markers)를 여기서 하지 않고, 모든 마커를 추가한 후 마지막에 호출합니다.
 
       markers.on('clusterclick', function (a) {
         var bounds = a.layer.getBounds();
@@ -136,6 +136,7 @@
 
           var sidebarContent = document.getElementById('sidebar-content');
           var searchLayer = L.layerGroup();
+          var allMarkers = [];
           
           geojson.features.forEach(function(feature) {
             var latlng = L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
@@ -155,8 +156,8 @@
             marker.searchField = searchField;
             marker.feature = feature;
             
-            markers.addLayer(marker); // 즉시 클러스터 그룹에 추가
             searchLayer.addLayer(marker);
+            allMarkers.push(marker);
             
             // Popup setup
             var popupDiv = document.createElement('div');
@@ -224,7 +225,8 @@
             sidebarContent.appendChild(item);
           });
           
-          // allMarkers 로직 제거 및 map.addLayer(markers) 중복 호출 제거
+          markers.addLayers(allMarkers);
+          map.addLayer(markers);
 
 
 
