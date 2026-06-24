@@ -91,15 +91,24 @@
 
         var allMarkers = [];
         var activeCategories = new Set(Object.keys(categoryIcons));
+        var searchTerm = "";
 
         window.toggleSidebar = function(pane) {
           var sidebar = document.getElementById('sidebar');
           sidebar.classList.toggle('collapsed');
-          if (pane) {
-            document.getElementById('home').style.display = pane === 'home' ? 'block' : 'none';
-            document.getElementById('filter').style.display = pane === 'filter' ? 'block' : 'none';
-          }
+          var targetPane = pane || 'home';
+          document.getElementById('home').style.display = targetPane === 'home' ? 'block' : 'none';
+          document.getElementById('filter').style.display = targetPane === 'filter' ? 'block' : 'none';
         };
+
+        function getPrimaryLink(p) {
+          try {
+            var links = JSON.parse(p.link || '[]');
+            return links.length > 0 ? links[0].link : null;
+          } catch (e) {
+            return null;
+          }
+        }
 
         function esc(str) {
           var div = document.createElement('div');
@@ -125,37 +134,62 @@
               
               var marker = new kakao.maps.Marker({ position: latlng });
               
-              var infoWindow = new kakao.maps.InfoWindow({
-                content: '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
-                         '<span class="category">' + (p.category || '기타') + '</span>' +
-                         '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
-                         '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p></div>'
-              });
+               var infoWindow = new kakao.maps.InfoWindow({
+                 content: '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
+                          '<span class="category">' + (p.category || '기타') + '</span>' +
+                          '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
+                          '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p>' +
+                          '<p><a href="' + (getPrimaryLink(p) || '#') + '" target="_blank">View Store</a></p></div>'
+               });
 
               kakao.maps.event.addListener(marker, 'click', () => {
                 infoWindow.open(map, marker);
               });
 
-              allMarkers.push({ marker, feature, infoWindow });
-              
-              var item = document.createElement('div');
-              item.className = 'sidebar-item';
-              item.innerHTML = '<h3>' + (p.title || 'Untitled') + '</h3><p>' + (p.address || '') + '</p>';
-              item.onclick = () => {
+               allMarkers.push({ marker, feature, infoWindow });
+               
+               updateMarkers();
+             });
+             
+             updateMarkers();
+           });
+
+        function updateSidebar() {
+          var sidebarContent = document.getElementById('sidebar-content');
+          sidebarContent.innerHTML = '';
+          var filtered = allMarkers.filter(m => {
+            var p = m.feature.properties;
+            var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
+            return match && activeCategories.has(p.category || "기타");
+          });
+          filtered.forEach(m => {
+            var p = m.feature.properties;
+            var latlng = new kakao.maps.LatLng(m.feature.geometry.coordinates[1], m.feature.geometry.coordinates[0]);
+            var link = getPrimaryLink(p);
+            var item = document.createElement('div');
+            item.className = 'sidebar-item';
+            var linkHtml = link ? '<a href="' + link + '" target="_blank">' + (p.title || 'Untitled') + '</a>' : (p.title || 'Untitled');
+            item.innerHTML = '<h3>' + linkHtml + '</h3><p>' + (p.address || '') + '</p>';
+            item.onclick = (e) => {
+              if (e.target.tagName !== 'A') {
                 map.setCenter(latlng);
                 map.setLevel(5);
-                infoWindow.open(map, marker);
-              };
-              sidebarContent.appendChild(item);
-            });
-            
-            updateMarkers();
+                m.infoWindow.open(map, m.marker);
+              }
+            };
+            sidebarContent.appendChild(item);
           });
+        }
 
         function updateMarkers() {
           clusterer.clear();
-          var filtered = allMarkers.filter(m => activeCategories.has(m.feature.properties.category || "기타"));
+          var filtered = allMarkers.filter(m => {
+            var p = m.feature.properties;
+            var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
+            return match && activeCategories.has(p.category || "기타");
+          });
           clusterer.addMarkers(filtered.map(m => m.marker));
+          updateSidebar();
         }
 
         var filterContent = document.getElementById('filter-content');
@@ -172,12 +206,8 @@
         });
 
         document.getElementById('search-input').oninput = (e) => {
-          var val = e.target.value.toLowerCase();
-          allMarkers.forEach(m => {
-            var p = m.feature.properties;
-            var match = (p.title || '').toLowerCase().includes(val) || (p.address || '').toLowerCase().includes(val);
-            m.marker.setVisible(match && activeCategories.has(p.category || "기타"));
-          });
+          searchTerm = e.target.value.toLowerCase();
+          updateMarkers();
         };
       })();
     });
