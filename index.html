@@ -4,12 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Red Table Map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-sidebar-v2@3.2.3/css/leaflet-sidebar.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -25,289 +19,168 @@
     .sidebar-item:hover { background: #f9f9f9; }
     .sidebar-item h3 { font-size: 15px; margin: 0 0 4px; }
     .sidebar-item p { font-size: 12px; color: #666; margin: 0; }
+    
+    /* Sidebar styling */
+    #sidebar { position: absolute; top: 0; left: 0; width: 300px; height: 100%; background: white; z-index: 1000; box-shadow: 2px 0 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    #sidebar.collapsed { transform: translateX(-100%); }
+    .sidebar-tabs { width: 40px; height: 100%; background: #f0f0f0; float: left; }
+    .sidebar-content { margin-left: 40px; height: 100%; overflow-y: auto; }
+    .sidebar-pane { padding: 15px; }
+    .sidebar-header { font-size: 18px; margin-bottom: 15px; display: flex; justify-content: space-between; }
+    .sidebar-close { cursor: pointer; }
+    
+    /* Search bar */
+    #search-container { position: absolute; top: 10px; left: 50px; z-index: 1000; }
+    #search-input { padding: 8px; width: 200px; }
   </style>
 </head>
 <body>
-  <div id="sidebar" class="leaflet-sidebar collapsed">
-    <div class="leaflet-sidebar-tabs">
-      <ul role="tablist">
-        <li><a href="#home" role="tab">☰</a></li>
-        <li><a href="#filter" role="tab">🏷️</a></li>
-      </ul>
+  <div id="sidebar" class="collapsed">
+    <div class="sidebar-tabs">
+      <div onclick="toggleSidebar()">☰</div>
+      <div onclick="toggleSidebar('filter')">🏷️</div>
     </div>
-    <div class="leaflet-sidebar-content">
-      <div class="leaflet-sidebar-pane" id="home">
-        <h1 class="leaflet-sidebar-header">
+    <div class="sidebar-content">
+      <div class="sidebar-pane" id="home">
+        <div class="sidebar-header">
           Stores
-          <span class="leaflet-sidebar-close">◀</span>
-        </h1>
+          <span class="sidebar-close" onclick="toggleSidebar()">◀</span>
+        </div>
         <div id="sidebar-content"></div>
       </div>
-      <div class="leaflet-sidebar-pane" id="filter">
-        <h1 class="leaflet-sidebar-header">
+      <div class="sidebar-pane" id="filter" style="display:none;">
+        <div class="sidebar-header">
           Filter
-          <span class="leaflet-sidebar-close">◀</span>
-        </h1>
+          <span class="sidebar-close" onclick="toggleSidebar()">◀</span>
+        </div>
         <div id="filter-content"></div>
       </div>
     </div>
   </div>
-  <div id="map" class="leaflet-sidebar-map"></div>
+  
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search...">
+  </div>
+  
+  <div id="map"></div>
   <div id="status">Loading map data...</div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-  <script src="https://unpkg.com/leaflet-sidebar-v2@3.2.3/js/leaflet-sidebar.min.js"></script>
-  <script src="https://unpkg.com/leaflet-search@4.0.0/dist/leaflet-search.min.js"></script>
-  <script src="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=608c740734f775a41a0b360ae3c5f32b&libraries=services,clusterer"></script>
   <script>
-    (function () {
-      var map = L.map('map', { 
-        zoomControl: true,
-        maxZoom: 20
-      }).setView([37.535, 126.897], 13);
-      var sidebar = L.control.sidebar({
-        container: 'sidebar',
-        position: 'left'
-      }).addTo(map);
+    var mapContainer = document.getElementById('map'),
+        mapOption = { 
+            center: new kakao.maps.LatLng(37.535, 126.897),
+            level: 13
+        };
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    var clusterer = new kakao.maps.MarkerClusterer({
+        map: map,
+        averageCenter: true,
+        minLevel: 10
+    });
 
+    var categoryIcons = {
+      "한식": "🍚",
+      "양식": "🍝",
+      "카페": "☕",
+      "중식": "🍜",
+      "뷰티": "💄",
+      "기타": "📌"
+    };
 
-      L.control.locate({
-        position: 'topleft',
-        strings: {
-          title: "Show me where I am"
-        }
-      }).addTo(map);
+    var allMarkers = [];
+    var activeCategories = new Set(Object.keys(categoryIcons));
 
-      // Category mapping to icons
-      var categoryIcons = {
-        "한식": "🍚",
-        "양식": "🍝",
-        "카페": "☕",
-        "중식": "🍜",
-        "뷰티": "💄",
-        "기타": "📌"
-      };
-
-      // 마커 클러스터링 설정 (동일 좌표 이슈 대응)
-      var markers = L.markerClusterGroup({ 
-        maxClusterRadius: 80, 
-        disableClusteringAtZoom: 17,
-        spiderfyOnMaxZoom: true,
-        spiderfyDistanceMultiplier: 2.0,
-        zoomToBoundsOnClick: false,
-        animate: false
-      });
-      // map.addLayer(markers)를 여기서 하지 않고, 모든 마커를 추가한 후 마지막에 호출합니다.
-
-      markers.on('clusterclick', function (a) {
-        var bounds = a.layer.getBounds();
-        // 동일 좌표인 경우 (bounds가 유효하지 않음) spiderfy 호출
-        if (!bounds.isValid()) {
-          a.layer.spiderfy();
-        } else {
-          a.layer.zoomToBounds({ padding: [30, 30] });
-        }
-      });
-
-
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-      }).addTo(map);
-
-      var status = document.getElementById('status');
-      status.style.display = 'block';
-
-      function esc(str) {
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode(str || ''));
-        return div.innerHTML;
+    function toggleSidebar(pane) {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+      if (pane) {
+        document.getElementById('home').style.display = pane === 'home' ? 'block' : 'none';
+        document.getElementById('filter').style.display = pane === 'filter' ? 'block' : 'none';
       }
+    }
 
-      fetch('data/map_data.json')
-        .then(function (res) {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.json();
-        })
-        .then(function (geojson) {
-          status.style.display = 'none';
+    function esc(str) {
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode(str || ''));
+      return div.innerHTML;
+    }
 
-          var sidebarContent = document.getElementById('sidebar-content');
-          var searchLayer = L.layerGroup();
-          var allMarkers = [];
+    fetch('data/map_data.json')
+      .then(res => res.json())
+      .then(geojson => {
+        document.getElementById('status').style.display = 'none';
+        var sidebarContent = document.getElementById('sidebar-content');
+        
+        geojson.features.forEach(feature => {
+          var p = feature.properties;
+          var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
           
-          geojson.features.forEach(function(feature) {
-            var latlng = L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
-            var p = feature.properties || {};
-            
-            var category = p.category || "기타";
-            var iconText = categoryIcons[category] || categoryIcons["기타"];
-            var icon = L.divIcon({
-              className: 'custom-icon',
-              html: '<div style="font-size: 20px; line-height: 20px; text-align: center;">' + iconText + '</div>',
-              iconSize: [20, 20]
-            });
-            
-            var marker = L.marker(latlng, { icon: icon });
-            var searchField = (p.title || '') + '|' + (p.address || '');
-            feature.properties.searchField = searchField;
-            marker.searchField = searchField;
-            marker.feature = feature;
-            
-            searchLayer.addLayer(marker);
-            allMarkers.push(marker);
-            
-            // Popup setup
-            var popupDiv = document.createElement('div');
-            popupDiv.className = 'popup-content';
-            var title = document.createElement('h3');
-            title.textContent = p.title || 'Untitled';
-            popupDiv.appendChild(title);
-            if (p.category) {
-              var catSpan = document.createElement('span');
-              catSpan.className = 'category';
-              catSpan.textContent = p.category;
-              popupDiv.appendChild(catSpan);
-            }
-            if (p.address) {
-              var addrP = document.createElement('p');
-              addrP.innerHTML = '<span class="label">Address:</span> ' + esc(p.address);
-              popupDiv.appendChild(addrP);
-            }
-            if (p.phone) {
-              var phoneP = document.createElement('p');
-              phoneP.innerHTML = '<span class="label">Phone:</span> ' + esc(p.phone);
-              popupDiv.appendChild(phoneP);
-            }
-            if (p.link) {
-              var linkP = document.createElement('p');
-              linkP.innerHTML = '<span class="label">Link:</span> ';
-              try {
-                var links = JSON.parse(p.link);
-                links.forEach(function(item, i) {
-                  var a = document.createElement('a');
-                  a.href = item.link;
-                  a.target = '_blank';
-                  a.rel = 'noopener';
-                  a.textContent = item.source;
-                  linkP.appendChild(a);
-                  if (i < links.length - 1) linkP.appendChild(document.createTextNode(', '));
-                });
-              } catch (e) {
-                var a = document.createElement('a');
-                a.href = p.link;
-                a.target = '_blank';
-                a.rel = 'noopener';
-                a.textContent = 'Visit';
-                linkP.appendChild(a);
-              }
-              popupDiv.appendChild(linkP);
-            }
-            marker.bindPopup(popupDiv, { maxWidth: 300 });
-            
-            // Sidebar item
-            var item = document.createElement('div');
-            item.className = 'sidebar-item';
-            var itemTitle = document.createElement('h3');
-            itemTitle.textContent = p.title || 'Untitled';
-            item.appendChild(itemTitle);
-            var itemAddr = document.createElement('p');
-            itemAddr.textContent = p.address || '';
-            item.appendChild(itemAddr);
-            item.onclick = function() {
-              markers.zoomToShowLayer(marker, function() {
-                marker.openPopup();
-              });
-              sidebar.close();
-            };
-            sidebarContent.appendChild(item);
+          var iconText = categoryIcons[p.category] || categoryIcons["기타"];
+          var customOverlay = new kakao.maps.CustomOverlay({
+            position: latlng,
+            content: '<div style="font-size: 20px; background: white; border-radius: 50%; padding: 2px;">' + iconText + '</div>'
           });
           
-          markers.addLayers(allMarkers);
-          map.addLayer(markers);
-
-
-
-            var searchControl = new L.Control.Search({
-              layer: searchLayer,
-              propertyName: 'searchField',
-              initial: false,
-              zoom: 17,
-              buildTip: function(textVal, key) {
-                  var stringKey = typeof key === 'string' ? key : String(key || '');
-                  var parts = stringKey.split('|');
-                  return '<div>' + (parts[0] || '') + ' <small>' + (parts[1] || '') + '</small></div>';
-              }
-            });
-            map.addControl(searchControl);
-
-
-
-
-          var filterContent = document.getElementById('filter-content');
-          var categories = Object.keys(categoryIcons);
-          var activeCategories = new Set(categories);
-
-          categories.forEach(function(cat) {
-            var label = document.createElement('label');
-            label.style.display = 'block';
-            label.style.padding = '10px';
-            label.style.borderBottom = '1px solid #eee';
-            label.innerHTML = '<input type="checkbox" checked value="' + cat + '"> ' + cat;
-            label.querySelector('input').onchange = function(e) {
-              if (e.target.checked) {
-                activeCategories.add(cat);
-              } else {
-                activeCategories.delete(cat);
-              }
-              updateMarkers();
-            };
-            filterContent.appendChild(label);
+          var marker = new kakao.maps.Marker({ position: latlng });
+          
+          var infoWindow = new kakao.maps.InfoWindow({
+            content: '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
+                     '<span class="category">' + (p.category || '기타') + '</span>' +
+                     '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
+                     '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p></div>'
           });
 
-          function updateMarkers() {
-            var filtered = [];
-            geojson.features.forEach(function(feature) {
-              if (activeCategories.has(feature.properties.category || "기타")) {
-                // Find the marker associated with this feature
-                var marker = allMarkers.find(function(m) {
-                  return m.feature === feature;
-                });
-                if (marker) filtered.push(marker);
-              }
-            });
-            markers.clearLayers();
-            markers.addLayers(filtered);
+          kakao.maps.event.addListener(marker, 'click', () => {
+            infoWindow.open(map, marker);
+          });
 
-            // 검색 컨트롤 갱신 및 캐시 강제 재생성
-            searchLayer.clearLayers();
-            filtered.forEach(function(layer) {
-                searchLayer.addLayer(layer);
-            });
-            searchControl.setLayer(searchLayer);
-            searchControl._recordsCache = searchControl._recordsFromLayer();
-            
-            // 현재 검색어가 있다면 툴팁 즉시 갱신
-            if (searchControl._input.value && searchControl._input.value.length >= searchControl.options.minLength) {
-                var records = searchControl._filterData(
-                    searchControl._input.value,
-                    searchControl._recordsCache
-                );
-                searchControl.showTooltip(records);
-            }
-          }
-
-          if (markers.getLayers().length > 0) {
-            map.fitBounds(markers.getBounds().pad(0.1));
-          }
-        })
-        .catch(function (err) {
-          status.textContent = 'Failed to load map data: ' + err.message;
-          status.style.background = 'rgba(180,0,0,0.85)';
+          allMarkers.push({ marker, feature, infoWindow });
+          
+          // Sidebar item
+          var item = document.createElement('div');
+          item.className = 'sidebar-item';
+          item.innerHTML = '<h3>' + (p.title || 'Untitled') + '</h3><p>' + (p.address || '') + '</p>';
+          item.onclick = () => {
+            map.setCenter(latlng);
+            map.setLevel(5);
+            infoWindow.open(map, marker);
+          };
+          sidebarContent.appendChild(item);
         });
-    })();
+        
+        updateMarkers();
+      });
+
+    function updateMarkers() {
+      clusterer.clear();
+      var filtered = allMarkers.filter(m => activeCategories.has(m.feature.properties.category || "기타"));
+      clusterer.addMarkers(filtered.map(m => m.marker));
+    }
+
+    // Filter
+    var filterContent = document.getElementById('filter-content');
+    Object.keys(categoryIcons).forEach(cat => {
+      var label = document.createElement('label');
+      label.style.display = 'block';
+      label.innerHTML = '<input type="checkbox" checked value="' + cat + '"> ' + cat;
+      label.querySelector('input').onchange = (e) => {
+        if (e.target.checked) activeCategories.add(cat);
+        else activeCategories.delete(cat);
+        updateMarkers();
+      };
+      filterContent.appendChild(label);
+    });
+
+    // Search
+    document.getElementById('search-input').oninput = (e) => {
+      var val = e.target.value.toLowerCase();
+      allMarkers.forEach(m => {
+        var p = m.feature.properties;
+        var match = (p.title || '').toLowerCase().includes(val) || (p.address || '').toLowerCase().includes(val);
+        m.marker.setVisible(match && activeCategories.has(p.category || "기타"));
+      });
+    };
   </script>
 </body>
 </html>
