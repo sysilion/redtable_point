@@ -223,7 +223,7 @@
         "type": "Point",
         "coordinates": [
           126.9483488,
-          37.5402361
+          37.5401861
         ]
       },
       "properties": {
@@ -1392,24 +1392,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9869018,
-          37.5618042
-        ]
-      },
-      "properties": {
-        "title": "라온",
-        "address": "서울특별시 중구 명동8가길 36",
-        "phone": "02-757-9292",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/14417\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/14417\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/14417\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.987035,
           37.5617049
         ]
@@ -1419,7 +1401,7 @@
         "address": "서울특별시 중구 명동8가길 36 1-3층",
         "phone": "02-757-9292",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/14417\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/14417\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/14417\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/14417\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/14417\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/14417\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -4488,24 +4470,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9483488,
-          37.5401361
-        ]
-      },
-      "properties": {
-        "title": "월화식당(마포점)",
-        "address": "서울특별시 마포구 도화길 29",
-        "phone": "0507-1410-7596",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/843773\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/843773\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/843773\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.949154650587,
           37.5408887019512
         ]
@@ -4515,7 +4479,7 @@
         "address": "서울특별시 마포구 도화길 29 1,2층",
         "phone": "0507-1410-7596",
         "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/843773\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/843773\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/843773\", \"source\": \"benepia\"}]",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/843773\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/843773\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/843773\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
