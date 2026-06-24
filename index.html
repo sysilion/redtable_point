@@ -20,7 +20,6 @@
     .sidebar-item h3 { font-size: 15px; margin: 0 0 4px; }
     .sidebar-item p { font-size: 12px; color: #666; margin: 0; }
     
-    /* Sidebar styling */
     #sidebar { position: absolute; top: 0; left: 0; width: 300px; height: 100%; background: white; z-index: 1000; box-shadow: 2px 0 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
     #sidebar.collapsed { transform: translateX(-100%); }
     .sidebar-tabs { width: 40px; height: 100%; background: #f0f0f0; float: left; }
@@ -29,7 +28,6 @@
     .sidebar-header { font-size: 18px; margin-bottom: 15px; display: flex; justify-content: space-between; }
     .sidebar-close { cursor: pointer; }
     
-    /* Search bar */
     #search-container { position: absolute; top: 10px; left: 50px; z-index: 1000; }
     #search-input { padding: 8px; width: 200px; }
   </style>
@@ -64,123 +62,125 @@
   
   <div id="map"></div>
   <div id="status">Loading map data...</div>
-
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=608c740734f775a41a0b360ae3c5f32b&libraries=services,clusterer"></script>
+  
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=608c740734f775a41a0b360ae3c5f32b&libraries=services,clusterer&autoload=false"></script>
   <script>
-    var mapContainer = document.getElementById('map'),
-        mapOption = { 
-            center: new kakao.maps.LatLng(37.535, 126.897),
-            level: 13
-        };
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-    var clusterer = new kakao.maps.MarkerClusterer({
-        map: map,
-        averageCenter: true,
-        minLevel: 10
-    });
-
-    var categoryIcons = {
-      "한식": "🍚",
-      "양식": "🍝",
-      "카페": "☕",
-      "중식": "🍜",
-      "뷰티": "💄",
-      "기타": "📌"
-    };
-
-    var allMarkers = [];
-    var activeCategories = new Set(Object.keys(categoryIcons));
-
-    function toggleSidebar(pane) {
-      var sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('collapsed');
-      if (pane) {
-        document.getElementById('home').style.display = pane === 'home' ? 'block' : 'none';
-        document.getElementById('filter').style.display = pane === 'filter' ? 'block' : 'none';
-      }
-    }
-
-    function esc(str) {
-      var div = document.createElement('div');
-      div.appendChild(document.createTextNode(str || ''));
-      return div.innerHTML;
-    }
-
-    fetch('data/map_data.json')
-      .then(res => res.json())
-      .then(geojson => {
-        document.getElementById('status').style.display = 'none';
-        var sidebarContent = document.getElementById('sidebar-content');
-        
-        geojson.features.forEach(feature => {
-          var p = feature.properties;
-          var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
-          
-          var iconText = categoryIcons[p.category] || categoryIcons["기타"];
-          var customOverlay = new kakao.maps.CustomOverlay({
-            position: latlng,
-            content: '<div style="font-size: 20px; background: white; border-radius: 50%; padding: 2px;">' + iconText + '</div>'
-          });
-          
-          var marker = new kakao.maps.Marker({ position: latlng });
-          
-          var infoWindow = new kakao.maps.InfoWindow({
-            content: '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
-                     '<span class="category">' + (p.category || '기타') + '</span>' +
-                     '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
-                     '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p></div>'
-          });
-
-          kakao.maps.event.addListener(marker, 'click', () => {
-            infoWindow.open(map, marker);
-          });
-
-          allMarkers.push({ marker, feature, infoWindow });
-          
-          // Sidebar item
-          var item = document.createElement('div');
-          item.className = 'sidebar-item';
-          item.innerHTML = '<h3>' + (p.title || 'Untitled') + '</h3><p>' + (p.address || '') + '</p>';
-          item.onclick = () => {
-            map.setCenter(latlng);
-            map.setLevel(5);
-            infoWindow.open(map, marker);
-          };
-          sidebarContent.appendChild(item);
+    kakao.maps.load(function() {
+      (function () {
+        var mapContainer = document.getElementById('map'),
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.535, 126.897),
+                level: 13,
+                maxZoom: 20
+            };
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+        var clusterer = new kakao.maps.MarkerClusterer({
+            map: map,
+            averageCenter: true,
+            minLevel: 10
         });
-        
-        updateMarkers();
-      });
 
-    function updateMarkers() {
-      clusterer.clear();
-      var filtered = allMarkers.filter(m => activeCategories.has(m.feature.properties.category || "기타"));
-      clusterer.addMarkers(filtered.map(m => m.marker));
-    }
+        var categoryIcons = {
+          "한식": "🍚",
+          "양식": "🍝",
+          "카페": "☕",
+          "중식": "🍜",
+          "뷰티": "💄",
+          "기타": "📌"
+        };
 
-    // Filter
-    var filterContent = document.getElementById('filter-content');
-    Object.keys(categoryIcons).forEach(cat => {
-      var label = document.createElement('label');
-      label.style.display = 'block';
-      label.innerHTML = '<input type="checkbox" checked value="' + cat + '"> ' + cat;
-      label.querySelector('input').onchange = (e) => {
-        if (e.target.checked) activeCategories.add(cat);
-        else activeCategories.delete(cat);
-        updateMarkers();
-      };
-      filterContent.appendChild(label);
+        var allMarkers = [];
+        var activeCategories = new Set(Object.keys(categoryIcons));
+
+        window.toggleSidebar = function(pane) {
+          var sidebar = document.getElementById('sidebar');
+          sidebar.classList.toggle('collapsed');
+          if (pane) {
+            document.getElementById('home').style.display = pane === 'home' ? 'block' : 'none';
+            document.getElementById('filter').style.display = pane === 'filter' ? 'block' : 'none';
+          }
+        };
+
+        function esc(str) {
+          var div = document.createElement('div');
+          div.appendChild(document.createTextNode(str || ''));
+          return div.innerHTML;
+        }
+
+        fetch('data/map_data.json')
+          .then(res => res.json())
+          .then(geojson => {
+            document.getElementById('status').style.display = 'none';
+            var sidebarContent = document.getElementById('sidebar-content');
+            
+            geojson.features.forEach(feature => {
+              var p = feature.properties;
+              var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
+              
+              var iconText = categoryIcons[p.category] || categoryIcons["기타"];
+              var customOverlay = new kakao.maps.CustomOverlay({
+                position: latlng,
+                content: '<div style="font-size: 20px; background: white; border-radius: 50%; padding: 2px;">' + iconText + '</div>'
+              });
+              
+              var marker = new kakao.maps.Marker({ position: latlng });
+              
+              var infoWindow = new kakao.maps.InfoWindow({
+                content: '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
+                         '<span class="category">' + (p.category || '기타') + '</span>' +
+                         '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
+                         '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p></div>'
+              });
+
+              kakao.maps.event.addListener(marker, 'click', () => {
+                infoWindow.open(map, marker);
+              });
+
+              allMarkers.push({ marker, feature, infoWindow });
+              
+              var item = document.createElement('div');
+              item.className = 'sidebar-item';
+              item.innerHTML = '<h3>' + (p.title || 'Untitled') + '</h3><p>' + (p.address || '') + '</p>';
+              item.onclick = () => {
+                map.setCenter(latlng);
+                map.setLevel(5);
+                infoWindow.open(map, marker);
+              };
+              sidebarContent.appendChild(item);
+            });
+            
+            updateMarkers();
+          });
+
+        function updateMarkers() {
+          clusterer.clear();
+          var filtered = allMarkers.filter(m => activeCategories.has(m.feature.properties.category || "기타"));
+          clusterer.addMarkers(filtered.map(m => m.marker));
+        }
+
+        var filterContent = document.getElementById('filter-content');
+        Object.keys(categoryIcons).forEach(cat => {
+          var label = document.createElement('label');
+          label.style.display = 'block';
+          label.innerHTML = '<input type="checkbox" checked value="' + cat + '"> ' + cat;
+          label.querySelector('input').onchange = (e) => {
+            if (e.target.checked) activeCategories.add(cat);
+            else activeCategories.delete(cat);
+            updateMarkers();
+          };
+          filterContent.appendChild(label);
+        });
+
+        document.getElementById('search-input').oninput = (e) => {
+          var val = e.target.value.toLowerCase();
+          allMarkers.forEach(m => {
+            var p = m.feature.properties;
+            var match = (p.title || '').toLowerCase().includes(val) || (p.address || '').toLowerCase().includes(val);
+            m.marker.setVisible(match && activeCategories.has(p.category || "기타"));
+          });
+        };
+      })();
     });
-
-    // Search
-    document.getElementById('search-input').oninput = (e) => {
-      var val = e.target.value.toLowerCase();
-      allMarkers.forEach(m => {
-        var p = m.feature.properties;
-        var match = (p.title || '').toLowerCase().includes(val) || (p.address || '').toLowerCase().includes(val);
-        m.marker.setVisible(match && activeCategories.has(p.category || "기타"));
-      });
-    };
   </script>
 </body>
 </html>
