@@ -238,7 +238,7 @@ def main():
     # 1. 주소 정제: 층/동/호수/지하 정보 제거
     def get_base_address(addr):
         addr = str(addr)
-        addr = re.sub(r'\s*(지하\s*\d*층|\d*층|B\d+|[0-9]+동|[0-9]+호|[0-9]+-[0-9]+호)\b', '', addr)
+        addr = re.sub(r'\s*(지하\s*[\d,/-]+층|[\d,/-]+층|B\d+|[0-9]+동|[0-9]+호|[0-9]+-[0-9]+호)\b', '', addr)
         return re.sub(r'\s+', '', addr).lower()
 
     # 2. 매장 이름 정규화
