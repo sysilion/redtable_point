@@ -133,109 +133,97 @@
           var sidebarContent = document.getElementById('sidebar-content');
           var searchLayer = L.layerGroup();
           
-          var geoJsonLayer = L.geoJSON(geojson, {
-            pointToLayer: function (feature, latlng) {
-              var category = feature.properties.category || "기타";
-              var iconText = categoryIcons[category] || categoryIcons["기타"];
-              
-              var icon = L.divIcon({
-                className: 'custom-icon',
-                html: '<div style="font-size: 20px; line-height: 20px; text-align: center;">' + iconText + '</div>',
-                iconSize: [20, 20]
-              });
-              
-              var marker = L.marker(latlng, { icon: icon });
-              var p = feature.properties || {};
-              var searchField = (p.title || '') + '|' + (p.address || '');
-              feature.properties.searchField = searchField;
-              marker.searchField = searchField;
-              searchLayer.addLayer(marker);
-              return marker;
-            },
-            onEachFeature: function (feature, layer) {
-              var p = feature.properties || {};
-              // Use DOM methods for safe rendering instead of innerHTML
-              var popupDiv = document.createElement('div');
-              popupDiv.className = 'popup-content';
-              
-              var title = document.createElement('h3');
-              title.textContent = p.title || 'Untitled';
-              popupDiv.appendChild(title);
-              
-              if (p.category) {
-                var catSpan = document.createElement('span');
-                catSpan.className = 'category';
-                catSpan.textContent = p.category;
-                popupDiv.appendChild(catSpan);
-              }
-              
-              if (p.address) {
-                var addrP = document.createElement('p');
-                addrP.innerHTML = '<span class="label">Address:</span> ' + esc(p.address);
-                popupDiv.appendChild(addrP);
-              }
-              
-              if (p.phone) {
-                var phoneP = document.createElement('p');
-                phoneP.innerHTML = '<span class="label">Phone:</span> ' + esc(p.phone);
-                popupDiv.appendChild(phoneP);
-              }
-              
-              if (p.link) {
-                  var linkP = document.createElement('p');
-                  linkP.innerHTML = '<span class="label">Link:</span> ';
-                  try {
-                    var links = JSON.parse(p.link);
-                    links.forEach(function(item, i) {
-                      var a = document.createElement('a');
-                      a.href = item.link;
-                      a.target = '_blank';
-                      a.rel = 'noopener';
-                      a.textContent = item.source;
-                      linkP.appendChild(a);
-                      if (i < links.length - 1) linkP.appendChild(document.createTextNode(', '));
-                    });
-                  } catch (e) {
-                      var a = document.createElement('a');
-                      a.href = p.link;
-                      a.target = '_blank';
-                      a.rel = 'noopener';
-                      a.textContent = 'Visit';
-                      linkP.appendChild(a);
-                  }
-                  popupDiv.appendChild(linkP);
-              }
-              layer.bindPopup(popupDiv, { maxWidth: 300 });
-
-              // Add to sidebar
-              var item = document.createElement('div');
-              item.className = 'sidebar-item';
-              
-              var itemTitle = document.createElement('h3');
-              itemTitle.textContent = p.title || 'Untitled';
-              item.appendChild(itemTitle);
-              
-              var itemAddr = document.createElement('p');
-              itemAddr.textContent = p.address || '';
-              item.appendChild(itemAddr);
-              
-              item.onclick = function() {
-                markers.zoomToShowLayer(layer, function() {
-                  layer.openPopup();
-                });
-                sidebar.close();
-              };
-              sidebarContent.appendChild(item);
-            }
-          });
-          
           var allMarkers = [];
-          geoJsonLayer.eachLayer(function(layer) {
-            allMarkers.push(layer);
+          geojson.features.forEach(function(feature) {
+            var latlng = L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
+            var p = feature.properties || {};
+            
+            var category = p.category || "기타";
+            var iconText = categoryIcons[category] || categoryIcons["기타"];
+            var icon = L.divIcon({
+              className: 'custom-icon',
+              html: '<div style="font-size: 20px; line-height: 20px; text-align: center;">' + iconText + '</div>',
+              iconSize: [20, 20]
+            });
+            
+            var marker = L.marker(latlng, { icon: icon });
+            var searchField = (p.title || '') + '|' + (p.address || '');
+            feature.properties.searchField = searchField;
+            marker.searchField = searchField;
+            marker.feature = feature; // Attach feature for filter and popup
+            
+            searchLayer.addLayer(marker);
+            allMarkers.push(marker);
+            
+            // Popup setup
+            var popupDiv = document.createElement('div');
+            popupDiv.className = 'popup-content';
+            var title = document.createElement('h3');
+            title.textContent = p.title || 'Untitled';
+            popupDiv.appendChild(title);
+            if (p.category) {
+              var catSpan = document.createElement('span');
+              catSpan.className = 'category';
+              catSpan.textContent = p.category;
+              popupDiv.appendChild(catSpan);
+            }
+            if (p.address) {
+              var addrP = document.createElement('p');
+              addrP.innerHTML = '<span class="label">Address:</span> ' + esc(p.address);
+              popupDiv.appendChild(addrP);
+            }
+            if (p.phone) {
+              var phoneP = document.createElement('p');
+              phoneP.innerHTML = '<span class="label">Phone:</span> ' + esc(p.phone);
+              popupDiv.appendChild(phoneP);
+            }
+            if (p.link) {
+              var linkP = document.createElement('p');
+              linkP.innerHTML = '<span class="label">Link:</span> ';
+              try {
+                var links = JSON.parse(p.link);
+                links.forEach(function(item, i) {
+                  var a = document.createElement('a');
+                  a.href = item.link;
+                  a.target = '_blank';
+                  a.rel = 'noopener';
+                  a.textContent = item.source;
+                  linkP.appendChild(a);
+                  if (i < links.length - 1) linkP.appendChild(document.createTextNode(', '));
+                });
+              } catch (e) {
+                var a = document.createElement('a');
+                a.href = p.link;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = 'Visit';
+                linkP.appendChild(a);
+              }
+              popupDiv.appendChild(linkP);
+            }
+            marker.bindPopup(popupDiv, { maxWidth: 300 });
+            
+            // Sidebar item
+            var item = document.createElement('div');
+            item.className = 'sidebar-item';
+            var itemTitle = document.createElement('h3');
+            itemTitle.textContent = p.title || 'Untitled';
+            item.appendChild(itemTitle);
+            var itemAddr = document.createElement('p');
+            itemAddr.textContent = p.address || '';
+            item.appendChild(itemAddr);
+            item.onclick = function() {
+              markers.zoomToShowLayer(marker, function() {
+                marker.openPopup();
+              });
+              sidebar.close();
+            };
+            sidebarContent.appendChild(item);
           });
           
           markers.addLayers(allMarkers);
           map.addLayer(markers);
+
 
             var searchControl = new L.Control.Search({
               layer: searchLayer,
@@ -276,9 +264,13 @@
 
           function updateMarkers() {
             var filtered = [];
-            geoJsonLayer.eachLayer(function(layer) {
-              if (activeCategories.has(layer.feature.properties.category || "기타")) {
-                filtered.push(layer);
+            geojson.features.forEach(function(feature) {
+              if (activeCategories.has(feature.properties.category || "기타")) {
+                // Find the marker associated with this feature
+                var marker = allMarkers.find(function(m) {
+                  return m.feature === feature;
+                });
+                if (marker) filtered.push(marker);
               }
             });
             markers.clearLayers();
