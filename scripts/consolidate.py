@@ -111,6 +111,7 @@ def normalize_text(text):
     text = unicodedata.normalize('NFKC', text)
     # Remove parentheses and contents
     text = re.sub(r'\(.*?\)|（.*?）|\[.*?\]|【.*?】', '', text)
+    text = re.sub(r'(마포점|본점|강남점|홍대점|종로점|분점)$', '', text)
     # Remove non-alphanumeric
     text = re.sub(r'[^a-zA-Z0-9가-힣]', '', text)
     return text.lower()
@@ -245,8 +246,12 @@ def main():
     combined['base_address'] = combined['address'].apply(get_base_address)
 
     def consolidate_group(group):
-        # 세부 주소가 포함된 가장 긴 주소를 대표 주소로 채택
-        longest_address = group.loc[group['address'].astype(str).str.len().idxmax(), 'address']
+        # 우선순위: Redtable 주소를 최우선으로 선택, 없으면 가장 긴 주소 선택
+        redtable_row = group[group['source'] == 'redtable']
+        if not redtable_row.empty:
+            address = redtable_row['address'].iloc[0]
+        else:
+            address = group.loc[group['address'].astype(str).str.len().idxmax(), 'address']
         
         # lat/lon이 존재하는 행을 우선 선택
         valid_lat = group['lat'].dropna()
@@ -302,7 +307,7 @@ def main():
         
         return pd.Series({
             'title': group['title'].iloc[0],
-            'address': longest_address,
+            'address': address,
             'phone': group['phone'].iloc[0],
             'category': group['category'].iloc[0],
             'link': json.dumps(unique_items),
