@@ -8,6 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     #map { width: 100%; height: 100%; }
+    .popup-content { word-break: break-all; }
     .popup-content h3 { margin: 0 0 6px; font-size: 15px; color: #c0392b; }
     .popup-content p { margin: 2px 0; font-size: 13px; color: #333; }
     .popup-content .label { font-weight: 600; color: #555; }
@@ -30,6 +31,9 @@
     
     #search-container { position: absolute; top: 10px; left: 50px; z-index: 1000; }
     #search-input { padding: 8px; width: 200px; }
+    [style*="openhand.cur.ico"], [style*="closedhand.cur.ico"] {
+      cursor: grab !important;
+    }
   </style>
 </head>
 <body>
@@ -74,6 +78,14 @@
                 maxZoom: 20
             };
         var map = new kakao.maps.Map(mapContainer, mapOption);
+        
+        // Use native grab cursor to eliminate slow CDN request for openhand.cur.ico
+        map.setCursor('grab');
+
+        kakao.maps.event.addListener(map, 'click', () => {
+          infoWindow.close();
+        });
+
         var clusterer = new kakao.maps.MarkerClusterer({
             map: map,
             averageCenter: true,
@@ -92,6 +104,9 @@
         var allMarkers = [];
         var activeCategories = new Set(Object.keys(categoryIcons));
         var searchTerm = "";
+        var infoWindow = new kakao.maps.InfoWindow({
+          zIndex: 1000
+        });
 
         window.toggleSidebar = function(pane) {
           var sidebar = document.getElementById('sidebar');
@@ -110,10 +125,35 @@
           }
         }
 
-        function esc(str) {
-          var div = document.createElement('div');
-          div.appendChild(document.createTextNode(str || ''));
-          return div.innerHTML;
+        function getLinksHtml(p) {
+          try {
+            var links = JSON.parse(p.link || '[]');
+            if (links.length === 0) return '';
+            
+            var html = '<div style="margin-top: 8px; border-top: 1px solid #eee; padding-top: 8px;">';
+            links.forEach(l => {
+              var sourceName = l.source === 'redtable' ? 'RedTable' : (l.source === 'ydp' ? 'YDP' : (l.source === 'benepia' ? 'Benepia' : l.source));
+              html += '<p style="margin: 2px 0; font-size: 12px;"><a href="' + l.link + '" target="_blank">🔗 ' + sourceName + '</a></p>';
+            });
+            html += '</div>';
+            return html;
+          } catch (e) {
+            return '';
+          }
+        }
+
+        function createPopupContent(p) {
+          return '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
+                 '<span class="category">' + (p.category || '기타') + '</span>' +
+                 '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
+                 '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p>' +
+                 getLinksHtml(p) + '</div>';
+        }
+
+        function openPopup(marker, feature) {
+          var p = feature.properties;
+          infoWindow.setContent(createPopupContent(p));
+          infoWindow.open(map, marker);
         }
 
         fetch('data/map_data.json')
@@ -132,23 +172,13 @@
                 content: '<div style="font-size: 20px; background: white; border-radius: 50%; padding: 2px;">' + iconText + '</div>'
               });
               
-              var marker = new kakao.maps.Marker({ position: latlng });
-              
-               var infoWindow = new kakao.maps.InfoWindow({
-                 content: '<div class="popup-content" style="padding:10px;"><h3>' + (p.title || 'Untitled') + '</h3>' +
-                          '<span class="category">' + (p.category || '기타') + '</span>' +
-                          '<p><span class="label">Address:</span> ' + esc(p.address) + '</p>' +
-                          '<p><span class="label">Phone:</span> ' + esc(p.phone) + '</p>' +
-                          '<p><a href="' + (getPrimaryLink(p) || '#') + '" target="_blank">View Store</a></p></div>'
-               });
-
-              kakao.maps.event.addListener(marker, 'click', () => {
-                infoWindow.open(map, marker);
-              });
-
-               allMarkers.push({ marker, feature, infoWindow });
+               var marker = new kakao.maps.Marker({ position: latlng });
                
-               updateMarkers();
+               kakao.maps.event.addListener(marker, 'click', () => {
+                 openPopup(marker, feature);
+               });
+               
+               allMarkers.push({ marker, feature });
              });
              
              updateMarkers();
@@ -174,7 +204,7 @@
               if (e.target.tagName !== 'A') {
                 map.setCenter(latlng);
                 map.setLevel(5);
-                m.infoWindow.open(map, m.marker);
+                openPopup(m.marker, m.feature);
               }
             };
             sidebarContent.appendChild(item);
