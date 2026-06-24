@@ -62,7 +62,10 @@
   <script src="https://unpkg.com/leaflet.locatecontrol@0.81.1/dist/L.Control.Locate.min.js"></script>
   <script>
     (function () {
-      var map = L.map('map', { zoomControl: true }).setView([37.535, 126.897], 13);
+      var map = L.map('map', { 
+        zoomControl: true,
+        maxZoom: 20
+      }).setView([37.535, 126.897], 13);
       var sidebar = L.control.sidebar({
         container: 'sidebar',
         position: 'left'
