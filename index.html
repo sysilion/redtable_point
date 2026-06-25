@@ -64,7 +64,7 @@
   </style>
 </head>
 <body>
-  <div id="sidebar" class="collapsed">
+  <div id="sidebar">
     <div class="sidebar-tabs">
       <div onclick="toggleSidebar()">☰</div>
       <div onclick="toggleSidebar('filter')">🏷️</div>
@@ -191,6 +191,7 @@
                  '<div>' + categoriesHtml + '</div>' +
                  '<p>📍 ' + esc(p.address) + '</p>' +
                  '<p>📞 ' + esc(p.phone) + '</p>' +
+                 getLinksHtml(p) +
                  ctaHtml +
                  '</div>';
         }
@@ -221,12 +222,13 @@
               var p = feature.properties;
               var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
               
-              var iconText = categoryIcons[p.category] || categoryIcons["기타"];
-              var customOverlay = new kakao.maps.CustomOverlay({
-                position: latlng,
-                content: '<div style="font-size: 20px; background: white; border-radius: 50%; padding: 2px;">' + iconText + '</div>'
-              });
-              
+               var iconText = categoryIcons[p.category] || categoryIcons["기타"];
+               var customOverlay = new kakao.maps.CustomOverlay({
+                 position: latlng,
+                 content: '<div style="font-size: 20px; background: white; border-radius: 50%; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); cursor: pointer; text-align: center; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; pointer-events: none;">' + iconText + '</div>'
+               });
+               customOverlay.setMap(map);
+               
                var marker = new kakao.maps.Marker({ position: latlng });
                
                kakao.maps.event.addListener(marker, 'click', () => {
@@ -283,6 +285,13 @@
             return match && (p.categories || []).some(cat => activeCategories.has(cat));
           });
           clusterer.addMarkers(filtered.map(m => m.marker));
+          
+          if (filtered.length > 0) {
+            var bounds = new kakao.maps.LatLngBounds();
+            filtered.forEach(m => bounds.extend(m.marker.getPosition()));
+            map.setBounds(bounds);
+          }
+          
           updateSidebar();
         }
 
