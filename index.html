@@ -77,7 +77,7 @@
       background: #333;
       color: white;
     }
-    #search-container { position: absolute; top: 10px; left: 60px; z-index: 1100; display: flex; flex-direction: column; gap: var(--space-xs); }
+    #search-container { position: absolute; top: 80px; left: 20px; z-index: 1100; display: flex; flex-direction: column; gap: var(--space-xs); }
     .search-wrapper { display: flex; align-items: center; background: white; border-radius: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 4px 12px; width: 250px; }
     #search-input { border: none; outline: none; padding: 8px; width: 100%; font-size: 14px; }
     #clear-search { background: none; border: none; cursor: pointer; color: #999; font-size: 16px; padding: 0 4px; }
@@ -313,13 +313,14 @@
               var p = feature.properties;
               var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
               
-               var iconText = categoryIcons[p.categories[0]] || categoryIcons["기타"];
-               
-               var markerSize = 48;
-               var marker = new kakao.maps.Marker({ 
-                 position: latlng,
-                 image: new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, markerSize), new kakao.maps.Size(markerSize, markerSize))
-               });
+                var iconText = categoryIcons[p.categories[0]] || categoryIcons["기타"];
+                var catColor = getComputedStyle(document.documentElement).getPropertyValue('--cat-' + (p.categories[0] || '기타') + '-bg').trim() || 'white';
+                
+                var markerSize = 48;
+                var marker = new kakao.maps.Marker({ 
+                  position: latlng,
+                  image: new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, catColor, markerSize), new kakao.maps.Size(markerSize, markerSize))
+                });
                
                kakao.maps.event.addListener(marker, 'mouseover', () => {
                  marker.setImage(new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, markerSize + 8), new kakao.maps.Size(markerSize + 8, markerSize + 8)));
