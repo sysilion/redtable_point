@@ -23,6 +23,10 @@
       --radius-lg: 16px;
       --bg-blur: rgba(255, 255, 255, 0.8);
       --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --sheet-bg: #ffffff;
+      --sheet-radius-top: 24px;
+      --accent-color: #e74c3c;
+      --shadow-sheet: 0 -4px 20px rgba(0, 0, 0, 0.1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -45,79 +49,64 @@
     .popup-cta-button:hover { background: #c0392b; transform: translateY(-1px); }
 
     #status { position: fixed; bottom: var(--space-md); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: var(--space-xs) var(--space-md); border-radius: 6px; font-size: 13px; z-index: 1000; display: none; }
-    .sidebar-item { cursor: pointer; padding: var(--space-md); border-bottom: 1px solid #eee; }
-    .sidebar-item:hover { background: #f9f9f9; }
-    .sidebar-item h3 { font-size: 15px; margin: 0 0 var(--space-xs); }
-    .sidebar-item p { font-size: 12px; color: #666; margin: 0; }
+
+    /* New App-Style Foundation */
+    .top-nav { position: fixed; top: 0; left: 0; right: 0; padding: var(--space-md); z-index: 1100; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+    .floating-search { background: rgba(255, 255, 255, 0.5); border-radius: 24px; box-shadow: var(--shadow-soft); padding: var(--space-sm) var(--space-md); display: flex; align-items: center; }
+    .category-pill-row { display: flex; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0; scrollbar-width: none; -ms-overflow-style: none; }
+    .category-pill-row::-webkit-scrollbar { display: none; }
+    .category-pill { background: white; padding: var(--space-xs) var(--space-md); border-radius: 20px; box-shadow: var(--shadow-soft); white-space: nowrap; display: flex; align-items: center; gap: var(--space-xs); font-size: 14px; }
+
+    .bottom-sheet { position: fixed; bottom: 0; left: 0; right: 0; background: var(--sheet-bg); border-radius: var(--sheet-radius-top) var(--sheet-radius-top) 0 0; box-shadow: var(--shadow-sheet); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); z-index: 1200; padding: var(--space-md); display: flex; flex-direction: column; overflow: hidden; max-height: 85vh; }
+    .sheet-handle { width: 40px; height: 4px; background: #ddd; border-radius: 2px; margin: 0 auto var(--space-md); cursor: grab; touch-action: none; }
+    .sheet-tabs { display: flex; gap: var(--space-md); margin-bottom: var(--space-md); border-bottom: 1px solid #eee; }
+    .sheet-tab { padding: var(--space-sm) 0; cursor: pointer; font-weight: 600; color: #666; }
+    .sheet-tab.active { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); }
+
+    .store-card { display: flex; gap: var(--space-md); padding: var(--space-md); background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); margin-bottom: var(--space-md); }
+    .card-thumb { width: 80px; height: 80px; border-radius: var(--radius-md); background: #eee; flex-shrink: 0; }
+    .card-thumb img { width: 100%; height: 100%; border-radius: var(--radius-md); object-fit: cover; }
+    .card-info { flex-grow: 1; }
+    .card-info h3 { font-size: 15px; margin: 0 0 var(--space-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-info p { font-size: 12px; color: #666; margin: var(--space-xs) 0 0; }
     
-    #sidebar { position: absolute; top: 0; left: 0; width: 300px; height: 100%; background: var(--bg-blur); backdrop-filter: blur(10px); z-index: 1000; box-shadow: var(--shadow-soft); transition: transform 0.3s; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
-    @media (max-width: 600px) {
-      #sidebar { width: 100%; }
-    }
-    #sidebar.collapsed { transform: translateX(-100%); }
-    .sidebar-tabs { position: fixed; top: 20px; left: 20px; z-index: 1101; background: white; border: none; border-radius: 50px; padding: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); display: flex; gap: 6px; }
-    .sidebar-tabs div { cursor: pointer; padding: 10px; background: #f8f9fa; border-radius: 50%; transition: all 0.2s; font-size: 20px; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
-    .sidebar-tabs div:hover { background: #eee; transform: scale(1.1); }
-    .sidebar-content { height: 100%; overflow-y: auto; }
-    .sidebar-pane { padding: var(--space-lg); }
-    .sidebar-header { font-size: 18px; margin-bottom: var(--space-lg); display: flex; justify-content: space-between; }
-    .sidebar-close { cursor: pointer; }
+    .bottom-sheet.state-collapsed { transform: translateY(calc(100% - 60px)); }
+    .bottom-sheet.state-peek { transform: translateY(calc(100% - 35vh)); }
+    .bottom-sheet.state-half { transform: translateY(calc(100% - 55vh)); }
+    .bottom-sheet.state-full { transform: translateY(0); }
     
-    .filter-chip {
-      display: inline-block;
-      padding: var(--space-xs) var(--space-md);
-      margin: var(--space-xs);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      background: #eee;
-      transition: background 0.2s;
-      font-size: 13px;
-    }
-    .filter-chip.active {
-      background: #333;
-      color: white;
-    }
-    #search-container { position: absolute; top: 80px; left: 20px; z-index: 1100; display: flex; flex-direction: column; gap: var(--space-xs); }
-    .search-wrapper { display: flex; align-items: center; background: white; border-radius: 24px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 4px 12px; width: 250px; }
-    #search-input { border: none; outline: none; padding: 8px; width: 100%; font-size: 14px; }
-    #clear-search { background: none; border: none; cursor: pointer; color: #999; font-size: 16px; padding: 0 4px; }
-    #result-count { font-size: 12px; color: #666; padding-left: 12px; }
+    .bottom-sheet .sheet-content { flex: 1; overflow-y: auto; min-height: 0; padding-bottom: 20px; }
+    .category-pill.active { background: #333; color: white; }
+    .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); }
+    .sheet-store-count { font-size: 13px; color: #666; }
   </style>
 </head>
 <body>
-  <div class="sidebar-tabs">
-      <div onclick="toggleSidebar()">☰</div>
-      <div onclick="toggleSidebar('filter')">🏷️</div>
-    </div>
-    <div id="sidebar">
-    <div class="sidebar-content">
-      <div class="sidebar-pane" id="home">
-        <div class="sidebar-header">
-          <span id="store-count-header">매장</span>
-          <span class="sidebar-close" onclick="toggleSidebar()">◀</span>
-        </div>
-        <div id="sidebar-content"></div>
-      </div>
-      <div class="sidebar-pane" id="filter" style="display:none;">
-        <div class="sidebar-header">
-          필터
-          <span class="sidebar-close" onclick="toggleSidebar()">◀</span>
-        </div>
-        <div id="filter-content"></div>
-      </div>
-    </div>
-  </div>
-  
-  <div id="search-container">
-    <div class="search-wrapper">
+  <div class="top-nav">
+    <div class="floating-search">
       <input type="text" id="search-input" placeholder="가게 이름 또는 주소 검색">
       <button id="clear-search" style="display:none;">✕</button>
     </div>
-    <div id="result-count"></div>
+    <div class="category-pill-row" id="category-pill-row">
+    </div>
   </div>
   
   <div id="map"></div>
   <div id="status">Loading map data...</div>
+  
+  <div id="bottom-sheet" class="bottom-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <span>매장 목록</span>
+      <span class="sheet-store-count" id="sheet-store-count"></span>
+    </div>
+    <div class="sheet-tabs">
+      <div class="sheet-tab active" data-sort="default">기본순</div>
+      <div class="sheet-tab" data-sort="coupon">📄 쿠폰</div>
+      <div class="sheet-tab" data-sort="distance">거리순</div>
+    </div>
+    <div class="sheet-content" id="sheet-content"></div>
+  </div>
   
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=608c740734f775a41a0b360ae3c5f32b&libraries=services,clusterer&autoload=false"></script>
   <script>
@@ -129,9 +118,9 @@
 
     var markerCache = {};
 
-    function createEmojiMarkerImage(emoji, size = 48) {
+    function createEmojiMarkerImage(emoji, bgColor, size = 48) {
       var dpr = window.devicePixelRatio || 1;
-      var cacheKey = emoji + '-' + size + '-' + dpr;
+      var cacheKey = emoji + '-' + bgColor + '-' + size + '-' + dpr;
       if (markerCache[cacheKey]) {
         return markerCache[cacheKey];
       }
@@ -142,35 +131,29 @@
       var ctx = canvas.getContext('2d');
       ctx.scale(dpr, dpr);
 
-      // 1. 핀 모양(물방울) 그리기
+      // 1. 그림자 설정
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+      ctx.shadowBlur = 8;
+      ctx.shadowOffsetY = 4;
+
+      // 2. 원 그리기
       ctx.beginPath();
-      ctx.moveTo(size / 2, size); // 하단 뾰족한 점
-      ctx.bezierCurveTo(0, size / 2, 0, 0, size / 2, 0);
-      ctx.bezierCurveTo(size, 0, size, size / 2, size / 2, size);
-      ctx.closePath();
-      
-      // 핀 색상 및 그림자
-      ctx.fillStyle = 'white';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
-      ctx.shadowBlur = 4;
-      ctx.shadowOffsetY = 2;
+      var radius = size / 2 - 4; // 4px padding for shadow/border
+      ctx.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
+      ctx.fillStyle = bgColor;
       ctx.fill();
       
-      // 2. 내부 원형 영역 (에모지가 들어갈 자리)
-      ctx.shadowColor = 'transparent';
-      ctx.beginPath();
-      ctx.arc(size / 2, size / 3, size / 4, 0, Math.PI * 2);
-      ctx.fillStyle = '#fdfdfd';
-      ctx.fill();
-      ctx.strokeStyle = '#eee';
-      ctx.lineWidth = 1;
+      // 3. 테두리
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = 2;
       ctx.stroke();
       
-      // 3. 에모지 배치
-      ctx.font = (size * 0.25) + 'px Arial';
+      // 4. 에모지 배치
+      ctx.shadowColor = 'transparent'; // 에모지에는 그림자 없음
+      ctx.font = (size * 0.5) + 'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(emoji, size / 2, size / 3);
+      ctx.fillText(emoji, size / 2, size / 2);
       
       var dataUrl = canvas.toDataURL();
       markerCache[cacheKey] = dataUrl;
@@ -218,14 +201,79 @@
         var sharedOverlay = new kakao.maps.CustomOverlay({
           zIndex: 1000
         });
+        var activeSort = 'default';
+        var sheet = document.getElementById('bottom-sheet');
+        var sheetHandle = document.querySelector('.sheet-handle');
+        var sheetStates = ['state-collapsed', 'state-peek', 'state-half', 'state-full'];
+        var currentStateIndex = 1; // Start at peek
 
-        window.toggleSidebar = function(pane) {
-          var sidebar = document.getElementById('sidebar');
-          sidebar.classList.toggle('collapsed');
-          var targetPane = pane || 'home';
-          document.getElementById('home').style.display = targetPane === 'home' ? 'block' : 'none';
-          document.getElementById('filter').style.display = targetPane === 'filter' ? 'block' : 'none';
+        function setSheetState(index) {
+          currentStateIndex = Math.max(0, Math.min(index, sheetStates.length - 1));
+          sheet.className = 'bottom-sheet ' + sheetStates[currentStateIndex];
+        }
+
+        // Drag logic
+        var isDragging = false;
+        var startY = 0;
+        var startTranslateY = 0;
+
+        function getTranslateY(el) {
+          var style = window.getComputedStyle(el);
+          var matrix = new WebKitCSSMatrix(style.transform);
+          return matrix.f;
+        }
+
+        function startDrag(e) {
+          isDragging = true;
+          startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+          startTranslateY = getTranslateY(sheet);
+          sheet.style.transition = 'none';
+        }
+
+        function onDrag(e) {
+          if (!isDragging) return;
+          var currentY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+          var deltaY = currentY - startY;
+          var newTranslateY = Math.max(0, Math.min(window.innerHeight, startTranslateY + deltaY));
+          sheet.style.transform = 'translateY(' + newTranslateY + 'px)';
+        }
+
+        function endDrag(e) {
+          if (!isDragging) return;
+          isDragging = false;
+          sheet.style.transition = '';
+          
+          // Determine state based on position
+          var currentTranslateY = getTranslateY(sheet);
+          var height = window.innerHeight;
+          var ratio = 1 - (currentTranslateY / height);
+          
+          if (ratio > 0.8) setSheetState(3); // full
+          else if (ratio > 0.5) setSheetState(2); // half
+          else if (ratio > 0.2) setSheetState(1); // peek
+          else setSheetState(0); // collapsed
+        }
+
+        sheetHandle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('mouseup', endDrag);
+        sheetHandle.addEventListener('touchstart', startDrag);
+        window.addEventListener('touchmove', onDrag);
+        window.addEventListener('touchend', endDrag);
+
+        sheetHandle.addEventListener('click', function() {
+          currentStateIndex = (currentStateIndex + 1) % sheetStates.length;
+          setSheetState(currentStateIndex);
+        });
+
+        setSheetState(currentStateIndex);
+
+        window.toggleSheet = function() {
+          currentStateIndex = (currentStateIndex + 1) % sheetStates.length;
+          setSheetState(currentStateIndex);
         };
+
+
 
         function getPrimaryLink(p) {
           try {
@@ -291,7 +339,6 @@
           .then(res => res.json())
           .then(geojson => {
             document.getElementById('status').style.display = 'none';
-            var sidebarContent = document.getElementById('sidebar-content');
             
             // Normalize categories for all features
             geojson.features.forEach(feature => {
@@ -323,10 +370,10 @@
                 });
                
                kakao.maps.event.addListener(marker, 'mouseover', () => {
-                 marker.setImage(new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, markerSize + 8), new kakao.maps.Size(markerSize + 8, markerSize + 8)));
+                 marker.setImage(new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, catColor, markerSize + 8), new kakao.maps.Size(markerSize + 8, markerSize + 8)));
                });
                kakao.maps.event.addListener(marker, 'mouseout', () => {
-                 marker.setImage(new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, markerSize), new kakao.maps.Size(markerSize, markerSize)));
+                 marker.setImage(new kakao.maps.MarkerImage(createEmojiMarkerImage(iconText, catColor, markerSize), new kakao.maps.Size(markerSize, markerSize)));
                });
                
                kakao.maps.event.addListener(marker, 'click', () => {
@@ -336,27 +383,65 @@
                allMarkers.push({ marker, feature });
              });
              
-             updateMarkers();
-           })
-          .catch(err => {
+              updateMarkers();
+              // Auto-expand sheet on first load
+              document.getElementById('bottom-sheet').classList.add('expanded');
+            })
+           .catch(err => {
             var status = document.getElementById('status');
             status.textContent = '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침 해주세요.';
             status.style.display = 'block';
             status.style.color = 'red';
           });
 
-        function updateSidebar() {
-          var sidebarContent = document.getElementById('sidebar-content');
-          sidebarContent.innerHTML = '';
+        function getDistance(latlng1, latlng2) {
+          var R = 6371; // Earth radius in km
+          var lat1 = latlng1.getLat() * Math.PI / 180;
+          var lat2 = latlng2.getLat() * Math.PI / 180;
+          var deltaLat = (latlng2.getLat() - latlng1.getLat()) * Math.PI / 180;
+          var deltaLng = (latlng2.getLng() - latlng1.getLng()) * Math.PI / 180;
+          var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+                  Math.cos(lat1) * Math.cos(lat2) *
+                  Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          return R * c;
+        }
+
+        function updateBottomSheet() {
+          var sheetContent = document.getElementById('sheet-content');
+          sheetContent.innerHTML = '';
           var filtered = allMarkers.filter(m => {
             var p = m.feature.properties;
             var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
             return match && (p.categories || []).some(function(cat) { return activeCategories.has(cat); });
           });
-          document.getElementById('store-count-header').textContent = '매장 (' + filtered.length + ')';
+
+          // Apply sorting
+          if (activeSort === 'coupon') {
+            filtered.sort(function(a, b) {
+              try {
+                var aLinks = JSON.parse(a.feature.properties.link || '[]');
+                var bLinks = JSON.parse(b.feature.properties.link || '[]');
+                return bLinks.length - aLinks.length;
+              } catch(e) { return 0; }
+            });
+          } else if (activeSort === 'name') {
+            filtered.sort(function(a, b) {
+              return (a.feature.properties.title || '').localeCompare(b.feature.properties.title || '');
+            });
+          } else if (activeSort === 'distance') {
+            var center = map.getCenter();
+            filtered.sort(function(a, b) {
+              var aLatLng = new kakao.maps.LatLng(a.feature.geometry.coordinates[1], a.feature.geometry.coordinates[0]);
+              var bLatLng = new kakao.maps.LatLng(b.feature.geometry.coordinates[1], b.feature.geometry.coordinates[0]);
+              return getDistance(center, aLatLng) - getDistance(center, bLatLng);
+            });
+          }
+
+          document.getElementById('sheet-store-count').textContent = '매장 (' + filtered.length + ')';
           
           if (filtered.length === 0) {
-            sidebarContent.innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다</div>';
+            sheetContent.innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">검색 결과가 없습니다</div>';
             return;
           }
 
@@ -364,21 +449,27 @@
             var p = m.feature.properties;
             var latlng = new kakao.maps.LatLng(m.feature.geometry.coordinates[1], m.feature.geometry.coordinates[0]);
             
-             var categoriesHtml = (p.categories || []).map(cat => 
-               '<span class="category-badge cat-' + esc(cat) + '">' + esc(cat) + '</span>'
-             ).join('');
+            var categoriesHtml = (p.categories || []).map(cat => 
+              '<span class="category-badge cat-' + esc(cat) + '">' + esc(cat) + '</span>'
+            ).join('');
 
-            var item = document.createElement('div');
-            item.className = 'sidebar-item';
-            item.innerHTML = '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
+            var iconEmoji = categoryIcons[p.categories[0]] || categoryIcons["기타"];
+
+            var card = document.createElement('div');
+            card.className = 'store-card';
+            var catColor = getComputedStyle(document.documentElement).getPropertyValue('--cat-' + (p.categories[0] || '기타') + '-bg').trim() || 'white';
+            card.innerHTML = '<div class="card-thumb"><img src="' + createEmojiMarkerImage(iconEmoji, catColor, 80) + '" alt=""></div>' +
+                             '<div class="card-info">' +
+                             '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
                              '<div>' + categoriesHtml + '</div>' +
-                             '<p>' + esc(p.address || '') + '</p>';
-            item.onclick = (e) => {
+                             '<p>' + esc(p.address || '') + '</p>' +
+                             '</div>';
+            card.onclick = (e) => {
               map.setCenter(latlng);
               map.setLevel(5);
               openPopup(m.marker, m.feature);
             };
-            sidebarContent.appendChild(item);
+            sheetContent.appendChild(card);
           });
         }
 
@@ -390,8 +481,6 @@
             return match && (p.categories || []).some(cat => activeCategories.has(cat));
           });
           clusterer.addMarkers(filtered.map(m => m.marker));
-          
-          updateResultCount(filtered.length);
           
           if (filtered.length > 0) {
             var bounds = new kakao.maps.LatLngBounds();
@@ -405,26 +494,20 @@
             setTimeout(() => { status.style.display = 'none'; }, 2000);
           }
           
-          updateSidebar();
-          updateFilterChips();
+          updateBottomSheet();
+          updateCategoryPills();
         }
 
-        function updateFilterChips() {
-          var filterContent = document.getElementById('filter-content');
-          filterContent.innerHTML = '';
-          
-          // Add Select All / Deselect All
-          var controls = document.createElement('div');
-          controls.style.marginBottom = '10px';
-          controls.innerHTML = '<button onclick="selectAll()">전체 선택</button> <button onclick="deselectAll()">전체 해제</button>';
-          filterContent.appendChild(controls);
 
-          Object.keys(categoryIcons).forEach(cat => {
-            var count = allMarkers.filter(m => (m.feature.properties.categories || []).includes(cat)).length;
-            var chip = document.createElement('div');
-            chip.className = 'filter-chip' + (activeCategories.has(cat) ? ' active' : '');
-            chip.textContent = categoryIcons[cat] + ' ' + cat + ' (' + count + ')';
-            chip.onclick = (e) => {
+
+        function updateCategoryPills() {
+          var pillRow = document.getElementById('category-pill-row');
+          pillRow.innerHTML = '';
+          Object.keys(categoryIcons).forEach(function(cat) {
+            var pill = document.createElement('div');
+            pill.className = 'category-pill' + (activeCategories.has(cat) ? ' active' : '');
+            pill.innerHTML = '<span>' + categoryIcons[cat] + '</span> ' + cat;
+            pill.onclick = function(e) {
               if (activeCategories.has(cat)) {
                 activeCategories.delete(cat);
               } else {
@@ -432,28 +515,15 @@
               }
               updateMarkers();
             };
-            filterContent.appendChild(chip);
+            pillRow.appendChild(pill);
           });
         }
 
-        window.selectAll = function() {
-          Object.keys(categoryIcons).forEach(cat => activeCategories.add(cat));
-          updateMarkers();
-        };
-        
-        window.deselectAll = function() {
-          activeCategories.clear();
-          updateMarkers();
-        };
-
         var searchInput = document.getElementById('search-input');
         var clearSearch = document.getElementById('clear-search');
-        var resultCount = document.getElementById('result-count');
         var debounceTimer;
 
-        function updateResultCount(count) {
-          resultCount.textContent = count + '개 매장 검색됨';
-        }
+        
 
         searchInput.oninput = (e) => {
           clearSearch.style.display = e.target.value ? 'block' : 'none';
@@ -471,6 +541,22 @@
           searchTerm = '';
           updateMarkers();
         };
+
+        // Wire up bottom sheet handle
+        document.querySelector('.sheet-handle').onclick = function() {
+          window.toggleSheet();
+        };
+
+        // Wire up sort tabs
+        var sortTabs = document.querySelectorAll('.sheet-tab');
+        sortTabs.forEach(function(tab) {
+          tab.onclick = function() {
+            sortTabs.forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            activeSort = tab.getAttribute('data-sort');
+            updateBottomSheet();
+          };
+        });
       })();
     });
   </script>
