@@ -51,9 +51,9 @@
     #status { position: fixed; bottom: var(--space-md); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: var(--space-xs) var(--space-md); border-radius: 6px; font-size: 13px; z-index: 1000; display: none; }
 
     /* New App-Style Foundation */
-    .top-nav { position: fixed; top: 0; left: 0; right: 0; padding: var(--space-md); z-index: 1100; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
-    .floating-search { background: rgba(255, 255, 255, 0.5); border-radius: 24px; box-shadow: var(--shadow-soft); padding: var(--space-sm) var(--space-md); display: flex; align-items: center; }
-    .category-pill-row { display: flex; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0; scrollbar-width: none; -ms-overflow-style: none; }
+    .top-nav { position: fixed; top: 0; left: 0; right: 0; padding: var(--space-md); z-index: 1100; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); display: flex; flex-direction: column; align-items: center; }
+    .floating-search { background: rgba(255, 255, 255, 0.5); border-radius: 24px; box-shadow: var(--shadow-soft); padding: var(--space-sm) var(--space-md); display: flex; align-items: center; width: 90%; max-width: 600px; margin: 0 auto; }
+    .category-pill-row { display: flex; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0; scrollbar-width: none; -ms-overflow-style: none; width: 100%; max-width: 600px; }
     .category-pill-row::-webkit-scrollbar { display: none; }
     .category-pill { background: white; padding: var(--space-xs) var(--space-md); border-radius: 20px; box-shadow: var(--shadow-soft); white-space: nowrap; display: flex; align-items: center; gap: var(--space-xs); font-size: 14px; }
 
@@ -79,6 +79,16 @@
     .category-pill.active { background: #333; color: white; }
     .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); }
     .sheet-store-count { font-size: 13px; color: #666; }
+
+    @media (min-width: 768px) {
+      .top-nav { padding: var(--space-lg); }
+      .category-pill-row { padding: var(--space-md) 0; gap: var(--space-md); }
+      .bottom-sheet { width: 400px; left: 50%; right: auto; transform: translateX(-50%) translateY(100%); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+      .bottom-sheet.state-collapsed { transform: translateX(-50%) translateY(calc(100% - 60px)); }
+      .bottom-sheet.state-peek { transform: translateX(-50%) translateY(calc(100% - 35vh)); }
+      .bottom-sheet.state-half { transform: translateX(-50%) translateY(calc(100% - 55vh)); }
+      .bottom-sheet.state-full { transform: translateX(-50%) translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -94,19 +104,14 @@
   <div id="map"></div>
   <div id="status">Loading map data...</div>
   
-  <div id="bottom-sheet" class="bottom-sheet">
-    <div class="sheet-handle"></div>
-    <div class="sheet-header">
-      <span>매장 목록</span>
-      <span class="sheet-store-count" id="sheet-store-count"></span>
+    <div id="bottom-sheet" class="bottom-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <span>매장 목록</span>
+        <span class="sheet-store-count" id="sheet-store-count"></span>
+      </div>
+      <div class="sheet-content" id="sheet-content"></div>
     </div>
-    <div class="sheet-tabs">
-      <div class="sheet-tab active" data-sort="default">기본순</div>
-      <div class="sheet-tab" data-sort="coupon">📄 쿠폰</div>
-      <div class="sheet-tab" data-sort="distance">거리순</div>
-    </div>
-    <div class="sheet-content" id="sheet-content"></div>
-  </div>
   
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=608c740734f775a41a0b360ae3c5f32b&libraries=services,clusterer&autoload=false"></script>
   <script>
@@ -174,6 +179,10 @@
         map.setCursor('grab');
 
         kakao.maps.event.addListener(map, 'click', () => {
+          if (isPopupClick) {
+            isPopupClick = false;
+            return;
+          }
           sharedOverlay.setMap(null);
         });
 
@@ -196,12 +205,12 @@
         };
 
         var allMarkers = [];
-        var activeCategories = new Set(Object.keys(categoryIcons));
+        var activeCategories = new Set();
         var searchTerm = "";
         var sharedOverlay = new kakao.maps.CustomOverlay({
           zIndex: 1000
         });
-        var activeSort = 'default';
+        var isPopupClick = false;
         var sheet = document.getElementById('bottom-sheet');
         var sheetHandle = document.querySelector('.sheet-handle');
         var sheetStates = ['state-collapsed', 'state-peek', 'state-half', 'state-full'];
@@ -301,7 +310,7 @@
             var html = '<div style="margin-top: 8px; border-top: 1px solid #eee; padding-top: 8px;">';
             links.forEach(function(l) {
               var sourceName = l.source === 'redtable' ? 'RedTable (메인)' : (l.source === 'ydp' ? '영등포구청' : (l.source === 'benepia' ? 'Benepia' : esc(l.source)));
-              html += '<p style="margin: 2px 0; font-size: 12px;"><a href="' + esc(l.link) + '" target="_blank">🔗 ' + sourceName + '</a></p>';
+              html += '<p style="margin: 2px 0; font-size: 12px;"><a href="' + esc(l.link) + '" target="_blank" onclick="event.stopPropagation();">🔗 ' + sourceName + '</a></p>';
             });
             html += '</div>';
             return html;
@@ -316,9 +325,9 @@
            ).join('');
           
            var link = getPrimaryLink(p);
-           var ctaHtml = link ? '<a href="' + esc(link) + '" target="_blank" class="popup-cta-button">방문하기</a>' : '';
+           var ctaHtml = link ? '<a href="' + esc(link) + '" target="_blank" class="popup-cta-button" onclick="event.stopPropagation();">방문하기</a>' : '';
            
-           return '<div class="store-popup" onclick="event.stopPropagation();">' +
+            return '<div class="store-popup" onclick="event.stopPropagation(); isPopupClick = true;">' +
                   '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
                   '<div>' + categoriesHtml + '</div>' +
                   '<p>📍 ' + esc(p.address) + '</p>' +
@@ -413,30 +422,10 @@
           var filtered = allMarkers.filter(m => {
             var p = m.feature.properties;
             var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
-            return match && (p.categories || []).some(function(cat) { return activeCategories.has(cat); });
+            return match && (activeCategories.size === 0 || (p.categories || []).some(function(cat) { return activeCategories.has(cat); }));
           });
 
-          // Apply sorting
-          if (activeSort === 'coupon') {
-            filtered.sort(function(a, b) {
-              try {
-                var aLinks = JSON.parse(a.feature.properties.link || '[]');
-                var bLinks = JSON.parse(b.feature.properties.link || '[]');
-                return bLinks.length - aLinks.length;
-              } catch(e) { return 0; }
-            });
-          } else if (activeSort === 'name') {
-            filtered.sort(function(a, b) {
-              return (a.feature.properties.title || '').localeCompare(b.feature.properties.title || '');
-            });
-          } else if (activeSort === 'distance') {
-            var center = map.getCenter();
-            filtered.sort(function(a, b) {
-              var aLatLng = new kakao.maps.LatLng(a.feature.geometry.coordinates[1], a.feature.geometry.coordinates[0]);
-              var bLatLng = new kakao.maps.LatLng(b.feature.geometry.coordinates[1], b.feature.geometry.coordinates[0]);
-              return getDistance(center, aLatLng) - getDistance(center, bLatLng);
-            });
-          }
+
 
           document.getElementById('sheet-store-count').textContent = '매장 (' + filtered.length + ')';
           
@@ -478,7 +467,7 @@
           var filtered = allMarkers.filter(m => {
             var p = m.feature.properties;
             var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
-            return match && (p.categories || []).some(cat => activeCategories.has(cat));
+            return match && (activeCategories.size === 0 || (p.categories || []).some(cat => activeCategories.has(cat)));
           });
           clusterer.addMarkers(filtered.map(m => m.marker));
           
@@ -508,9 +497,9 @@
             pill.className = 'category-pill' + (activeCategories.has(cat) ? ' active' : '');
             pill.innerHTML = '<span>' + categoryIcons[cat] + '</span> ' + cat;
             pill.onclick = function(e) {
-              if (activeCategories.has(cat)) {
-                activeCategories.delete(cat);
-              } else {
+              var wasActive = activeCategories.has(cat);
+              activeCategories.clear();
+              if (!wasActive) {
                 activeCategories.add(cat);
               }
               updateMarkers();
@@ -546,17 +535,6 @@
         document.querySelector('.sheet-handle').onclick = function() {
           window.toggleSheet();
         };
-
-        // Wire up sort tabs
-        var sortTabs = document.querySelectorAll('.sheet-tab');
-        sortTabs.forEach(function(tab) {
-          tab.onclick = function() {
-            sortTabs.forEach(function(t) { t.classList.remove('active'); });
-            tab.classList.add('active');
-            activeSort = tab.getAttribute('data-sort');
-            updateBottomSheet();
-          };
-        });
       })();
     });
   </script>
