@@ -179,12 +179,14 @@
         map.setCursor('grab');
 
         kakao.maps.event.addListener(map, 'click', () => {
-          if (isPopupClick) {
-            isPopupClick = false;
+          if (window.isPopupClick) {
+            window.isPopupClick = false;
             return;
           }
           sharedOverlay.setMap(null);
         });
+
+        kakao.maps.event.addListener(map, 'idle', updateBottomSheet);
 
         var clusterer = new kakao.maps.MarkerClusterer({
             map: map,
@@ -210,7 +212,7 @@
         var sharedOverlay = new kakao.maps.CustomOverlay({
           zIndex: 1000
         });
-        var isPopupClick = false;
+        window.isPopupClick = false;
         var sheet = document.getElementById('bottom-sheet');
         var sheetHandle = document.querySelector('.sheet-handle');
         var sheetStates = ['state-collapsed', 'state-peek', 'state-half', 'state-full'];
@@ -327,8 +329,8 @@
            var link = getPrimaryLink(p);
            var ctaHtml = link ? '<a href="' + esc(link) + '" target="_blank" class="popup-cta-button" onclick="event.stopPropagation();">방문하기</a>' : '';
            
-            return '<div class="store-popup" onclick="event.stopPropagation(); isPopupClick = true;">' +
-                  '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
+            return '<div class="store-popup" onclick="event.stopPropagation(); window.isPopupClick = true;">' +
+                   '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
                   '<div>' + categoriesHtml + '</div>' +
                   '<p>📍 ' + esc(p.address) + '</p>' +
                   (p.phone ? '<p>📞 ' + esc(p.phone) + '</p>' : '') +
@@ -417,12 +419,13 @@
         }
 
         function updateBottomSheet() {
+          var bounds = map.getBounds();
           var sheetContent = document.getElementById('sheet-content');
           sheetContent.innerHTML = '';
           var filtered = allMarkers.filter(m => {
             var p = m.feature.properties;
             var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
-            return match && (activeCategories.size === 0 || (p.categories || []).some(function(cat) { return activeCategories.has(cat); }));
+            return match && (activeCategories.size === 0 || (p.categories || []).some(function(cat) { return activeCategories.has(cat); })) && bounds.contain(m.marker.getPosition());
           });
 
 
