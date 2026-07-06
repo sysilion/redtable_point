@@ -3768,24 +3768,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.0581861,
-          35.1571996
-        ]
-      },
-      "properties": {
-        "title": "아이온파티",
-        "address": "부산광역시 부산진구 서면로 74",
-        "phone": "051-608-9011",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/10056\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10056\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/10056\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9203501,
           37.5288369
         ]
@@ -4074,24 +4056,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9882959,
-          37.5512692
-        ]
-      },
-      "properties": {
-        "title": "엔그릴(N서울타워점)",
-        "address": "서울특별시 용산구 남산공원길 105",
-        "phone": "02-3455-9297",
-        "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10024\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10024\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/10024\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9050433,
           37.5247264
         ]
@@ -4272,24 +4236,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          127.0231955,
-          37.5208861
-        ]
-      },
-      "properties": {
-        "title": "옥게장(신사본점)",
-        "address": "서울특별시 강남구 도산대로15길 41",
-        "phone": "0507-1326-7912",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1071607\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1071607\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1071607\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           128.7067389,
           35.1463405
         ]
@@ -4318,24 +4264,6 @@
         "phone": "02-208-0160",
         "category": "양식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1634880\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634880\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1634880\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          128.68545,
-          35.2358047
-        ]
-      },
-      "properties": {
-        "title": "올바릇식당 (창원점)",
-        "address": "경상남도 창원시 의창구 용지로239번길 12",
-        "phone": "0552628421",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/541099\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/541099\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/541099\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -4975,25 +4903,7 @@
         "type": "Point",
         "coordinates": [
           129.2267074,
-          35.2246917
-        ]
-      },
-      "properties": {
-        "title": "일등가 대게만찬",
-        "address": "부산광역시 기장군 기장읍 기장해안로 266",
-        "phone": "051-722-2000",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/252283\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/252283\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/252283\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.2267074,
-          35.2245917
+          35.2246417
         ]
       },
       "properties": {
@@ -5200,24 +5110,6 @@
         "phone": "02-752-4800",
         "category": "한식",
         "link": "[{\"link\": \"https://redtable.global/ko/food/35384\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/35384\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/35384\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.9333381,
-          37.3411063
-        ]
-      },
-      "properties": {
-        "title": "정승골정육식당",
-        "address": "강원특별자치도 원주시 이화1길 52",
-        "phone": "010-5160-5129",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/10763\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10763\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/10763\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -6126,24 +6018,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.0316655,
-          35.1233619
-        ]
-      },
-      "properties": {
-        "title": "칙바이칙(초량점)",
-        "address": "부산 동구 초량로16번길 6 1층",
-        "phone": "051-808-9654",
-        "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1071780\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1071780\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1071780\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           127.0414244,
           37.516812
         ]
@@ -6154,24 +6028,6 @@
         "phone": "02-6953-7827",
         "category": "양식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/982139\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/982139\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/982139\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.0717485,
-          37.5428285
-        ]
-      },
-      "properties": {
-        "title": "칙바이칙(건대점)",
-        "address": "서울특별시 광진구 능동로 137",
-        "phone": "02-6953-7829",
-        "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1008830\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1008830\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1008830\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -7134,24 +6990,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.1465509,
-          35.156649
-        ]
-      },
-      "properties": {
-        "title": "해운대 씨엘로",
-        "address": "부산광역시 해운대구 마린시티3로 51",
-        "phone": "0507-1493-2095",
-        "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/284657\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/284657\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/284657\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9907876,
           37.5733308
         ]
@@ -7234,24 +7072,6 @@
         "phone": "0507-1367-9575",
         "category": "카페",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/1636402\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1636402\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1636402\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.1245857,
-          35.1851731
-        ]
-      },
-      "properties": {
-        "title": "홀리라운지(송정본점)",
-        "address": "부산광역시 해운대구 송정중앙로6번길 143",
-        "phone": "070-4203-0960",
-        "category": "양식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1074708\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1074708\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1074708\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
