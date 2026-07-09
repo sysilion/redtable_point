@@ -10,7 +10,7 @@
       --cat-양식-bg: #E8F5E9; --cat-양식-text: #2E7D32;
       --cat-카페-bg: #FFF8E1; --cat-카페-text: #F57F17;
       --cat-중식-bg: #FBE9E7; --cat-중식-text: #BF360C;
-      --cat-뷰티-bg: #FCE4EC; --cat-뷰티-text: #C2185B;
+       --cat-뷰티-bg: #F8BBD0; --cat-뷰티-text: #C2185B;
       --cat-일식-bg: #E3F2FD; --cat-일식-text: #1565C0;
       --cat-베이커리-bg: #FCE4EC; --cat-베이커리-text: #D81B60;
       --cat-서프샵-bg: #E0F2F1; --cat-서프샵-text: #00695C;
@@ -61,9 +61,9 @@
     .floating-search button:hover { background: rgba(0,0,0,0.15); }
     .category-pill-row { display: flex; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0; scrollbar-width: none; -ms-overflow-style: none; width: 100%; max-width: 600px; }
     .category-pill-row::-webkit-scrollbar { display: none; }
-    .category-pill { background: white; padding: var(--space-xs) var(--space-md); border-radius: 20px; box-shadow: var(--shadow-soft); white-space: nowrap; display: flex; align-items: center; gap: var(--space-xs); font-size: 14px; }
+    .category-pill { background: white; padding: var(--space-xs) var(--space-md); border-radius: 20px; box-shadow: var(--shadow-soft); white-space: nowrap; display: flex; align-items: center; gap: var(--space-xs); font-size: 14px; border: none; cursor: pointer; }
 
-    .bottom-sheet { position: fixed; bottom: 0; left: 0; right: 0; background: var(--sheet-bg); border-radius: var(--sheet-radius-top) var(--sheet-radius-top) 0 0; box-shadow: var(--shadow-sheet); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); z-index: 1200; padding: var(--space-md); display: flex; flex-direction: column; overflow: hidden; max-height: 85vh; }
+    .bottom-sheet { position: fixed; bottom: 0; left: 0; right: 0; background: var(--sheet-bg); border-radius: var(--sheet-radius-top) var(--sheet-radius-top) 0 0; box-shadow: var(--shadow-sheet); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); z-index: 1200; padding: var(--space-md); display: flex; flex-direction: column; overflow: hidden; max-height: 85vh;  padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 20px)); }}
     /* flex-shrink: 0 필수 — 내용이 많으면 flex 컨테이너가 핸들을 0px로 압축해 보이지 않게 됨 */
     .sheet-handle { flex-shrink: 0; position: relative; width: 120px; height: 20px; margin: -4px auto var(--space-xs); cursor: grab; touch-action: none; }
     .sheet-handle::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 40px; height: 4px; background: #ddd; border-radius: 2px; }
@@ -105,6 +105,19 @@
       .bottom-sheet.state-half { transform: translateX(-50%) translateY(calc(100% - 55vh)); }
       .bottom-sheet.state-full { transform: translateX(-50%) translateY(0); }
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sheet-bg: #121212;
+      }
+      body { background-color: #121212; color: #fff; }
+      .top-nav { background: rgba(30, 30, 30, 0.8); }
+      .category-pill { background: #333; color: #fff; }
+      .store-card { background: #1e1e1e; }
+      .card-info h3 { color: #fff; }
+      .card-info p { color: #ccc; }
+      .bottom-sheet { background: #121212; }
+    }
   </style>
 </head>
 <body>
@@ -125,6 +138,7 @@
       <div class="sheet-handle"></div>
       <div class="sheet-header">
         <span>매장 목록</span>
+        <div style="font-size: 11px; color: #888;">데이터 기준: 2026-07-06</div>
         <span class="sheet-store-count" id="sheet-store-count"></span>
       </div>
       <div class="sheet-content" id="sheet-content"></div>
@@ -139,6 +153,13 @@
     }
 
     var markerCache = {};
+    var cssVarCache = {};
+    function getCssVar(varName) {
+      if (!cssVarCache[varName]) {
+        cssVarCache[varName] = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+      }
+      return cssVarCache[varName];
+    }
 
     function createEmojiMarkerImage(emoji, bgColor, size = 48) {
       var dpr = window.devicePixelRatio || 1;
@@ -203,7 +224,7 @@
           sharedOverlay.setMap(null);
         });
 
-        kakao.maps.event.addListener(map, 'idle', updateBottomSheet);
+        kakao.maps.event.addListener(map, 'idle', debouncedUpdateBottomSheet);
 
         var clusterer = new kakao.maps.MarkerClusterer({
             map: map,
@@ -234,6 +255,12 @@
         var sheetHandle = document.querySelector('.sheet-handle');
         var sheetStates = ['state-collapsed', 'state-peek', 'state-half', 'state-full'];
         var currentStateIndex = 1; // Start at peek
+        var bottomSheetDebounceTimer;
+
+        function debouncedUpdateBottomSheet() {
+          clearTimeout(bottomSheetDebounceTimer);
+          bottomSheetDebounceTimer = setTimeout(updateBottomSheet, 200);
+        }
 
         function setSheetState(index) {
           currentStateIndex = Math.max(0, Math.min(index, sheetStates.length - 1));
@@ -443,12 +470,22 @@
               return true;
             });
 
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('q')) {
+              searchTerm = urlParams.get('q').toLowerCase();
+              searchInput.value = searchTerm;
+              clearSearch.style.display = 'block';
+            }
+            if (urlParams.has('cat')) {
+              activeCategories.add(urlParams.get('cat'));
+            }
+
             geojson.features.forEach(feature => {
               var p = feature.properties;
               var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
               
                 var iconText = categoryIcons[p.categories[0]] || categoryIcons["기타"];
-                var catColor = getComputedStyle(document.documentElement).getPropertyValue('--cat-' + (p.categories[0] || '기타') + '-bg').trim() || 'white';
+                var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || 'white';
                 
                 var markerSize = 48;
                 // 앵커를 중앙에 고정해 hover로 커져도 위치가 틀어지지 않게 함
@@ -526,7 +563,7 @@
           }
 
           var fragment = document.createDocumentFragment();
-          filtered.forEach(m => {
+          filtered.slice(0, 50).forEach(m => {
             var p = m.feature.properties;
             var latlng = new kakao.maps.LatLng(m.feature.geometry.coordinates[1], m.feature.geometry.coordinates[0]);
 
@@ -538,7 +575,7 @@
 
             var card = document.createElement('div');
             card.className = 'store-card';
-            var catColor = getComputedStyle(document.documentElement).getPropertyValue('--cat-' + (p.categories[0] || '기타') + '-bg').trim() || 'white';
+            var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || 'white';
             var distanceHtml = userLatLng ? '<div class="card-distance">📍 ' + formatDistance(m.distanceKm) + '</div>' : '';
             card.innerHTML = '<div class="card-thumb"><img src="' + createEmojiMarkerImage(iconEmoji, catColor, 80) + '" alt=""></div>' +
                              '<div class="card-info">' +
@@ -558,6 +595,12 @@
         }
 
         function updateMarkers() {
+          var params = new URLSearchParams();
+          if (searchTerm) params.set('q', searchTerm);
+          if (activeCategories.size > 0) params.set('cat', Array.from(activeCategories)[0]);
+          var newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+          window.history.pushState({}, '', newUrl);
+
           clusterer.clear();
           var filtered = allMarkers.filter(m => {
             var p = m.feature.properties;
@@ -584,8 +627,9 @@
           var pillRow = document.getElementById('category-pill-row');
           pillRow.innerHTML = '';
           Object.keys(categoryIcons).forEach(function(cat) {
-            var pill = document.createElement('div');
+            var pill = document.createElement('button');
             pill.className = 'category-pill' + (activeCategories.has(cat) ? ' active' : '');
+            pill.setAttribute('aria-pressed', activeCategories.has(cat));
             pill.innerHTML = '<span>' + categoryIcons[cat] + '</span> ' + cat;
             pill.onclick = function(e) {
               var wasActive = activeCategories.has(cat);
