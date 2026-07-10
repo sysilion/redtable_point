@@ -369,7 +369,7 @@
             var html = '<div style="margin-top: 8px; border-top: 1px solid #eee; padding-top: 8px;">';
             links.forEach(function(l) {
               var sourceName = l.source === 'redtable' ? 'RedTable (메인)' : (l.source === 'ydp' ? '영등포구청' : (l.source === 'benepia' ? 'Benepia' : esc(l.source)));
-              html += '<p style="margin: 2px 0; font-size: 12px;"><a href="' + esc(l.link) + '" target="_blank" onclick="event.stopPropagation();">🔗 ' + sourceName + '</a></p>';
+              html += '<p style="margin: 2px 0; font-size: 12px;"><a href="' + esc(l.link) + '" target="_blank">🔗 ' + sourceName + '</a></p>';
             });
             html += '</div>';
             return html;
@@ -384,7 +384,7 @@
            ).join('');
           
            var link = getPrimaryLink(p);
-           var ctaHtml = link ? '<a href="' + esc(link) + '" target="_blank" class="popup-cta-button" onclick="event.stopPropagation();">방문하기</a>' : '';
+           var ctaHtml = link ? '<a href="' + esc(link) + '" target="_blank" class="popup-cta-button">방문하기</a>' : '';
            
             return '<div class="store-popup" onclick="event.stopPropagation(); window.isPopupClick = true;">' +
                    '<button class="popup-close" onclick="event.stopPropagation(); window.closePopup();" aria-label="닫기">✕</button>' +
