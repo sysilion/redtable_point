@@ -6,6 +6,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.9402516,
+          37.5198996
+        ]
+      },
+      "properties": {
+        "title": "63뷔페 파빌리온 더 프리미엄",
+        "address": "서울특별시 영등포구 63로 50",
+        "phone": "02-789-5731",
+        "category": "nan",
+        "link": "[{\"link\": \"https://redtable.global/ko/food/10754\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/10754\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/10754\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9646295,
           37.5288695
         ]
@@ -1464,24 +1482,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.8975375,
-          37.5246901
-        ]
-      },
-      "properties": {
-        "title": "명동면옥",
-        "address": "서울특별시 영등포구 당산로28길 4",
-        "phone": "02-2678-2220",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38437\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38437\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/38437\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.9841779,
           37.5650675
         ]
@@ -1932,8 +1932,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9402516,
-          37.5198996
+          126.94029915282582,
+          37.51986505084972
         ]
       },
       "properties": {
@@ -1942,24 +1942,6 @@
         "phone": "02-789-5741",
         "category": "중식",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/10758\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/10758\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10758\", \"source\": \"redtable\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9249043,
-          37.5292679
-        ]
-      },
-      "properties": {
-        "title": "백암왕순대",
-        "address": "서울특별시 영등포구 여의공원로 101 지하1층",
-        "phone": "02-780-2333",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/29408\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/29408\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/29408\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2886,8 +2868,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9403016,
-          37.5198496
+          126.9402809892626,
+          37.519809149150284
         ]
       },
       "properties": {
@@ -3822,8 +3804,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9402516,
-          37.5197996
+          126.94022221073739,
+          37.519809149150284
         ]
       },
       "properties": {
@@ -5820,8 +5802,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.9402016,
-          37.5198496
+          126.94020404717418,
+          37.51986505084972
         ]
       },
       "properties": {
