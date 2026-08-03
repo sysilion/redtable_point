@@ -2094,24 +2094,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          129.1577003,
-          35.1595552
-        ]
-      },
-      "properties": {
-        "title": "부산요트투어 와이홀릭",
-        "address": "부산광역시 해운대구 해운대해변로 84",
-        "phone": "0507-1430-5622",
-        "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1630856\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1630856\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1630856\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           128.14465,
           35.60789
         ]
