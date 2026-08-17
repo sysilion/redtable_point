@@ -1014,24 +1014,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.400576,
-          34.838942
-        ]
-      },
-      "properties": {
-        "title": "동진충무김밥",
-        "address": "경상남도 통영시 통영해안로 319-2",
-        "phone": "055-645-6988",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/442284\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/442284\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/442284\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.8953008,
           37.5376605
         ]
