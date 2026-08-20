@@ -49,6 +49,11 @@
     .cat-기타 { background: var(--cat-기타-bg); color: var(--cat-기타-text); }
     .popup-cta-button { display: block; width: 100%; padding: 12px; background: #e74c3c; color: white; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: var(--space-md); transition: background 0.2s ease, transform 0.1s ease; }
     .popup-cta-button:hover { background: #c0392b; transform: translateY(-1px); }
+    .store-popup .popup-links { margin-top: var(--space-sm); border-top: 1px solid #eee; padding-top: var(--space-sm); }
+    .store-popup .popup-links p { margin: 2px 0; font-size: 12px; }
+    .sheet-more-button { display: block; width: 100%; padding: var(--space-md); margin-bottom: var(--space-md); border: 1px solid #ddd; border-radius: var(--radius-md); background: white; color: #444; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .sheet-more-button:hover { background: #f5f5f5; }
+    .sheet-handle:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; border-radius: 4px; }
 
     #status { position: fixed; bottom: var(--space-md); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: #fff; padding: var(--space-xs) var(--space-md); border-radius: 6px; font-size: 13px; z-index: 1000; display: none; }
 
@@ -63,7 +68,7 @@
     .category-pill-row::-webkit-scrollbar { display: none; }
     .category-pill { background: white; padding: var(--space-xs) var(--space-md); border-radius: 20px; box-shadow: var(--shadow-soft); white-space: nowrap; display: flex; align-items: center; gap: var(--space-xs); font-size: 14px; border: none; cursor: pointer; }
 
-    .bottom-sheet { position: fixed; bottom: 0; left: 0; right: 0; background: var(--sheet-bg); border-radius: var(--sheet-radius-top) var(--sheet-radius-top) 0 0; box-shadow: var(--shadow-sheet); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); z-index: 1200; padding: var(--space-md); display: flex; flex-direction: column; overflow: hidden; max-height: 85vh;  padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 20px)); }}
+    .bottom-sheet { position: fixed; bottom: 0; left: 0; right: 0; background: var(--sheet-bg); border-radius: var(--sheet-radius-top) var(--sheet-radius-top) 0 0; box-shadow: var(--shadow-sheet); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); z-index: 1200; padding: var(--space-md); display: flex; flex-direction: column; overflow: hidden; max-height: 85vh;  padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 20px)); }
     /* flex-shrink: 0 필수 — 내용이 많으면 flex 컨테이너가 핸들을 0px로 압축해 보이지 않게 됨 */
     .sheet-handle { flex-shrink: 0; position: relative; width: 120px; height: 20px; margin: -4px auto var(--space-xs); cursor: grab; touch-action: none; }
     .sheet-handle::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 40px; height: 4px; background: #ddd; border-radius: 2px; }
@@ -117,6 +122,8 @@
       .card-info h3 { color: #fff; }
       .card-info p { color: #ccc; }
       .bottom-sheet { background: #121212; }
+      .sheet-more-button { background: #1e1e1e; color: #eee; border-color: #333; }
+      .sheet-more-button:hover { background: #2a2a2a; }
     }
   </style>
 </head>
@@ -135,10 +142,10 @@
   <button id="locate-button" class="locate-button" title="내 위치" aria-label="내 위치로 이동">📍</button>
   
     <div id="bottom-sheet" class="bottom-sheet">
-      <div class="sheet-handle"></div>
+      <div class="sheet-handle" role="button" tabindex="0" aria-label="매장 목록 크기 조절"></div>
       <div class="sheet-header">
         <span>매장 목록</span>
-        <div style="font-size: 11px; color: #888;">데이터 기준: 2026-07-06</div>
+        <div id="data-date" style="font-size: 11px; color: #888;"></div>
         <span class="sheet-store-count" id="sheet-store-count"></span>
       </div>
       <div class="sheet-content" id="sheet-content"></div>
@@ -146,16 +153,27 @@
   
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=608c740734f775a41a0b360ae3c5f32b&libraries=services,clusterer&autoload=false"></script>
   <script>
+    // textContent -> innerHTML 방식은 " 와 ' 를 이스케이프하지 않는다. 이 값들이
+    // href / class 같은 속성에 들어가므로 속성 구분자까지 직접 처리한다.
+    var ESC_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
     function esc(str) {
-      var temp = document.createElement('div');
-      temp.textContent = str;
-      return temp.innerHTML;
+      if (str === null || str === undefined) return '';
+      return String(str).replace(/[&<>"']/g, function (ch) { return ESC_MAP[ch]; });
+    }
+
+    // 링크는 스크래핑한 값이라 신뢰할 수 없다. http(s) 만 통과시켜 javascript:
+    // 같은 스킴이 href 에 들어가는 것을 막는다.
+    function safeUrl(url) {
+      if (url === null || url === undefined) return '';
+      var raw = String(url).trim();
+      return /^https?:\/\//i.test(raw) ? raw : '';
     }
 
     var markerCache = {};
     var cssVarCache = {};
     function getCssVar(varName) {
-      if (!cssVarCache[varName]) {
+      // 값이 빈 문자열(정의되지 않은 카테고리 변수)이어도 캐시되도록 키 존재로 판단한다.
+      if (!Object.prototype.hasOwnProperty.call(cssVarCache, varName)) {
         cssVarCache[varName] = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
       }
       return cssVarCache[varName];
@@ -216,13 +234,7 @@
         // Use native grab cursor to eliminate slow CDN request for openhand.cur.ico
         map.setCursor('grab');
 
-        kakao.maps.event.addListener(map, 'click', () => {
-          if (window.isPopupClick) {
-            window.isPopupClick = false;
-            return;
-          }
-          sharedOverlay.setMap(null);
-        });
+        kakao.maps.event.addListener(map, 'click', function () { closePopup(); });
 
         kakao.maps.event.addListener(map, 'idle', debouncedUpdateBottomSheet);
 
@@ -244,13 +256,16 @@
           "기타": "📌"
         };
 
+        var DEFAULT_CATEGORY = "기타";
+        var SHEET_PAGE_SIZE = 50;
+
         var allMarkers = [];
         var activeCategories = new Set();
         var searchTerm = "";
+        var sheetLimit = SHEET_PAGE_SIZE;
         var sharedOverlay = new kakao.maps.CustomOverlay({
           zIndex: 1000
         });
-        window.isPopupClick = false;
         var sheet = document.getElementById('bottom-sheet');
         var sheetHandle = document.querySelector('.sheet-handle');
         var sheetStates = ['state-collapsed', 'state-peek', 'state-half', 'state-full'];
@@ -274,10 +289,16 @@
         var startTranslateY = 0;
         var isDesktop = window.matchMedia('(min-width: 768px)');
 
+        // WebKitCSSMatrix 는 비표준 별칭이고, 'none' 을 넘기면 예외를 던진다.
+        var MatrixCtor = window.DOMMatrix || window.WebKitCSSMatrix;
         function getTranslateY(el) {
-          var style = window.getComputedStyle(el);
-          var matrix = new WebKitCSSMatrix(style.transform);
-          return matrix.f;
+          var transform = window.getComputedStyle(el).transform;
+          if (!MatrixCtor || !transform || transform === 'none') return 0;
+          try {
+            return new MatrixCtor(transform).f;
+          } catch (e) {
+            return 0;
+          }
         }
 
         function setSheetTranslateY(y) {
@@ -339,74 +360,104 @@
           setSheetState((currentStateIndex + 1) % sheetStates.length);
         });
 
+        sheetHandle.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            setSheetState((currentStateIndex + 1) % sheetStates.length);
+          }
+        });
+
         setSheetState(currentStateIndex);
 
 
 
-        function getPrimaryLink(p) {
+        var SOURCE_LABELS = { redtable: 'RedTable (메인)', ydp: '영등포구청', benepia: 'Benepia' };
+
+        // properties.link 는 [{link, source}, ...] 형태의 JSON 문자열이다.
+        // 파싱 결과를 정규화하고 안전하지 않은 URL 을 걸러 정렬해서 돌려준다.
+        function getStoreLinks(p) {
+          var links;
           try {
-            var links = JSON.parse(p.link || '[]');
-            if (links.length === 0) return null;
-            var redtableLink = links.find(function(l) { return l.source === 'redtable'; });
-            return redtableLink ? redtableLink.link : links[0].link;
+            links = JSON.parse(p.link || '[]');
           } catch (e) {
-            return null;
+            links = [];
           }
+          if (!Array.isArray(links)) return [];
+          return links
+            .map(function(l) {
+              return { source: (l && l.source) || '', link: safeUrl(l && l.link) };
+            })
+            .filter(function(l) { return l.link; })
+            .sort(function(a, b) {
+              if (a.source === b.source) return 0;
+              if (a.source === 'redtable') return -1;
+              if (b.source === 'redtable') return 1;
+              return a.source.localeCompare(b.source);
+            });
+        }
+
+        function getPrimaryLink(p) {
+          var links = getStoreLinks(p);
+          return links.length ? links[0].link : null;
         }
 
         function getLinksHtml(p) {
-          try {
-            var links = JSON.parse(p.link || '[]');
-            if (links.length === 0) return '';
-            
-            // Sort: redtable first, then others alphabetically by source
-            links.sort(function(a, b) {
-              if (a.source === 'redtable') return -1;
-              if (b.source === 'redtable') return 1;
-              return (a.source || '').localeCompare(b.source || '');
-            });
-            
-            var html = '<div style="margin-top: 8px; border-top: 1px solid #eee; padding-top: 8px;">';
-            links.forEach(function(l) {
-              var sourceName = l.source === 'redtable' ? 'RedTable (메인)' : (l.source === 'ydp' ? '영등포구청' : (l.source === 'benepia' ? 'Benepia' : esc(l.source)));
-              html += '<p style="margin: 2px 0; font-size: 12px;"><a href="' + esc(l.link) + '" target="_blank">🔗 ' + sourceName + '</a></p>';
-            });
-            html += '</div>';
-            return html;
-          } catch (e) {
-            return '';
-          }
+          var links = getStoreLinks(p);
+          if (!links.length) return '';
+          var html = '<div class="popup-links">';
+          links.forEach(function(l) {
+            var label = SOURCE_LABELS[l.source] || esc(l.source) || '링크';
+            html += '<p><a href="' + esc(l.link) + '" target="_blank" rel="noopener noreferrer">🔗 ' + label + '</a></p>';
+          });
+          return html + '</div>';
         }
 
-        function createPopupContent(p) {
-           var categoriesHtml = (p.categories || []).map(cat => 
-             '<span class="category-badge cat-' + esc(cat) + '">' + esc(cat) + '</span>'
-           ).join('');
-          
-           var link = getPrimaryLink(p);
-           var ctaHtml = link ? '<a href="' + esc(link) + '" target="_blank" class="popup-cta-button">방문하기</a>' : '';
-           
-            return '<div class="store-popup" onclick="event.stopPropagation(); window.isPopupClick = true;">' +
-                   '<button class="popup-close" onclick="event.stopPropagation(); window.closePopup();" aria-label="닫기">✕</button>' +
-                   '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
-                  '<div>' + categoriesHtml + '</div>' +
-                  '<p>📍 ' + esc(p.address) + '</p>' +
-                  (p.phone ? '<p>📞 ' + esc(p.phone) + '</p>' : '') +
-                  getLinksHtml(p) +
-                  ctaHtml +
-                  '</div>';
+        // 문자열 대신 DOM 노드를 만든다. 그래야 인라인 onclick 과 전역
+        // window.isPopupClick 플래그 없이 이벤트 전파만 끊어서 처리할 수 있다.
+        var POPUP_STOP_EVENTS = ['click', 'mousedown', 'touchstart', 'dblclick', 'wheel'];
+
+        function createPopupElement(p) {
+          var categoriesHtml = (p.categories || []).map(function(cat) {
+            return '<span class="category-badge cat-' + esc(cat) + '">' + esc(cat) + '</span>';
+          }).join('');
+
+          var link = getPrimaryLink(p);
+          var ctaHtml = link
+            ? '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer" class="popup-cta-button">방문하기</a>'
+            : '';
+
+          var el = document.createElement('div');
+          el.className = 'store-popup';
+          el.innerHTML =
+            '<button class="popup-close" type="button" aria-label="닫기">✕</button>' +
+            '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
+            '<div>' + categoriesHtml + '</div>' +
+            '<p>📍 ' + esc(p.address) + '</p>' +
+            (p.phone ? '<p>📞 ' + esc(p.phone) + '</p>' : '') +
+            getLinksHtml(p) +
+            ctaHtml;
+
+          // 팝업 내부 클릭이 지도 컨테이너까지 올라가면 지도의 click 핸들러가
+          // 팝업을 닫아 버린다(링크 클릭이 먹지 않던 원인).
+          POPUP_STOP_EVENTS.forEach(function(type) {
+            el.addEventListener(type, function(e) { e.stopPropagation(); });
+          });
+          el.querySelector('.popup-close').addEventListener('click', function(e) {
+            e.stopPropagation();
+            closePopup();
+          });
+          return el;
         }
 
         function openPopup(marker, feature) {
-          var p = feature.properties;
-          sharedOverlay.setContent(createPopupContent(p));
+          sharedOverlay.setContent(createPopupElement(feature.properties));
           sharedOverlay.setPosition(marker.getPosition());
           sharedOverlay.setMap(map);
         }
 
-        window.closePopup = function() {
+        function closePopup() {
           sharedOverlay.setMap(null);
-        };
+        }
 
         // 내 위치
         var userLatLng = null;
@@ -449,16 +500,36 @@
           return km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km';
         }
 
+        // 하드코딩된 날짜는 주간 갱신을 따라가지 못하므로 응답 헤더에서 읽는다.
+        function showDataDate(lastModified) {
+          var el = document.getElementById('data-date');
+          if (!el) return;
+          var d = lastModified ? new Date(lastModified) : null;
+          if (!d || isNaN(d.getTime())) {
+            el.style.display = 'none';
+            return;
+          }
+          var pad = function(n) { return String(n).padStart(2, '0'); };
+          el.textContent = '데이터 기준: ' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+        }
+
         fetch('data/map_data.json')
-          .then(res => res.json())
+          .then(res => {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            showDataDate(res.headers.get('Last-Modified'));
+            return res.json();
+          })
           .then(geojson => {
             document.getElementById('status').style.display = 'none';
-            
+
             // Normalize categories for all features
             geojson.features.forEach(feature => {
               var p = feature.properties;
-              if (p.category === 'nan') p.category = '기타';
-              p.categories = p.category.split(',').map(s => s.trim());
+              p.categories = String(p.category || '')
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
+              if (!p.categories.length) p.categories = [DEFAULT_CATEGORY];
             });
             // Deduplicate features by (title + address) combination
             var seen = new Set();
@@ -477,7 +548,10 @@
               clearSearch.style.display = 'block';
             }
             if (urlParams.has('cat')) {
-              activeCategories.add(urlParams.get('cat'));
+              urlParams.get('cat').split(',').forEach(function(cat) {
+                var trimmed = cat.trim();
+                if (trimmed) activeCategories.add(trimmed);
+              });
             }
 
             geojson.features.forEach(feature => {
@@ -537,14 +611,24 @@
           return R * c;
         }
 
+        // 검색어 + 카테고리 필터 판정. 지도 마커와 하단 목록이 같은 규칙을
+        // 쓰도록 한곳에 둔다.
+        function matchesFilters(p) {
+          if (searchTerm) {
+            var title = (p.title || '').toLowerCase();
+            var address = (p.address || '').toLowerCase();
+            if (title.indexOf(searchTerm) === -1 && address.indexOf(searchTerm) === -1) return false;
+          }
+          if (activeCategories.size === 0) return true;
+          return (p.categories || []).some(function(cat) { return activeCategories.has(cat); });
+        }
+
         function updateBottomSheet() {
           var bounds = map.getBounds();
           var sheetContent = document.getElementById('sheet-content');
           sheetContent.innerHTML = '';
-          var filtered = allMarkers.filter(m => {
-            var p = m.feature.properties;
-            var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
-            return match && (activeCategories.size === 0 || (p.categories || []).some(function(cat) { return activeCategories.has(cat); })) && bounds.contain(m.marker.getPosition());
+          var filtered = allMarkers.filter(function(m) {
+            return matchesFilters(m.feature.properties) && bounds.contain(m.marker.getPosition());
           });
 
           // 내 위치가 있으면 가까운 순으로 정렬
@@ -563,7 +647,7 @@
           }
 
           var fragment = document.createDocumentFragment();
-          filtered.slice(0, 50).forEach(m => {
+          filtered.slice(0, sheetLimit).forEach(m => {
             var p = m.feature.properties;
             var latlng = new kakao.maps.LatLng(m.feature.geometry.coordinates[1], m.feature.geometry.coordinates[0]);
 
@@ -591,22 +675,38 @@
             };
             fragment.appendChild(card);
           });
+
+          // 예전에는 50개에서 조용히 잘려 헤더의 개수와 목록이 어긋났다.
+          if (filtered.length > sheetLimit) {
+            var moreButton = document.createElement('button');
+            moreButton.type = 'button';
+            moreButton.className = 'sheet-more-button';
+            moreButton.textContent = '더 보기 (' + (filtered.length - sheetLimit) + '개 남음)';
+            moreButton.onclick = function() {
+              sheetLimit += SHEET_PAGE_SIZE;
+              updateBottomSheet();
+            };
+            fragment.appendChild(moreButton);
+          }
+
           sheetContent.appendChild(fragment);
         }
 
-        function updateMarkers() {
+        function syncUrl() {
           var params = new URLSearchParams();
           if (searchTerm) params.set('q', searchTerm);
-          if (activeCategories.size > 0) params.set('cat', Array.from(activeCategories)[0]);
-          var newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-          window.history.pushState({}, '', newUrl);
+          if (activeCategories.size > 0) params.set('cat', Array.from(activeCategories).join(','));
+          var query = params.toString();
+          // pushState 는 디바운스마다 히스토리를 쌓아 뒤로가기를 망가뜨린다.
+          window.history.replaceState({}, '', window.location.pathname + (query ? '?' + query : ''));
+        }
+
+        function updateMarkers() {
+          syncUrl();
+          sheetLimit = SHEET_PAGE_SIZE; // 필터가 바뀌면 목록을 처음부터 보여준다
 
           clusterer.clear();
-          var filtered = allMarkers.filter(m => {
-            var p = m.feature.properties;
-            var match = (p.title || '').toLowerCase().includes(searchTerm) || (p.address || '').toLowerCase().includes(searchTerm);
-            return match && (activeCategories.size === 0 || (p.categories || []).some(cat => activeCategories.has(cat)));
-          });
+          var filtered = allMarkers.filter(function(m) { return matchesFilters(m.feature.properties); });
           clusterer.addMarkers(filtered.map(m => m.marker));
           
           if (filtered.length > 0) {
@@ -631,10 +731,12 @@
             pill.className = 'category-pill' + (activeCategories.has(cat) ? ' active' : '');
             pill.setAttribute('aria-pressed', activeCategories.has(cat));
             pill.innerHTML = '<span>' + categoryIcons[cat] + '</span> ' + cat;
-            pill.onclick = function(e) {
-              var wasActive = activeCategories.has(cat);
-              activeCategories.clear();
-              if (!wasActive) {
+            // 매장 하나가 여러 카테고리를 가질 수 있고 필터도 Set 이므로
+            // 단일 선택으로 묶어 둘 이유가 없다. 개별 토글로 동작시킨다.
+            pill.onclick = function() {
+              if (activeCategories.has(cat)) {
+                activeCategories.delete(cat);
+              } else {
                 activeCategories.add(cat);
               }
               updateMarkers();
