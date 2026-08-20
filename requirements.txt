@@ -1,0 +1,5 @@
+# 수집기 + 통합 스크립트 공통 의존성
+beautifulsoup4>=4.12,<5
+geopy>=2.4,<3
+pandas>=2.2          # groupby.apply(include_groups=...) 가 필요
+requests>=2.31,<3
