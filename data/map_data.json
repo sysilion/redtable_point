@@ -492,6 +492,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.9788427,
+          37.5614248
+        ]
+      },
+      "properties": {
+        "title": "금성관나주곰탕",
+        "address": "서울특별시 중구 남대문로 29",
+        "phone": "02-753-7898",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/10076\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/10076\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/10076\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.9836835,
           37.5628165
         ]
@@ -1482,24 +1500,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          128.882802233433,
-          35.2339344049982
-        ]
-      },
-      "properties": {
-        "title": "만리향",
-        "address": "경상남도 김해시 분성로335번길 4",
-        "phone": "055-332-8060",
-        "category": "중식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/449939\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/449939\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/449939\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.984048589216,
           37.5627677737875
         ]
@@ -1978,24 +1978,6 @@
         "phone": "064-711-7992",
         "category": "한식",
         "link": "[{\"link\": \"https://redtable.global/ko/food/1179713\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/1179713\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/1179713\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.8939946,
-          37.5373656
-        ]
-      },
-      "properties": {
-        "title": "바빈스커피(선유도역점)",
-        "address": "서울특별시 영등포구 선유로49길 36",
-        "phone": "0507-1368-9839",
-        "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36465\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36465\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36465\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -2779,7 +2761,7 @@
         "type": "Point",
         "coordinates": [
           126.8939946,
-          37.5372656
+          37.5373156
         ]
       },
       "properties": {
@@ -3966,24 +3948,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.986181985682,
-          37.5689291491278
-        ]
-      },
-      "properties": {
-        "title": "왕비집 (종로점)",
-        "address": "서울특별시 종로구 삼일대로15길 24",
-        "phone": "02-720-3066",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/15004\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/15004\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/15004\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.897262,
           37.5263411
         ]
@@ -5002,24 +4966,6 @@
         "phone": "0507-1384-5309",
         "category": "한식",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/39463\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/39463\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/39463\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9843652,
-          37.570888
-        ]
-      },
-      "properties": {
-        "title": "종각한우",
-        "address": "서울특별시 종로구 종로9길 8",
-        "phone": "02-733-5613",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/135849\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/135849\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/135849\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -6540,60 +6486,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.984467618655,
-          37.5626168279466
-        ]
-      },
-      "properties": {
-        "title": "한식 왕비집",
-        "address": "서울특별시 중구 명동6길 15 지하1층",
-        "phone": "02-777-7004",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1631452\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/1631452\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/1631452\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9838429,
-          37.5646918
-        ]
-      },
-      "properties": {
-        "title": "한식왕비집(을지로점)",
-        "address": "서울특별시 중구 명동7길 21",
-        "phone": "02-3789-9991",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1634927\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1634927\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1634927\", \"source\": \"ydp\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9836829,
-          37.5645725
-        ]
-      },
-      "properties": {
-        "title": "한식왕비집 (을지로점)",
-        "address": "서울특별시 중구 명동7길 21 지하1층 B101호",
-        "phone": "02-3789-9991",
-        "category": "기타,한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1634927\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1634927\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1634927\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           126.922081,
           37.551976
         ]
@@ -6802,24 +6694,6 @@
         "phone": "0507-1367-9575",
         "category": "카페",
         "link": "[{\"link\": \"https://redtable.global/ko/food/1636402\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1636402\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1636402\", \"source\": \"benepia\"}]",
-        "source": "combined"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.8976135,
-          37.5369969
-        ]
-      },
-      "properties": {
-        "title": "홈앤브레드",
-        "address": "서울특별시 영등포구 선유로51길 4-5",
-        "phone": "02-2633-8487",
-        "category": "베이커리",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36904\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36904\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36904\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
