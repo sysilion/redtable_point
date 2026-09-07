@@ -420,6 +420,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.578987,
+          37.4940283
+        ]
+      },
+      "properties": {
+        "title": "구읍뱃터 파시",
+        "address": "인천 영종구 영종진광장로 39 오션테라스 1,2,3층",
+        "phone": "0507-1391-3018",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/1636419\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1636419\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1636419\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.8929191,
           37.536592500000005
         ]
@@ -618,8 +636,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.8960943,
-          37.5176486
+          126.8960876012702,
+          37.5176736
         ]
       },
       "properties": {
@@ -1150,6 +1168,24 @@
         "phone": "02-764-1541",
         "category": "한식",
         "link": "[{\"link\": \"https://redtable.global/ko/food/35450\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/35450\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/35450\", \"source\": \"ydp\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.4771217,
+          34.9875992
+        ]
+      },
+      "properties": {
+        "title": "동산정",
+        "address": "전라남도 무안군 무안읍 성남1길 173",
+        "phone": "061-452-9906",
+        "category": "한식",
+        "link": "[{\"link\": \"https://benepia.redtable.global/store/11410\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/11410\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/11410\", \"source\": \"ydp\"}]",
         "source": "combined"
       }
     },
@@ -1788,6 +1824,24 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          126.8974252,
+          37.5217322
+        ]
+      },
+      "properties": {
+        "title": "문래 대왕곱창(문래점)",
+        "address": "서울특별시 영등포구 당산로 10",
+        "phone": "0507-1415-2264",
+        "category": "한식",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/36621\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36621\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36621\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           126.8905511,
           37.5158826
         ]
@@ -1798,6 +1852,42 @@
         "phone": "0507-1382-4430",
         "category": "기타",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/999679\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/999679\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/999679\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.8935126,
+          37.5133488
+        ]
+      },
+      "properties": {
+        "title": "문래양가",
+        "address": "서울특별시 영등포구 경인로79길 17-2",
+        "phone": "0507-1458-7333",
+        "category": "한식",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/846097\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/846097\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/846097\", \"source\": \"redtable\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.8960876012702,
+          37.5176236
+        ]
+      },
+      "properties": {
+        "title": "문래양푼이동태탕",
+        "address": "서울특별시 영등포구 당산로 34",
+        "phone": "02-2632-8040",
+        "category": "한식",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/35952\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/35952\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/35952\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -4056,8 +4146,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.8935126,
-          37.5133488
+          126.89355590127019,
+          37.5132738
         ]
       },
       "properties": {
@@ -4164,8 +4254,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.8935126,
-          37.5132488
+          126.8934692987298,
+          37.5132738
         ]
       },
       "properties": {
@@ -5856,8 +5946,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.8959943,
-          37.5176486
+          126.8960009987298,
+          37.5176236
         ]
       },
       "properties": {
@@ -6028,6 +6118,24 @@
         "phone": "010-3159-9277",
         "category": "카페",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/832346\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/832346\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/832346\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.8975802,
+          37.5147436
+        ]
+      },
+      "properties": {
+        "title": "커피사피엔스(문래에이스하이테크점)",
+        "address": "서울특별시 영등포구 경인로 775",
+        "phone": "0507-2093-6884",
+        "category": "카페",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/845948\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/845948\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/845948\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
@@ -6442,6 +6550,24 @@
         "phone": "0507-1344-6454",
         "category": "카페",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/38453\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38453\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/38453\", \"source\": \"benepia\"}]",
+        "source": "combined"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.8960009987298,
+          37.5176736
+        ]
+      },
+      "properties": {
+        "title": "한길양평해장국(문래본점)",
+        "address": "서울특별시 영등포구 당산로 34",
+        "phone": "0507-1474-1007",
+        "category": "한식",
+        "link": "[{\"link\": \"https://ydp.redtable.global/store/38683\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38683\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/38683\", \"source\": \"benepia\"}]",
         "source": "combined"
       }
     },
