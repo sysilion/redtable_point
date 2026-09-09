@@ -12,9 +12,6 @@ env/
 venv/
 *.log
 
-# Project specific
-.serena/
-
 # 수집기 산출물 — 주간 실행마다 새로 생성되므로 커밋하지 않는다.
 # (커밋해 두면 오래된 CSV가 '최신'으로 뽑힐 위험이 있다)
 must_eat_data_*.csv
