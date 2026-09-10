@@ -1319,9 +1319,9 @@
         "category": "양식",
         "link": "[{\"link\": \"https://benepia.redtable.global/store/11249\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/11249\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/11249\", \"source\": \"ydp\"}]",
         "source": "combined",
-        "first_seen": "2026-09-10",
+        "first_seen": "2026-06-22",
         "last_seen": "2026-09-10",
-        "status": "new"
+        "status": ""
       }
     },
     {
@@ -4280,9 +4280,9 @@
         "category": "일식",
         "link": "[{\"link\": \"https://ydp.redtable.global/store/29375\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29375\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/29375\", \"source\": \"benepia\"}]",
         "source": "combined",
-        "first_seen": "2026-09-10",
+        "first_seen": "2026-06-22",
         "last_seen": "2026-09-10",
-        "status": "new"
+        "status": ""
       }
     },
     {
@@ -7734,132 +7734,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          126.898444,
-          37.5283083
-        ]
-      },
-      "properties": {
-        "title": "2카페",
-        "address": "서울특별시 영등포구 당산로36길 5",
-        "phone": "0507-1413-2044",
-        "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29455\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29455\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/29455\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.919265654284,
-          37.5298309198
-        ]
-      },
-      "properties": {
-        "title": "남대문커피",
-        "address": "서울특별시 영등포구 국회대로 780",
-        "phone": "02-785-8682",
-        "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29544\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29544\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/29544\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9208696,
-          37.5506378
-        ]
-      },
-      "properties": {
-        "title": "더밤",
-        "address": "서울특별시 마포구 잔다리로 19 2층",
-        "phone": "010-2720-9091",
-        "category": "기타",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/104761\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/104761\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/104761\", \"source\": \"ydp\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.654114389314,
-          34.7454845064012
-        ]
-      },
-      "properties": {
-        "title": "동동海",
-        "address": "전라남도 여수시 소호로 486",
-        "phone": "061-683-1322",
-        "category": "한식",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/23949\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/23949\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/23949\", \"source\": \"ydp\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.895059294005,
-          37.5361864712485
-        ]
-      },
-      "properties": {
-        "title": "돼지대첩 영등포(선유도역점)",
-        "address": "서울특별시 영등포구 선유로49길 23",
-        "phone": "0507-1362-4492",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36230\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36230\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36230\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.920347540815,
-          37.5289420000623
-        ]
-      },
-      "properties": {
-        "title": "리도멘",
-        "address": "서울특별시 영등포구 국회대로70길 18",
-        "phone": "0504-0825-9359",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/844095\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/844095\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/844095\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           128.882802233433,
           35.2339344049982
         ]
@@ -7872,28 +7746,7 @@
         "link": "[{\"link\": \"https://redtable.global/ko/food/449939\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/449939\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/449939\", \"source\": \"ydp\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.896964887809,
-          37.5246580382356
-        ]
-      },
-      "properties": {
-        "title": "명동면옥",
-        "address": "서울특별시 영등포구 당산로28길 4",
-        "phone": "02-2678-2220",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38437\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38437\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/38437\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     },
@@ -7914,133 +7767,7 @@
         "link": "[{\"link\": \"https://ydp.redtable.global/store/36465\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36465\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36465\", \"source\": \"benepia\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.924912895501,
-          37.529252958777
-        ]
-      },
-      "properties": {
-        "title": "백암왕순대",
-        "address": "서울특별시 영등포구 여의공원로 101 지하1층",
-        "phone": "02-780-2333",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/29408\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/29408\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/29408\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9204631244142,
-          37.528450245490596
-        ]
-      },
-      "properties": {
-        "title": "본터대구탕",
-        "address": "서울특별시 영등포구 국회대로68길 23",
-        "phone": "02-761-1606",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/36513\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36513\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36513\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          129.141957071839,
-          35.1597985733539
-        ]
-      },
-      "properties": {
-        "title": "부산요트투어 와이홀릭",
-        "address": "부산광역시 해운대구 해운대해변로 84",
-        "phone": "0507-1430-5622",
-        "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1630856\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1630856\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1630856\", \"source\": \"ydp\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.89426252524,
-          37.5369128676421
-        ]
-      },
-      "properties": {
-        "title": "뽕차이나",
-        "address": "서울특별시 영등포구 선유로49길 29-1",
-        "phone": "02-2647-3606",
-        "category": "중식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/12278\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/12278\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/12278\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.897648091466,
-          37.5364749911068
-        ]
-      },
-      "properties": {
-        "title": "선유기지",
-        "address": "서울특별시 영등포구 선유로51길 1",
-        "phone": "0507-1480-0397",
-        "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/38138\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/38138\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/38138\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.999425965492,
-          37.5727053068722
-        ]
-      },
-      "properties": {
-        "title": "와룽가든서울",
-        "address": "서울특별시 종로구 종로31길 46-8",
-        "phone": "010-3128-4467",
-        "category": "기타",
-        "link": "[{\"link\": \"https://benepia.redtable.global/store/1068957\", \"source\": \"benepia\"}, {\"link\": \"https://redtable.global/ko/food/1068957\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1068957\", \"source\": \"ydp\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     },
@@ -8061,7 +7788,7 @@
         "link": "[{\"link\": \"https://redtable.global/ko/food/15004\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/15004\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/15004\", \"source\": \"ydp\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     },
@@ -8082,28 +7809,7 @@
         "link": "[{\"link\": \"https://redtable.global/ko/food/135849\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/135849\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/135849\", \"source\": \"ydp\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.895514070643,
-          37.5364749242565
-        ]
-      },
-      "properties": {
-        "title": "커피시네마",
-        "address": "서울특별시 영등포구 선유로49길",
-        "phone": "32",
-        "category": "카페",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/145502\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/145502\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/145502\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     },
@@ -8124,7 +7830,7 @@
         "link": "[{\"link\": \"https://redtable.global/ko/food/1631452\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/1631452\", \"source\": \"benepia\"}, {\"link\": \"https://ydp.redtable.global/store/1631452\", \"source\": \"ydp\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     },
@@ -8145,7 +7851,7 @@
         "link": "[{\"link\": \"https://redtable.global/ko/food/1634927\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1634927\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1634927\", \"source\": \"benepia\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     },
@@ -8166,106 +7872,22 @@
         "link": "[{\"link\": \"https://ydp.redtable.global/store/36904\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/36904\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/36904\", \"source\": \"benepia\"}]",
         "source": "combined",
         "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.897332588157,
-          37.5364333613287
-        ]
-      },
-      "properties": {
-        "title": "홍두깨본칼국수",
-        "address": "서울특별시 영등포구 양평로 90",
-        "phone": "0507-1360-2083",
-        "category": "한식",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/821722\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/821722\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/821722\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-17",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.921083475319,
-          37.5309293878191
-        ]
-      },
-      "properties": {
-        "title": "본도시락(서여의도점)",
-        "address": "서울특별시 영등포구 국회대로 800",
-        "phone": "02-786-4282",
-        "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29019\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29019\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/29019\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-18",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.906405638465,
-          37.5194209815804
-        ]
-      },
-      "properties": {
-        "title": "본도시락(영등포역점)",
-        "address": "서울특별시 영등포구 영등포로 226",
-        "phone": "02-2068-4282",
-        "category": "기타",
-        "link": "[{\"link\": \"https://ydp.redtable.global/store/29461\", \"source\": \"ydp\"}, {\"link\": \"https://redtable.global/ko/food/29461\", \"source\": \"redtable\"}, {\"link\": \"https://benepia.redtable.global/store/29461\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-18",
-        "last_seen": "2026-09-10",
-        "status": "gone"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.9844936,
-          37.564299
-        ]
-      },
-      "properties": {
-        "title": "우대포블랙 (명동점)",
-        "address": "서울 중구 명동7길 12 1~4층 1-3층 명동1가",
-        "phone": "0507-1408-5566",
-        "category": "한식",
-        "link": "[{\"link\": \"https://redtable.global/ko/food/1636401\", \"source\": \"redtable\"}, {\"link\": \"https://ydp.redtable.global/store/1636401\", \"source\": \"ydp\"}, {\"link\": \"https://benepia.redtable.global/store/1636401\", \"source\": \"benepia\"}]",
-        "source": "combined",
-        "first_seen": "2026-06-18",
-        "last_seen": "2026-09-10",
+        "last_seen": "2026-08-24",
         "status": "gone"
       }
     }
   ],
   "metadata": {
-    "generated_at": "2026-09-10T02:18:26+00:00",
+    "generated_at": "2026-09-10T11:56:06+09:00",
     "data_date": "2026-09-10",
     "new_window_days": 21,
     "gone_retention_days": 28,
     "counts": {
-      "total": 393,
+      "total": 375,
       "active": 368,
       "unmapped": 0,
-      "new": 9,
-      "gone": 25
+      "new": 7,
+      "gone": 7
     }
   }
 }
