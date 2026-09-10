@@ -717,6 +717,65 @@ def apply_history(
     return geojson["metadata"]["counts"]
 
 
+# ── 로컬 실행 가드 ────────────────────────────────────────────────────
+#
+# data/ 는 CI 가 소유한다. 로컬에서 수집기 없이 consolidate 만 돌리면
+# GOODS_TOOLS_DIR 에 남아 있던 몇 달 전 CSV 가 '최신' 으로 뽑혀 지도 전체가
+# 그 시점으로 되돌아간다(2026-09-10 에 실제로 겪었다). 이력 추적이 붙은
+# 뒤로는 피해가 더 크다 — 그 사이 새로 들어온 매장들이 한꺼번에 '사라짐'
+# 묘비로 찍히고, 그 스냅샷이 store_history.json 에 박힌다.
+
+CI_ENV_KEYS = ("CI", "GITHUB_ACTIONS")
+
+
+def _running_in_ci() -> bool:
+    return any(os.environ.get(key, "").lower() == "true" for key in CI_ENV_KEYS)
+
+
+def _local_write_allowed(argv) -> bool:
+    return "--local" in argv or os.environ.get("ALLOW_LOCAL_WRITE") == "1"
+
+
+def _previous_data_date() -> str:
+    """직전 map_data.json 이 어느 날짜 기준인지. 없으면 빈 문자열."""
+    if not os.path.exists(OUTPUT_FILE):
+        return ""
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            payload = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return ""
+    metadata = (payload or {}).get("metadata") or {}
+    return _safe_str(metadata.get("data_date"))
+
+
+def _csv_stamp(path: str) -> str:
+    """파일명의 YYYYMMDD 를 YYYY-MM-DD 로. 없으면 빈 문자열."""
+    dates = re.findall(r"(\d{4})(\d{2})(\d{2})", os.path.basename(path))
+    return "-".join(dates[-1]) if dates else ""
+
+
+def _reject_stale_sources(paths: list[str], argv) -> str | None:
+    """고른 CSV 가 이미 배포된 데이터보다 오래됐으면 이유를 돌려준다."""
+    if "--allow-stale" in argv:
+        return None
+    previous = _previous_data_date()
+    if not previous:
+        return None
+    stamps = [(path, _csv_stamp(path)) for path in paths]
+    newest = max((stamp for _, stamp in stamps if stamp), default="")
+    if not newest or newest >= previous:
+        return None
+    listing = "\n".join(
+        f"      {os.path.basename(path)} ({stamp or '날짜 없음'})" for path, stamp in stamps
+    )
+    return (
+        f"고른 CSV 가 현재 배포된 데이터({previous})보다 오래됐습니다 (최신 {newest}).\n"
+        f"{listing}\n"
+        "    수집기를 먼저 돌리거나, 정말 되돌릴 생각이면 --allow-stale 을 주세요."
+    )
+
+
 def to_geojson(df: pd.DataFrame) -> dict:
     features = []
     for _, row in df.iterrows():
@@ -843,15 +902,35 @@ def jitter_overlapping(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+
     print("=" * 60)
     print("  Redtable Map Data Consolidator")
     print("=" * 60)
+
+    if not _running_in_ci() and not _local_write_allowed(argv):
+        print("\n!! data/ 는 주간 CI 가 갱신합니다. 로컬 실행은 막혀 있습니다.")
+        print("!! 최신 데이터가 필요하면 워크플로를 돌리세요:")
+        print("!!     gh workflow run weekly_update.yml")
+        print("!! 그래도 로컬에서 써야 한다면 수집기를 먼저 돌린 뒤 --local 을 주세요.")
+        return 2
+
     print(f"  source dir: {GOODS_TOOLS_DIR}")
 
     cache = _load_cache()
     geocoders = _init_geocoders()
     source_dfs = []
+
+    chosen = []
+    for pattern, _label, _has_coords in CSV_PATTERNS:
+        path = find_latest_csv(pattern)
+        if path:
+            chosen.append(path)
+    stale = _reject_stale_sources(chosen, argv)
+    if stale:
+        print(f"\n!! {stale}")
+        return 3
 
     for pattern, label, has_coords in CSV_PATTERNS:
         path = find_latest_csv(pattern)
