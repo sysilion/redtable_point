@@ -37,9 +37,12 @@ jobs:
           python collectors/ydp.py
           python collectors/benepia.py
 
+      # KAKAO_REST_API_KEY 가 비어 있으면 consolidate 가 Photon(OSM) 으로
+      # 자동 폴백한다. 잡이 죽지는 않지만 좌표 정확도가 떨어진다.
       - name: Consolidate data
         env:
           GOODS_TOOLS_DIR: .
+          KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
         run: python scripts/consolidate.py
 
       - name: Commit and Push
