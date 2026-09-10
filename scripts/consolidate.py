@@ -15,9 +15,11 @@ import glob
 import json
 import sys
 import re
+import copy
 import math
 import time
 import unicodedata
+from datetime import date, datetime, timezone
 
 import pandas as pd
 import requests
@@ -61,6 +63,19 @@ GEOCODE_TIMEOUT_S = CONFIG["GEOCODE_TIMEOUT_S"]
 
 OUTPUT_FILE = os.path.join(PROJECT_DIR, "data", "map_data.json")
 CACHE_FILE = os.path.join(SCRIPT_DIR, ".geocode_cache.json")
+
+# 주 단위 갱신에서 어떤 매장이 새로 들어오고 어떤 매장이 빠졌는지 알려면
+# "지난주에 무엇이 있었는지"를 기억해야 한다. 그 기억이 이 파일이다.
+HISTORY_FILE = os.path.join(PROJECT_DIR, "data", "store_history.json")
+HISTORY_VERSION = 1
+
+# 신규 배지를 유지하는 기간. 주간 갱신이 한 번 밀려도(2주) 놓치지 않도록
+# 주기보다 넉넉하게 잡는다.
+NEW_WINDOW_DAYS = int(os.environ.get("NEW_WINDOW_DAYS", "21"))
+
+# 목록에서 빠진 매장을 지도에 남겨 두는 기간. 이 기간이 지나면 이력에서도
+# 지운다. 제휴 목록이 일시적으로 덜 긁힌 주를 흡수할 만큼은 길어야 한다.
+GONE_RETENTION_DAYS = int(os.environ.get("GONE_RETENTION_DAYS", "28"))
 
 # 캐시 스키마 버전.
 #   v1 → v2: Photon 1순위를 번지 검증 없이 담아 호실 번호("B111")에 매칭된
@@ -518,6 +533,190 @@ def geocode_missing(df: pd.DataFrame, geocoders, cache: dict) -> pd.DataFrame:
     return df
 
 
+# ── 매장 이력 (신규 / 사라짐) ──────────────────────────────────────────
+#
+# 주간 갱신은 "이번 주 목록"만 준다. 무엇이 새로 들어오고 무엇이 빠졌는지는
+# 지난주 목록과 비교해야만 알 수 있으므로, 매장별 최초/최종 관측일을
+# data/store_history.json 에 남긴다.
+#
+# 목록에서 빠진 매장은 이번 주 CSV 에 없으므로 좌표도 이름도 다시 만들 수
+# 없다. 그래서 사라진 시점의 Feature 스냅샷을 이력에 함께 넣어 두고,
+# GONE_RETENTION_DAYS 동안 그 스냅샷을 지도에 계속 그린다.
+
+# 링크에 박힌 매장 번호. 세 채널이 같은 번호를 쓰므로 이름·주소가 조금
+# 달라져도 같은 매장으로 이어진다. 주간 diff 가 오탐을 내지 않는 핵심.
+_LINK_ID_RE = re.compile(r"/(?:food|store)/(\d+)")
+
+
+def store_key(props: dict) -> str:
+    """주 단위로 같은 매장을 이어 붙이기 위한 안정적인 키."""
+    match = _LINK_ID_RE.search(_safe_str(props.get("link")))
+    if match:
+        return f"id:{match.group(1)}"
+    # 번호가 없는 매장은 이름+주소로 떨어진다. 상호 표기가 바뀌면 끊기지만
+    # 그런 경우 diff 상으로도 사실상 다른 매장이다.
+    title = normalize_text(props.get("title"))
+    return f"ta:{title}|{get_base_address(props.get('address'))}"
+
+
+def _parse_day(text) -> date | None:
+    try:
+        return date.fromisoformat(_safe_str(text))
+    except (TypeError, ValueError):
+        return None
+
+
+def _days_since(text, today: date) -> int | None:
+    day = _parse_day(text)
+    return None if day is None else (today - day).days
+
+
+def _load_history() -> dict:
+    """store_history.json 을 읽는다. 없거나 깨졌으면 빈 이력으로 시작한다."""
+    empty = {"version": HISTORY_VERSION, "stores": {}}
+    if not os.path.exists(HISTORY_FILE):
+        return empty
+    try:
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"  ! 매장 이력을 읽지 못해 새로 만듭니다: {exc}")
+        return empty
+    if not isinstance(raw, dict) or raw.get("version") != HISTORY_VERSION:
+        print("  ! 매장 이력이 구버전이라 새로 만듭니다.")
+        return empty
+    stores = raw.get("stores")
+    return {"version": HISTORY_VERSION, "stores": stores if isinstance(stores, dict) else {}}
+
+
+def _save_history(history: dict, today: date) -> None:
+    history["updated_at"] = today.isoformat()
+    _write_json_atomic(HISTORY_FILE, history)
+
+
+def _load_previous_features() -> dict:
+    """직전 map_data.json 을 매장 키로 색인한다. 사라진 매장의 스냅샷 원본."""
+    if not os.path.exists(OUTPUT_FILE):
+        return {}
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            payload = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+    features = (payload or {}).get("features")
+    if not isinstance(features, list):
+        return {}
+    indexed = {}
+    for feature in features:
+        props = (feature or {}).get("properties")
+        if isinstance(props, dict):
+            indexed[store_key(props)] = feature
+    return indexed
+
+
+def apply_history(
+    geojson: dict,
+    history: dict,
+    previous: dict,
+    today: date,
+    still_listed: set[str] | None = None,
+) -> dict:
+    """이번 주 결과에 status/first_seen/last_seen 을 붙이고 사라진 매장을 되살린다.
+
+    `still_listed` 는 이번 주 목록에는 있지만 좌표가 없어 지도에 못 그린 매장의
+    키다. 이들을 빼먹으면 지오코딩 실패가 '제휴 종료' 로 둔갑한다.
+
+    반환값은 요약 카운트. geojson 은 제자리에서 수정된다.
+    """
+    stores = history["stores"]
+    # 이력이 비어 있는 첫 실행은 기준점일 뿐이다. 전 매장을 '신규'로 칠하면
+    # 신호가 아니라 소음이 된다.
+    baseline = not stores
+    today_str = today.isoformat()
+
+    # 같은 키가 두 번 나올 수 있다(병합에서 놓친 중복). 이력은 한 번만
+    # 갱신하되 status 는 모든 Feature 에 찍어야 지도에서 하나만 표시가 빠지는
+    # 일이 없다.
+    present = set()
+    active_count = 0
+    new_count = 0
+    for feature in geojson["features"]:
+        key = store_key(feature["properties"])
+        record = stores.get(key)
+        if record is None:
+            record = {"first_seen": "" if baseline else today_str}
+            stores[key] = record
+        if key not in present:
+            present.add(key)
+            record["last_seen"] = today_str
+            # 돌아온 매장의 묘비는 치운다.
+            record.pop("feature", None)
+        active_count += 1
+
+        props = feature["properties"]
+        first_seen = _safe_str(record.get("first_seen"))
+        props["first_seen"] = first_seen
+        props["last_seen"] = today_str
+        age = _days_since(first_seen, today)
+        if age is not None and age <= NEW_WINDOW_DAYS:
+            props["status"] = "new"
+            new_count += 1
+        else:
+            props["status"] = ""
+
+    # 좌표만 없을 뿐 목록에는 살아 있다. 관측일을 갱신해 '사라짐' 오탐을 막는다.
+    unmapped = 0
+    for key in still_listed or ():
+        if key in present:
+            continue
+        record = stores.get(key)
+        if record is None:
+            record = {"first_seen": "" if baseline else today_str}
+            stores[key] = record
+        record["last_seen"] = today_str
+        record.pop("feature", None)
+        present.add(key)
+        unmapped += 1
+
+    gone_features = []
+    for key in list(stores.keys()):
+        if key in present:
+            continue
+        record = stores[key]
+        gone_days = _days_since(record.get("last_seen"), today)
+        if gone_days is None or gone_days > GONE_RETENTION_DAYS:
+            del stores[key]
+            continue
+        snapshot = record.get("feature") or previous.get(key)
+        if snapshot is None:
+            # 좌표를 복원할 방법이 없다. 이력은 보존 기간까지 남겨 두어
+            # 매장이 돌아오면 first_seen 을 이어 쓸 수 있게 한다.
+            continue
+        snapshot = copy.deepcopy(snapshot)
+        props = snapshot["properties"]
+        props["status"] = "gone"
+        props["first_seen"] = _safe_str(record.get("first_seen"))
+        props["last_seen"] = _safe_str(record.get("last_seen"))
+        record["feature"] = snapshot
+        gone_features.append(snapshot)
+
+    geojson["features"].extend(gone_features)
+    geojson["metadata"] = {
+        "generated_at": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
+        "data_date": today_str,
+        "new_window_days": NEW_WINDOW_DAYS,
+        "gone_retention_days": GONE_RETENTION_DAYS,
+        "counts": {
+            "total": len(geojson["features"]),
+            "active": active_count,
+            "unmapped": unmapped,
+            "new": new_count,
+            "gone": len(gone_features),
+        },
+    }
+    return geojson["metadata"]["counts"]
+
+
 def to_geojson(df: pd.DataFrame) -> dict:
     features = []
     for _, row in df.iterrows():
@@ -555,6 +754,14 @@ def _parse_links(row) -> list[dict]:
     if not isinstance(links, list):
         return []
     return [item for item in links if isinstance(item, dict) and item.get("link")]
+
+
+def _group_key(row) -> str:
+    """중복 병합용 묶음 키. 매장 번호 우선, 없으면 정규화된 이름+주소."""
+    match = _LINK_ID_RE.search(_safe_str(row["link"]))
+    if match:
+        return f"id:{match.group(1)}"
+    return f"ta:{row['clean_title']}|{row['base_address']}"
 
 
 def consolidate_group(group: pd.DataFrame) -> pd.Series:
@@ -668,23 +875,44 @@ def main() -> int:
 
     combined["clean_title"] = combined["title"].apply(normalize_text)
     combined["base_address"] = combined["address"].apply(get_base_address)
+    # 이름·주소만으로 묶으면 "곱(강남점)" / "곱 (강남점) 1, 2층" 처럼 표기가
+    # 조금 다른 같은 매장이 두 개의 핀으로 남는다. 링크의 매장 번호는 세 채널이
+    # 공유하므로, 번호가 있으면 그것을 묶음 키로 쓴다.
+    combined["group_key"] = combined.apply(_group_key, axis=1)
 
     combined = (
-        combined.groupby(["clean_title", "base_address"], group_keys=False)
+        combined.groupby("group_key", group_keys=False)
         .apply(consolidate_group, include_groups=False)
         .reset_index(drop=True)
     )
     combined = jitter_overlapping(combined)
 
     geojson = to_geojson(combined)
+    mapped = len(geojson["features"])
+
+    # 좌표가 없어 to_geojson 이 버린 매장들. 목록에는 남아 있으므로 이력에는
+    # '이번 주에도 봤다' 고 기록해야 한다.
+    lost = combined[combined["lat"].isna() | combined["lon"].isna()]
+    unmapped_keys = {store_key(row) for _, row in lost.iterrows()}
+
+    # 이력 비교는 반드시 새 파일을 쓰기 *전에* 한다. 사라진 매장의 스냅샷을
+    # 직전 map_data.json 에서 가져오기 때문이다.
+    today = date.today()
+    history = _load_history()
+    previous = _load_previous_features()
+    counts = apply_history(geojson, history, previous, today, unmapped_keys)
+
     _write_json_atomic(OUTPUT_FILE, geojson)
+    _save_history(history, today)
     _save_cache(cache)
 
-    dropped = len(combined) - len(geojson["features"])
-    print(f"\n  {raw_count} rows -> {len(combined)} stores -> {len(geojson['features'])} features")
+    dropped = len(combined) - mapped
+    print(f"\n  {raw_count} rows -> {len(combined)} stores -> {mapped} features")
     if dropped:
-        print(f"  ! 좌표가 없어 제외된 매장 {dropped}건")
+        print(f"  ! 좌표가 없어 제외된 매장 {dropped}건 (목록에는 남아 있음)")
+    print(f"  신규 {counts['new']}곳 · 사라짐 {counts['gone']}곳 (총 {counts['total']}개 마커)")
     print(f"  wrote {OUTPUT_FILE}")
+    print(f"  wrote {HISTORY_FILE}")
     print("✨ Done!")
     return 0
 

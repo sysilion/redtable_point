@@ -22,6 +22,15 @@
       --cat-서프샵-bg: #E0F2F1; --cat-서프샵-text: #00695C;
       --cat-기타-bg: #F1F3F5; --cat-기타-text: #5A6572;
 
+      /* 매장 상태 — 주간 갱신에서 새로 들어왔거나 목록에서 빠진 매장.
+         마커 링 색은 JS 가 --status-*-ring 을 직접 읽는다. 이름 변경 금지 */
+      --status-new-ring: #16a34a;
+      --status-new-bg: #DCFCE7; --status-new-text: #15803D;
+      --status-gone-ring: #94a3b8;
+      /* 마커는 밝은 지도 타일 위에만 그려지므로 다크 모드에서도 이 값을 쓴다 */
+      --status-gone-fill: #E2E7EC;
+      --status-gone-bg: #E9EDF2; --status-gone-text: #64748B;
+
       /* 레이아웃 */
       --sidebar-w: 380px;
       --sheet-collapsed-h: 76px; /* JS 의 스냅 타깃과 값을 맞춰야 한다 */
@@ -94,6 +103,8 @@
     .cat-베이커리 { --chip-bg: var(--cat-베이커리-bg); --chip-fg: var(--cat-베이커리-text); }
     .cat-서프샵 { --chip-bg: var(--cat-서프샵-bg); --chip-fg: var(--cat-서프샵-text); }
     .cat-기타 { --chip-bg: var(--cat-기타-bg); --chip-fg: var(--cat-기타-text); }
+    .st-new { --chip-bg: var(--status-new-bg); --chip-fg: var(--status-new-text); }
+    .st-gone { --chip-bg: var(--status-gone-bg); --chip-fg: var(--status-gone-text); }
 
     .category-badge {
       display: inline-flex;
@@ -211,6 +222,46 @@
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
     }
     .category-pill .pill-emoji { font-size: 14px; line-height: 1; }
+    .pill-count {
+      min-width: 16px;
+      padding: 0 4px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-2);
+      color: var(--text-3);
+      font-size: 10px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      text-align: center;
+    }
+    .category-pill.active .pill-count {
+      background: rgba(0, 0, 0, 0.10);
+      color: inherit;
+    }
+    /* 상태 필터와 음식 카테고리는 성격이 다르다. 같은 줄에 두되 선을 긋는다 */
+    .pill-divider {
+      flex-shrink: 0;
+      align-self: center;
+      width: 1px;
+      height: 18px;
+      margin: 0 2px;
+      background: var(--border-strong);
+    }
+    .pill-reset {
+      flex-shrink: 0;
+      min-height: 34px;
+      padding: 0 var(--space-md);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--text-2);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .pill-reset:hover { background: var(--surface-hover); color: var(--text); }
     .category-pill:hover { background: var(--surface-hover); color: var(--text); }
     .category-pill:active { transform: scale(0.96); }
     .category-pill.active {
@@ -292,6 +343,41 @@
     }
     .data-date { font-size: 11px; color: var(--text-3); white-space: nowrap; }
 
+    /* 이번 갱신 요약 — 지도를 보기 전에 무엇이 달라졌는지 먼저 알려 준다 */
+    .update-summary {
+      flex-shrink: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+      margin: 0 var(--space-xs) var(--space-sm);
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      font-size: 12px;
+      color: var(--text-2);
+    }
+    .update-summary[hidden] { display: none; }
+    .update-summary .summary-label { font-weight: 700; color: var(--text); }
+    .summary-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-pill);
+      background: var(--chip-bg);
+      color: var(--chip-fg);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: filter 0.15s ease, border-color 0.15s ease;
+    }
+    .summary-chip:hover { filter: brightness(0.96); }
+    .summary-chip[aria-pressed="true"] { border-color: currentColor; }
+
     .sheet-content {
       flex: 1;
       min-height: 0;
@@ -317,6 +403,7 @@
     .sheet-empty .empty-icon { font-size: 32px; opacity: 0.7; }
     .sheet-empty strong { font-size: 14px; color: var(--text-2); font-weight: 600; }
     .sheet-empty span { font-size: 12px; }
+    .sheet-empty .pill-reset { margin-top: var(--space-sm); }
 
     /* ── 매장 카드 ──────────────────────────────────────────── */
     .store-card {
@@ -333,6 +420,19 @@
       transition: transform 0.12s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
     .store-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-soft); }
+    /* 신규는 초록 테두리로 목록에서 바로 눈에 띄게, 사라짐은 채도를 뺀다 */
+    .store-card.is-new {
+      border-color: var(--status-new-ring);
+      background: linear-gradient(to right, var(--status-new-ring) 3px, var(--surface) 3px);
+    }
+    .store-card.is-gone {
+      opacity: 0.62;
+      border-style: dashed;
+      background: linear-gradient(to right, var(--status-gone-ring) 3px, var(--surface) 3px);
+    }
+    .store-card.is-gone .card-thumb img { filter: grayscale(1); }
+    .store-card.is-gone:hover { opacity: 1; }
+    .card-note { font-size: 11px; color: var(--text-3); }
     .store-card:active { transform: scale(0.985); }
     .store-card:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
@@ -430,22 +530,52 @@
       line-height: 1.5;
       color: var(--text-2);
     }
+    /* 상태 안내 띠. 왜 이 핀이 튀는지 팝업 안에서 바로 설명한다 */
+    .popup-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--space-sm);
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--chip-bg);
+      color: var(--chip-fg);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .store-popup a.popup-phone { color: inherit; text-decoration: none; }
+    .store-popup a.popup-phone:hover { color: var(--accent-color); text-decoration: underline; }
+
+    .popup-actions {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
     .popup-cta-button {
       display: block;
-      width: 100%;
-      margin-top: var(--space-md);
+      flex: 1;
       padding: 12px;
+      border: 1px solid transparent;
       border-radius: var(--radius-sm);
       background: var(--accent-color);
       color: #fff;
+      font-family: inherit;
       font-size: 14px;
       font-weight: 700;
       text-align: center;
       text-decoration: none;
+      cursor: pointer;
       transition: background 0.2s ease, transform 0.1s ease;
     }
     .popup-cta-button:hover { background: var(--accent-strong); transform: translateY(-1px); }
     .popup-cta-button:active { transform: translateY(0); }
+    .popup-cta-button.secondary {
+      background: var(--surface-2);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .popup-cta-button.secondary:hover { background: var(--surface-hover); }
     .store-popup .popup-links {
       margin-top: var(--space-md);
       padding-top: var(--space-sm);
@@ -628,7 +758,15 @@
         --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.35);
         --shadow-raise: 0 2px 6px rgba(0, 0, 0, 0.4), 0 14px 32px rgba(0, 0, 0, 0.5);
         --shadow-sheet: 0 -6px 28px rgba(0, 0, 0, 0.5);
+
+        /* 링 색은 어두운 지도 위에서도 그대로 쓸 수 있을 만큼 진하다.
+           칩 배경만 어두운 표면에 맞춰 낮춘다 */
+        --status-new-bg: rgba(22, 163, 74, 0.22); --status-new-text: #4ADE80;
+        --status-gone-bg: rgba(148, 163, 184, 0.20); --status-gone-text: #A8B4C2;
       }
+
+      .category-pill.active .pill-count { background: rgba(255, 255, 255, 0.14); }
+      .store-card.is-new { background: linear-gradient(to right, var(--status-new-ring) 3px, var(--surface) 3px); }
 
       /* 파스텔 배지는 어두운 표면에서 튄다. 같은 색상(hue)을 유지한 채
          밝기만 올리고 배경은 투명 틴트로 깔아 준다. --cat-*-bg 자체는
@@ -672,7 +810,7 @@
       <input type="search" id="search-input" placeholder="가게 이름 또는 주소 검색" aria-label="가게 이름 또는 주소 검색" autocomplete="off">
       <button id="clear-search" type="button" aria-label="검색어 지우기" style="display:none;">✕</button>
     </div>
-    <div class="category-pill-row" id="category-pill-row" role="group" aria-label="카테고리 필터">
+    <div class="category-pill-row" id="category-pill-row" role="group" aria-label="상태 및 카테고리 필터">
     </div>
   </header>
   
@@ -683,9 +821,10 @@
     <section id="bottom-sheet" class="bottom-sheet" aria-label="매장 목록">
       <div class="sheet-handle" role="button" tabindex="0" aria-label="매장 목록 크기 조절"></div>
       <div class="sheet-header">
-        <h2 class="sheet-title">이 지역 매장 <span class="sheet-store-count" id="sheet-store-count"></span></h2>
+        <h2 class="sheet-title">이 지역 매장 <span class="sheet-store-count" id="sheet-store-count" aria-live="polite"></span></h2>
         <div id="data-date" class="data-date"></div>
       </div>
+      <div class="update-summary" id="update-summary" hidden></div>
       <div class="sheet-content" id="sheet-content"></div>
     </section>
   
@@ -717,43 +856,90 @@
       return cssVarCache[varName];
     }
 
-    function createEmojiMarkerImage(emoji, bgColor, size = 48) {
+    // status 는 '' | 'new' | 'gone'.
+    //   new  — 바깥에 초록 후광을 한 겹 두른다. 축소된 지도에서도 튄다.
+    //   gone — 회색 원 + 점선 테두리 + 사선. 카테고리 색을 버리는 대신
+    //          "지금은 없는 곳" 이라는 사실을 우선한다.
+    function createEmojiMarkerImage(emoji, bgColor, size, status) {
+      size = size || 48;
+      status = status || '';
       var dpr = window.devicePixelRatio || 1;
-      var cacheKey = emoji + '-' + bgColor + '-' + size + '-' + dpr;
+      var cacheKey = emoji + '-' + bgColor + '-' + size + '-' + status + '-' + dpr;
       if (markerCache[cacheKey]) {
         return markerCache[cacheKey];
       }
 
+      var isNew = status === 'new';
+      var isGone = status === 'gone';
       var canvas = document.createElement('canvas');
       canvas.width = size * dpr;
       canvas.height = size * dpr;
       var ctx = canvas.getContext('2d');
       ctx.scale(dpr, dpr);
 
-      // 1. 그림자 설정
+      var center = size / 2;
+      // 후광 한 겹이 더 들어가므로 신규는 원을 그만큼 줄여야 잘리지 않는다.
+      var ringWidth = size * 0.07;
+      var radius = center - 4 - (isNew ? ringWidth : 0);
+
       ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
       ctx.shadowBlur = 8;
       ctx.shadowOffsetY = 4;
 
-      // 2. 원 그리기
       ctx.beginPath();
-      var radius = size / 2 - 4; // 4px padding for shadow/border
-      ctx.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
-      ctx.fillStyle = bgColor;
+      ctx.arc(center, center, radius, 0, Math.PI * 2);
+      ctx.fillStyle = isGone ? (getCssVar('--status-gone-fill') || '#E2E7EC') : bgColor;
       ctx.fill();
-      
-      // 3. 테두리
+
+      // 그림자는 원 하나에만. 테두리·에모지까지 번지면 지저분해진다.
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
+
       ctx.strokeStyle = 'white';
       ctx.lineWidth = 2;
       ctx.stroke();
-      
-      // 4. 에모지 배치
-      ctx.shadowColor = 'transparent'; // 에모지에는 그림자 없음
+
+      if (isNew) {
+        ctx.beginPath();
+        ctx.arc(center, center, radius + ringWidth / 2 + 1, 0, Math.PI * 2);
+        ctx.strokeStyle = getCssVar('--status-new-ring') || '#16a34a';
+        ctx.lineWidth = ringWidth;
+        ctx.stroke();
+      }
+
+      var goneColor = getCssVar('--status-gone-ring') || '#94a3b8';
+      if (isGone) {
+        ctx.beginPath();
+        ctx.arc(center, center, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = goneColor;
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([size * 0.09, size * 0.07]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      ctx.globalAlpha = isGone ? 0.4 : 1;
       ctx.font = (size * 0.5) + 'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(emoji, size / 2, size / 2);
-      
+      ctx.fillText(emoji, center, center);
+      ctx.globalAlpha = 1;
+
+      if (isGone) {
+        var reach = radius * 0.66;
+        // 흰 밑선을 먼저 깔아야 에모지 위에서도 사선이 끊겨 보이지 않는다.
+        [['rgba(255,255,255,0.9)', size * 0.13], [goneColor, size * 0.07]].forEach(function (pair) {
+          ctx.beginPath();
+          ctx.moveTo(center - reach, center + reach);
+          ctx.lineTo(center + reach, center - reach);
+          ctx.strokeStyle = pair[0];
+          ctx.lineWidth = pair[1];
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        });
+      }
+
       var dataUrl = canvas.toDataURL();
       markerCache[cacheKey] = dataUrl;
       return dataUrl;
@@ -776,10 +962,33 @@
 
         kakao.maps.event.addListener(map, 'idle', debouncedUpdateBottomSheet);
 
+        // 기본 클러스터 아이콘은 파란 사각형이라 브랜드 색과 따로 논다.
+        function clusterStyle(size, background) {
+          return {
+            width: size + 'px', height: size + 'px',
+            lineHeight: size + 'px',
+            borderRadius: '50%',
+            background: background,
+            border: '2px solid rgba(255, 255, 255, 0.9)',
+            boxShadow: '0 2px 10px rgba(16, 24, 40, 0.28)',
+            color: '#fff',
+            textAlign: 'center',
+            fontWeight: '700',
+            fontSize: Math.round(size * 0.32) + 'px'
+          };
+        }
+
         var clusterer = new kakao.maps.MarkerClusterer({
             map: map,
             averageCenter: true,
-            minLevel: 10
+            minLevel: 10,
+            calculator: [10, 30, 100],
+            styles: [
+              clusterStyle(38, 'rgba(231, 76, 60, 0.86)'),
+              clusterStyle(46, 'rgba(231, 76, 60, 0.90)'),
+              clusterStyle(56, 'rgba(192, 57, 43, 0.92)'),
+              clusterStyle(66, 'rgba(192, 57, 43, 0.95)')
+            ]
         });
 
         var categoryIcons = {
@@ -794,11 +1003,20 @@
           "기타": "📌"
         };
 
+        // 주간 갱신 diff. properties.status 는 consolidate.py 가 채운다.
+        var STATUS_META = {
+          'new':  { label: '신규',  emoji: '🆕', cls: 'st-new' },
+          'gone': { label: '사라짐', emoji: '🚫', cls: 'st-gone' }
+        };
+        var STATUS_ORDER = ['new', 'gone'];
+
         var DEFAULT_CATEGORY = "기타";
         var SHEET_PAGE_SIZE = 50;
 
         var allMarkers = [];
         var activeCategories = new Set();
+        var activeStatuses = new Set();
+        var dataMeta = {};
         var searchTerm = "";
         var sheetLimit = SHEET_PAGE_SIZE;
         var sharedOverlay = new kakao.maps.CustomOverlay({
@@ -977,15 +1195,68 @@
         // window.isPopupClick 플래그 없이 이벤트 전파만 끊어서 처리할 수 있다.
         var POPUP_STOP_EVENTS = ['click', 'mousedown', 'touchstart', 'dblclick', 'wheel'];
 
-        function createPopupElement(p) {
-          var categoriesHtml = (p.categories || []).map(function(cat) {
+        // "2026-09-10" -> "9월 10일". 연도가 다르면 연도까지 붙인다.
+        function formatDay(iso) {
+          var parts = String(iso || '').split('-');
+          if (parts.length !== 3) return '';
+          var thisYear = String(new Date().getFullYear());
+          var month = Number(parts[1]), day = Number(parts[2]);
+          if (!month || !day) return '';
+          var text = month + '월 ' + day + '일';
+          return parts[0] === thisYear ? text : parts[0] + '년 ' + text;
+        }
+
+        // short 는 카드용 한 줄. 팝업에서는 왜 그런지까지 풀어 쓴다.
+        function statusText(p, short) {
+          if (p.status === 'new') {
+            var since = formatDay(p.first_seen);
+            if (short) return since ? since + ' 추가' : '이번 갱신에 추가';
+            return since ? since + ' 갱신에 새로 들어온 매장입니다' : '새로 들어온 매장입니다';
+          }
+          if (p.status === 'gone') {
+            var last = formatDay(p.last_seen);
+            if (short) return last ? last + ' 이후 목록에서 빠짐' : '목록에서 빠짐';
+            return (last ? last + ' 이후 ' : '') + '제휴 목록에서 빠졌습니다. 방문 전 확인하세요';
+          }
+          return '';
+        }
+
+        function statusBadgeHtml(p) {
+          var meta = STATUS_META[p.status];
+          if (!meta) return '';
+          return '<span class="category-badge ' + meta.cls + '">' + meta.emoji + ' ' + meta.label + '</span>';
+        }
+
+        function createPopupElement(feature) {
+          var p = feature.properties;
+          var categoriesHtml = statusBadgeHtml(p) + (p.categories || []).map(function(cat) {
             return '<span class="category-badge cat-' + esc(cat) + '">' + esc(cat) + '</span>';
           }).join('');
 
-          var link = getPrimaryLink(p);
-          var ctaHtml = link
-            ? '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer" class="popup-cta-button">방문하기</a>'
+          var note = statusText(p);
+          var meta = STATUS_META[p.status];
+          var statusHtml = note
+            ? '<div class="popup-status ' + meta.cls + '">' + meta.emoji + '<span>' + esc(note) + '</span></div>'
             : '';
+
+          var link = getPrimaryLink(p);
+          var coords = feature.geometry.coordinates;
+          // 카카오맵 길찾기. 이름에 쉼표가 들어가면 좌표 파싱이 깨진다.
+          var routeUrl = 'https://map.kakao.com/link/to/'
+            + encodeURIComponent(String(p.title || '매장').replace(/,/g, ' '))
+            + ',' + coords[1] + ',' + coords[0];
+
+          var actions = '';
+          if (link) {
+            actions += '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer" class="popup-cta-button">방문하기</a>';
+          }
+          actions += '<a href="' + esc(routeUrl) + '" target="_blank" rel="noopener noreferrer" class="popup-cta-button secondary">길찾기</a>';
+
+          var phoneHtml = '';
+          if (p.phone) {
+            var telHref = 'tel:' + String(p.phone).replace(/[^0-9+]/g, '');
+            phoneHtml = '<p>📞 <a class="popup-phone" href="' + esc(telHref) + '">' + esc(p.phone) + '</a></p>';
+          }
 
           var el = document.createElement('div');
           el.className = 'store-popup';
@@ -993,10 +1264,11 @@
             '<button class="popup-close" type="button" aria-label="닫기">✕</button>' +
             '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
             '<div class="badge-row">' + categoriesHtml + '</div>' +
+            statusHtml +
             '<p>📍 ' + esc(p.address) + '</p>' +
-            (p.phone ? '<p>📞 ' + esc(p.phone) + '</p>' : '') +
+            phoneHtml +
             getLinksHtml(p) +
-            ctaHtml;
+            '<div class="popup-actions">' + actions + '</div>';
 
           // 팝업 내부 클릭이 지도 컨테이너까지 올라가면 지도의 click 핸들러가
           // 팝업을 닫아 버린다(링크 클릭이 먹지 않던 원인).
@@ -1011,7 +1283,7 @@
         }
 
         function openPopup(marker, feature) {
-          sharedOverlay.setContent(createPopupElement(feature.properties));
+          sharedOverlay.setContent(createPopupElement(feature));
           sharedOverlay.setPosition(marker.getPosition());
           sharedOverlay.setMap(map);
         }
@@ -1061,11 +1333,22 @@
           return km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km';
         }
 
-        // 하드코딩된 날짜는 주간 갱신을 따라가지 못하므로 응답 헤더에서 읽는다.
-        function showDataDate(lastModified) {
+        var fallbackLastModified = null;
+
+        // 하드코딩된 날짜는 주간 갱신을 따라가지 못한다. consolidate.py 가
+        // 넣어 주는 metadata.data_date 를 쓰고, 없으면 응답 헤더로 떨어진다.
+        function showDataDate(value) {
           var el = document.getElementById('data-date');
           if (!el) return;
-          var d = lastModified ? new Date(lastModified) : null;
+          el.style.display = '';
+          // "2026-09-10" 은 Date 로 넘기면 UTC 자정으로 읽혀 시간대에 따라
+          // 하루가 밀린다. 이미 날짜 문자열이면 그대로 쓴다.
+          var plain = /^(\d{4}-\d{2}-\d{2})/.exec(String(value || ''));
+          if (plain) {
+            el.textContent = '데이터 기준: ' + plain[1];
+            return;
+          }
+          var d = value ? new Date(value) : null;
           if (!d || isNaN(d.getTime())) {
             el.style.display = 'none';
             return;
@@ -1077,11 +1360,15 @@
         fetch('data/map_data.json')
           .then(res => {
             if (!res.ok) throw new Error('HTTP ' + res.status);
-            showDataDate(res.headers.get('Last-Modified'));
+            // Last-Modified 는 배포 시각이라 데이터 기준일과 어긋난다.
+            // metadata 가 없는 옛 파일만 헤더로 폴백한다.
+            fallbackLastModified = res.headers.get('Last-Modified');
             return res.json();
           })
           .then(geojson => {
             document.getElementById('status').style.display = 'none';
+            dataMeta = geojson.metadata || {};
+            showDataDate(dataMeta.data_date || fallbackLastModified);
 
             // Normalize categories for all features
             geojson.features.forEach(feature => {
@@ -1091,12 +1378,16 @@
                 .map(s => s.trim())
                 .filter(Boolean);
               if (!p.categories.length) p.categories = [DEFAULT_CATEGORY];
+              if (!STATUS_META[p.status]) p.status = '';
             });
-            // Deduplicate features by (title + address) combination
+
+            // 같은 매장이 상호 표기·층수 차이로 두 번 들어오는 일이 있다.
+            // 세 채널이 공유하는 링크의 매장 번호가 있으면 그걸 우선 키로 쓴다.
             var seen = new Set();
             geojson.features = geojson.features.filter(function(f) {
               var p = f.properties;
-              var key = (p.title || '') + '::' + (p.address || '');
+              var id = /\/(?:food|store)\/(\d+)/.exec(p.link || '');
+              var key = id ? 'id:' + id[1] : (p.title || '') + '::' + (p.address || '');
               if (seen.has(key)) return false;
               seen.add(key);
               return true;
@@ -1114,6 +1405,12 @@
                 if (trimmed) activeCategories.add(trimmed);
               });
             }
+            if (urlParams.has('status')) {
+              urlParams.get('status').split(',').forEach(function(key) {
+                var trimmed = key.trim();
+                if (STATUS_META[trimmed]) activeStatuses.add(trimmed);
+              });
+            }
 
             geojson.features.forEach(feature => {
               var p = feature.properties;
@@ -1126,14 +1423,16 @@
                 // 앵커를 중앙에 고정해 hover로 커져도 위치가 틀어지지 않게 함
                 function makeMarkerImage(size) {
                   return new kakao.maps.MarkerImage(
-                    createEmojiMarkerImage(iconText, catColor, size),
+                    createEmojiMarkerImage(iconText, catColor, size, p.status),
                     new kakao.maps.Size(size, size),
                     { offset: new kakao.maps.Point(size / 2, size / 2) }
                   );
                 }
                 var marker = new kakao.maps.Marker({
                   position: latlng,
-                  image: makeMarkerImage(markerSize)
+                  image: makeMarkerImage(markerSize),
+                  // 겹칠 때 신규가 위로, 사라진 매장이 아래로 깔리게 한다
+                  zIndex: p.status === 'new' ? 30 : (p.status === 'gone' ? 5 : 10)
                 });
 
                kakao.maps.event.addListener(marker, 'mouseover', () => {
@@ -1149,7 +1448,8 @@
                
                allMarkers.push({ marker, feature });
              });
-             
+
+              countStatuses();
               updateMarkers();
             })
            .catch(err => {
@@ -1174,14 +1474,40 @@
 
         // 검색어 + 카테고리 필터 판정. 지도 마커와 하단 목록이 같은 규칙을
         // 쓰도록 한곳에 둔다.
-        function matchesFilters(p) {
-          if (searchTerm) {
-            var title = (p.title || '').toLowerCase();
-            var address = (p.address || '').toLowerCase();
-            if (title.indexOf(searchTerm) === -1 && address.indexOf(searchTerm) === -1) return false;
-          }
+        function matchesSearch(p) {
+          if (!searchTerm) return true;
+          var title = (p.title || '').toLowerCase();
+          var address = (p.address || '').toLowerCase();
+          return title.indexOf(searchTerm) !== -1 || address.indexOf(searchTerm) !== -1;
+        }
+
+        function matchesCategory(p) {
           if (activeCategories.size === 0) return true;
           return (p.categories || []).some(function(cat) { return activeCategories.has(cat); });
+        }
+
+        function matchesStatus(p) {
+          if (activeStatuses.size === 0) return true;
+          return activeStatuses.has(p.status);
+        }
+
+        function matchesFilters(p) {
+          return matchesSearch(p) && matchesCategory(p) && matchesStatus(p);
+        }
+
+        function hasActiveFilters() {
+          return !!searchTerm || activeCategories.size > 0 || activeStatuses.size > 0;
+        }
+
+        // 목록 정렬: 신규 먼저, 사라진 매장은 맨 뒤. 그 안에서는 내 위치를
+        // 알면 가까운 순, 모르면 이름순.
+        var STATUS_WEIGHT = { 'new': 0, '': 1, 'gone': 2 };
+        function compareStores(a, b) {
+          var wa = STATUS_WEIGHT[a.feature.properties.status] ?? 1;
+          var wb = STATUS_WEIGHT[b.feature.properties.status] ?? 1;
+          if (wa !== wb) return wa - wb;
+          if (userLatLng) return a.distanceKm - b.distanceKm;
+          return (a.feature.properties.title || '').localeCompare(b.feature.properties.title || '', 'ko');
         }
 
         function updateBottomSheet() {
@@ -1192,23 +1518,31 @@
             return matchesFilters(m.feature.properties) && bounds.contain(m.marker.getPosition());
           });
 
-          // 내 위치가 있으면 가까운 순으로 정렬
           if (userLatLng) {
             filtered.forEach(function(m) {
               m.distanceKm = getDistance(userLatLng, m.marker.getPosition());
             });
-            filtered.sort(function(a, b) { return a.distanceKm - b.distanceKm; });
           }
+          filtered.sort(compareStores);
 
           document.getElementById('sheet-store-count').textContent = filtered.length + '곳';
 
           if (filtered.length === 0) {
-            sheetContent.innerHTML =
-              '<div class="sheet-empty">' +
+            var empty = document.createElement('div');
+            empty.className = 'sheet-empty';
+            empty.innerHTML =
               '<span class="empty-icon" aria-hidden="true">🔍</span>' +
               '<strong>표시할 매장이 없습니다</strong>' +
-              '<span>지도를 옮기거나 검색어·필터를 바꿔 보세요</span>' +
-              '</div>';
+              '<span>지도를 옮기거나 검색어·필터를 바꿔 보세요</span>';
+            if (hasActiveFilters()) {
+              var resetBtn = document.createElement('button');
+              resetBtn.type = 'button';
+              resetBtn.className = 'pill-reset';
+              resetBtn.textContent = '✕ 필터 초기화';
+              resetBtn.onclick = resetFilters;
+              empty.appendChild(resetBtn);
+            }
+            sheetContent.appendChild(empty);
             return;
           }
 
@@ -1226,16 +1560,20 @@
             // <button> 을 그리드 아이템으로 두면 UA 가 내용을 shrink-wrap 해서
             // 태블릿 2단 레이아웃에서 카드 높이가 무너진다. div + role 로 간다.
             var card = document.createElement('div');
-            card.className = 'store-card cat-' + (p.categories[0] || DEFAULT_CATEGORY);
+            var statusClass = p.status === 'new' ? ' is-new' : (p.status === 'gone' ? ' is-gone' : '');
+            card.className = 'store-card cat-' + (p.categories[0] || DEFAULT_CATEGORY) + statusClass;
             card.setAttribute('role', 'button');
             card.tabIndex = 0;
             var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || 'white';
             var distanceHtml = userLatLng ? '<div class="card-distance">📍 ' + formatDistance(m.distanceKm) + '</div>' : '';
-            card.innerHTML = '<div class="card-thumb"><img src="' + createEmojiMarkerImage(iconEmoji, catColor, 80) + '" alt=""></div>' +
+            var note = statusText(p, true);
+            var noteHtml = note ? '<div class="card-note">' + esc(note) + '</div>' : '';
+            card.innerHTML = '<div class="card-thumb"><img src="' + createEmojiMarkerImage(iconEmoji, catColor, 80, p.status) + '" alt=""></div>' +
                              '<div class="card-info">' +
                              '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
-                             '<div class="badge-row">' + categoriesHtml + '</div>' +
+                             '<div class="badge-row">' + statusBadgeHtml(p) + categoriesHtml + '</div>' +
                              '<p class="card-address">' + esc(p.address || '') + '</p>' +
+                             noteHtml +
                              distanceHtml +
                              '</div>';
             card.onclick = (e) => {
@@ -1274,6 +1612,7 @@
           var params = new URLSearchParams();
           if (searchTerm) params.set('q', searchTerm);
           if (activeCategories.size > 0) params.set('cat', Array.from(activeCategories).join(','));
+          if (activeStatuses.size > 0) params.set('status', Array.from(activeStatuses).join(','));
           var query = params.toString();
           // pushState 는 디바운스마다 히스토리를 쌓아 뒤로가기를 망가뜨린다.
           window.history.replaceState({}, '', window.location.pathname + (query ? '?' + query : ''));
@@ -1296,32 +1635,150 @@
           }
           
           updateBottomSheet();
-          updateCategoryPills();
+          renderFilterPills();
+          renderUpdateSummary();
+        }
+
+        function toggleStatus(key) {
+          if (activeStatuses.has(key)) {
+            activeStatuses.delete(key);
+          } else {
+            activeStatuses.add(key);
+          }
+          updateMarkers();
+        }
+
+        function resetFilters() {
+          activeCategories.clear();
+          activeStatuses.clear();
+          searchTerm = '';
+          searchInput.value = '';
+          clearSearch.style.display = 'none';
+          updateMarkers();
         }
 
 
 
-        function updateCategoryPills() {
+        // 데이터 전체 기준 상태별 개수. 필터를 걸어도 흔들리지 않아야
+        // '이번 갱신에 무엇이 바뀌었나' 를 계속 보여줄 수 있다.
+        var totalStatusCounts = { 'new': 0, 'gone': 0 };
+        function countStatuses() {
+          totalStatusCounts = { 'new': 0, 'gone': 0 };
+          allMarkers.forEach(function(m) {
+            var status = m.feature.properties.status;
+            if (totalStatusCounts[status] !== undefined) totalStatusCounts[status] += 1;
+          });
+        }
+
+        function makePill(className, emoji, label, count, isActive, onToggle) {
+          var pill = document.createElement('button');
+          pill.type = 'button';
+          pill.className = 'category-pill ' + className + (isActive ? ' active' : '');
+          pill.setAttribute('aria-pressed', isActive);
+          pill.innerHTML = '<span class="pill-emoji" aria-hidden="true">' + emoji + '</span>' +
+                           '<span class="pill-label">' + esc(label) + '</span>' +
+                           '<span class="pill-count">' + count + '</span>';
+          pill.onclick = onToggle;
+          return pill;
+        }
+
+        function renderFilterPills() {
           var pillRow = document.getElementById('category-pill-row');
           pillRow.innerHTML = '';
+
+          // 상태 개수는 카테고리 필터 기준, 카테고리 개수는 상태 필터 기준으로
+          // 센다. 그래야 "신규만 보기" 상태에서 카테고리 숫자가 신규를 가리킨다.
+          var statusCounts = {};
+          var catCounts = {};
+          allMarkers.forEach(function(m) {
+            var p = m.feature.properties;
+            if (!matchesSearch(p)) return;
+            if (matchesCategory(p) && p.status) {
+              statusCounts[p.status] = (statusCounts[p.status] || 0) + 1;
+            }
+            if (matchesStatus(p)) {
+              (p.categories || []).forEach(function(cat) {
+                catCounts[cat] = (catCounts[cat] || 0) + 1;
+              });
+            }
+          });
+
+          var hasStatusPills = false;
+          STATUS_ORDER.forEach(function(key) {
+            // 데이터에 없는 상태는 필터로 내지 않는다
+            if (!totalStatusCounts[key]) return;
+            hasStatusPills = true;
+            var meta = STATUS_META[key];
+            pillRow.appendChild(makePill(
+              meta.cls, meta.emoji, meta.label, statusCounts[key] || 0,
+              activeStatuses.has(key),
+              function() { toggleStatus(key); }
+            ));
+          });
+
+          if (hasStatusPills) {
+            var divider = document.createElement('span');
+            divider.className = 'pill-divider';
+            divider.setAttribute('aria-hidden', 'true');
+            pillRow.appendChild(divider);
+          }
+
           Object.keys(categoryIcons).forEach(function(cat) {
-            var pill = document.createElement('button');
-            pill.type = 'button';
-            pill.className = 'category-pill cat-' + cat + (activeCategories.has(cat) ? ' active' : '');
-            pill.setAttribute('aria-pressed', activeCategories.has(cat));
-            pill.innerHTML = '<span class="pill-emoji" aria-hidden="true">' + categoryIcons[cat] + '</span>' +
-                             '<span class="pill-label">' + cat + '</span>';
             // 매장 하나가 여러 카테고리를 가질 수 있고 필터도 Set 이므로
             // 단일 선택으로 묶어 둘 이유가 없다. 개별 토글로 동작시킨다.
-            pill.onclick = function() {
-              if (activeCategories.has(cat)) {
-                activeCategories.delete(cat);
-              } else {
-                activeCategories.add(cat);
+            pillRow.appendChild(makePill(
+              'cat-' + cat, categoryIcons[cat], cat, catCounts[cat] || 0,
+              activeCategories.has(cat),
+              function() {
+                if (activeCategories.has(cat)) {
+                  activeCategories.delete(cat);
+                } else {
+                  activeCategories.add(cat);
+                }
+                updateMarkers();
               }
-              updateMarkers();
-            };
-            pillRow.appendChild(pill);
+            ));
+          });
+
+          if (hasActiveFilters()) {
+            var reset = document.createElement('button');
+            reset.type = 'button';
+            reset.className = 'pill-reset';
+            reset.textContent = '✕ 필터 초기화';
+            reset.onclick = resetFilters;
+            pillRow.appendChild(reset);
+          }
+        }
+
+        // 지도를 보기 전에 "이번 주에 뭐가 달라졌는지" 부터 알려 준다.
+        function renderUpdateSummary() {
+          var el = document.getElementById('update-summary');
+          var newCount = totalStatusCounts['new'];
+          var goneCount = totalStatusCounts['gone'];
+          if (!newCount && !goneCount) {
+            el.hidden = true;
+            return;
+          }
+          el.hidden = false;
+          el.innerHTML = '';
+
+          var label = document.createElement('span');
+          label.className = 'summary-label';
+          label.textContent = '이번 갱신';
+          el.appendChild(label);
+
+          STATUS_ORDER.forEach(function(key) {
+            var count = totalStatusCounts[key];
+            if (!count) return;
+            var meta = STATUS_META[key];
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'summary-chip ' + meta.cls;
+            chip.setAttribute('aria-pressed', activeStatuses.has(key));
+            chip.textContent = meta.emoji + ' ' + meta.label + ' ' + count + '곳';
+            chip.title = meta.label + ' 매장만 보기';
+            chip.onclick = function() { toggleStatus(key); };
+            el.appendChild(chip);
           });
         }
 
@@ -1347,6 +1804,23 @@
           searchTerm = '';
           updateMarkers();
         };
+
+        // 키보드: '/' 로 검색창, Esc 로 팝업 닫기 → 검색어 비우기
+        document.addEventListener('keydown', function(e) {
+          var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement && document.activeElement.tagName);
+          if (e.key === '/' && !typing && !e.metaKey && !e.ctrlKey) {
+            e.preventDefault();
+            searchInput.focus();
+            searchInput.select();
+            return;
+          }
+          if (e.key !== 'Escape') return;
+          if (sharedOverlay.getMap()) {
+            closePopup();
+          } else if (typing && searchInput.value) {
+            clearSearch.onclick();
+          }
+        });
       })();
     });
   </script>

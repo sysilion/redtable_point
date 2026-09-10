@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/map_data.json scripts/.geocode_cache.json
+          git add data/map_data.json data/store_history.json scripts/.geocode_cache.json
           if git diff --cached --quiet; then
             echo "변경 사항이 없어 커밋을 건너뜁니다."
             exit 0
