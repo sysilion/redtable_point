@@ -435,6 +435,12 @@
     .card-note { font-size: 11px; color: var(--text-3); }
     .store-card:active { transform: scale(0.985); }
     .store-card:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+    /* 지도에서 고른 매장. 팝업과 카드가 같은 곳을 가리킨다는 걸 보여 준다 */
+    .store-card.is-selected {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px var(--accent-soft), var(--shadow-soft);
+    }
+    .store-card.is-selected.is-gone { opacity: 1; }
 
     .card-thumb {
       flex-shrink: 0;
@@ -485,6 +491,26 @@
     .sheet-more-button:hover { background: var(--surface-hover); color: var(--text); }
 
     /* ── 지도 팝업 ──────────────────────────────────────────── */
+    /* 오버레이는 yAnchor: 1 로 마커 좌표에 아랫변을 맞춘다. 아래 여백이
+       마커 반지름(20px) + 꼬리 높이만큼이라 팝업이 마커를 덮지 않는다 */
+    .store-popup-wrap {
+      position: relative;
+      padding-bottom: 36px;
+      filter: drop-shadow(0 12px 28px rgba(16, 24, 40, 0.18));
+    }
+    /* 등장 애니메이션과 꼬리는 안쪽 상자에 둔다. 바깥 wrap 의 좌표가 흔들리지
+       않아야 열리자마자 재는 위치 보정이 정확하다 */
+    .store-popup::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 14px; height: 14px;
+      transform: translateX(-50%) rotate(45deg);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
     .store-popup {
       position: relative;
       width: 300px;
@@ -493,7 +519,6 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       background: var(--surface);
-      box-shadow: var(--shadow-raise);
       color: var(--text);
       animation: popup-in 0.18s var(--ease-sheet);
     }
@@ -785,6 +810,7 @@
       }
 
       .popup-cta-button { color: #12100f; }
+      .store-popup-wrap { filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.55)); }
       #status { background: rgba(240, 242, 245, 0.92); color: #14171a; }
     }
 
@@ -945,9 +971,19 @@
       return dataUrl;
     }
     
+    // SDK 가 안 내려오면 kakao 가 없어 ReferenceError 로 조용히 죽고 화면은 빈 채
+    // 남는다(등록 안 된 도메인, 차단된 네트워크). 사용자에게 이유를 알려 준다.
+    if (typeof kakao === 'undefined' || !kakao.maps) {
+      var fatal = document.getElementById('status');
+      fatal.textContent = '지도를 불러오지 못했습니다. 네트워크를 확인하고 새로고침 해주세요.';
+      fatal.style.display = 'block';
+      throw new Error('Kakao Maps SDK failed to load');
+    }
+
     kakao.maps.load(function() {
       (function () {
         var mapContainer = document.getElementById('map'),
+            topNav = document.querySelector('.top-nav'),
             mapOption = { 
                 center: new kakao.maps.LatLng(37.535, 126.897),
                 level: 13,
@@ -1019,9 +1055,14 @@
         var dataMeta = {};
         var searchTerm = "";
         var sheetLimit = SHEET_PAGE_SIZE;
+        // 팝업 아랫변을 마커 좌표에 맞춘다. 마커와의 간격은 .store-popup-wrap 패딩이 담당
         var sharedOverlay = new kakao.maps.CustomOverlay({
-          zIndex: 1000
+          zIndex: 1000,
+          xAnchor: 0.5,
+          yAnchor: 1
         });
+        var selectedEntry = null;
+        var scrollToSelected = false;
         var sheet = document.getElementById('bottom-sheet');
         var sheetHandle = document.querySelector('.sheet-handle');
         var sheetStates = ['state-collapsed', 'state-peek', 'state-half', 'state-full'];
@@ -1048,6 +1089,16 @@
         // 1024px 이상은 좌측 사이드바 레이아웃이다. 시트가 아니므로 드래그하지 않는다.
         var isSidebar = window.matchMedia('(min-width: 1024px)');
         var SHEET_COLLAPSED_H = 76; // CSS 의 --sheet-collapsed-h 와 같은 값
+        var SHEET_FRACTIONS = [0, 0.35, 0.55, 1]; // CSS 의 state-* translateY 와 같은 값
+
+        // 시트가 지도를 덮고 있는 높이. 전환 애니메이션 중에도 목표 상태 기준으로
+        // 계산해야 팝업 위치 보정이 제자리를 잡는다.
+        function sheetVisibleHeight() {
+          if (isSidebar.matches) return 0;
+          if (currentStateIndex === 0) return SHEET_COLLAPSED_H;
+          if (currentStateIndex === sheetStates.length - 1) return sheet.offsetHeight;
+          return SHEET_FRACTIONS[currentStateIndex] * window.innerHeight;
+        }
 
         // WebKitCSSMatrix 는 비표준 별칭이고, 'none' 을 넘기면 예외를 던진다.
         var MatrixCtor = window.DOMMatrix || window.WebKitCSSMatrix;
@@ -1175,6 +1226,13 @@
             });
         }
 
+        // 매장을 가리키는 안정된 키. 세 채널이 공유하는 링크의 매장 번호가 있으면
+        // 그걸 쓰고, 없으면 이름을 쓴다. 중복 제거와 ?store= 딥링크가 같이 쓴다.
+        function storeKey(p) {
+          var id = /\/(?:food|store)\/(\d+)/.exec(p.link || '');
+          return id ? id[1] : String(p.title || '').trim();
+        }
+
         function getPrimaryLink(p) {
           var links = getStoreLinks(p);
           return links.length ? links[0].link : null;
@@ -1259,8 +1317,13 @@
           }
 
           var el = document.createElement('div');
-          el.className = 'store-popup';
-          el.innerHTML =
+          el.className = 'store-popup-wrap';
+          var box = document.createElement('div');
+          box.className = 'store-popup';
+          box.setAttribute('role', 'dialog');
+          box.setAttribute('aria-label', (p.title || '매장') + ' 정보');
+          el.appendChild(box);
+          box.innerHTML =
             '<button class="popup-close" type="button" aria-label="닫기">✕</button>' +
             '<h3>' + esc(p.title || 'Untitled') + '</h3>' +
             '<div class="badge-row">' + categoriesHtml + '</div>' +
@@ -1282,14 +1345,93 @@
           return el;
         }
 
-        function openPopup(marker, feature) {
-          sharedOverlay.setContent(createPopupElement(feature));
-          sharedOverlay.setPosition(marker.getPosition());
+        // 팝업이 상단 내비·하단 시트·지도 가장자리에 걸리면 그만큼 지도를 민다.
+        // 오버레이 DOM 이 자리를 잡은 다음 재야 하므로 한 프레임 늦춘다.
+        function ensurePopupVisible(el) {
+          requestAnimationFrame(function() {
+            if (sharedOverlay.getMap() !== map || !el.isConnected) return;
+            var rect = el.getBoundingClientRect();
+            var mapRect = mapContainer.getBoundingClientRect();
+            var pad = 12;
+            // wrap 의 아랫변이 마커 중심이다. 커진 마커의 반지름까지 지도 안에 들어오게 한다
+            var markerReach = 28;
+            var navH = isSidebar.matches ? 0 : topNav.offsetHeight;
+            // 모바일 peek 상태의 지도 띠는 35vh 남짓이라 긴 팝업이 들어가지 않는다.
+            // 그럴 때는 시트를 접어 자리를 만든다. 목록은 핸들을 올리면 돌아온다.
+            var needed = rect.height + markerReach + pad * 2;
+            if (!isSidebar.matches && currentStateIndex > 0 &&
+                needed > mapRect.height - navH - sheetVisibleHeight()) {
+              setSheetState(0);
+            }
+            var top = mapRect.top + pad + navH;
+            var bottom = mapRect.bottom - pad - sheetVisibleHeight();
+            var left = mapRect.left + pad;
+            var right = mapRect.right - pad;
+            var dx = 0, dy = 0;
+            if (rect.bottom + markerReach > bottom) dy = rect.bottom + markerReach - bottom;
+            // 둘 다 넘치면 제목이 있는 위쪽을 살린다
+            if (rect.top - dy < top) dy = rect.top - top;
+            if (rect.right > right) dx = rect.right - right;
+            if (rect.left - dx < left) dx = rect.left - left;
+            if (dx || dy) map.panBy(dx, dy);
+          });
+        }
+
+        function setMarkerEmphasis(entry, on) {
+          if (!entry) return;
+          entry.setSize(on ? entry.baseSize + 8 : entry.baseSize);
+          entry.marker.setZIndex(on ? 50 : entry.baseZIndex);
+        }
+
+        // 지도·목록 양쪽에서 고른 매장을 한 곳에서 표시한다.
+        // scroll 은 지도에서 골랐을 때만 true. 목록에서 골랐으면 이미 보이는 카드다.
+        function syncSelectedCard(scroll) {
+          if (!selectedEntry) scrollToSelected = false;
+          var cards = document.querySelectorAll('.store-card');
+          var target = null;
+          for (var i = 0; i < cards.length; i++) {
+            var hit = !!selectedEntry && cards[i].dataset.idx === String(selectedEntry.feature.properties._idx);
+            cards[i].classList.toggle('is-selected', hit);
+            cards[i].setAttribute('aria-current', hit ? 'true' : 'false');
+            if (hit) target = cards[i];
+          }
+          if (scroll && target) {
+            target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            scrollToSelected = false;
+          }
+        }
+
+        // 목록·딥링크에서 매장을 고르면 지도를 그곳으로 옮기고 팝업을 연다
+        function focusStore(entry, fromMap) {
+          map.setCenter(entry.marker.getPosition());
+          if (map.getLevel() > 5) map.setLevel(5);
+          openPopup(entry, fromMap);
+        }
+
+        function openPopup(entry, fromMap) {
+          // 모바일에서 시트가 화면을 덮고 있으면 팝업이 가려진다
+          if (!isSidebar.matches && currentStateIndex > 1) setSheetState(1);
+          if (selectedEntry && selectedEntry !== entry) setMarkerEmphasis(selectedEntry, false);
+          selectedEntry = entry;
+          setMarkerEmphasis(entry, true);
+          var el = createPopupElement(entry.feature);
+          sharedOverlay.setContent(el);
+          sharedOverlay.setPosition(entry.marker.getPosition());
           sharedOverlay.setMap(map);
+          scrollToSelected = !!fromMap;
+          syncSelectedCard(scrollToSelected);
+          ensurePopupVisible(el);
+          syncUrl();
         }
 
         function closePopup() {
           sharedOverlay.setMap(null);
+          if (selectedEntry) {
+            setMarkerEmphasis(selectedEntry, false);
+            selectedEntry = null;
+            syncSelectedCard(false);
+            syncUrl();
+          }
         }
 
         // 내 위치
@@ -1371,12 +1513,15 @@
             showDataDate(dataMeta.data_date || fallbackLastModified);
 
             // Normalize categories for all features
-            geojson.features.forEach(feature => {
+            geojson.features.forEach((feature, idx) => {
               var p = feature.properties;
+              p._idx = idx; // 카드 ↔ 마커를 잇는 키. 중복 제거 뒤에도 유일하다
+              // 필·색 토큰이 없는 카테고리('체험', '랍스터' 등)는 어떤 필터로도 닿을 수
+              // 없다. 아는 카테고리만 남기고, 하나도 없으면 기타로 접는다.
               p.categories = String(p.category || '')
                 .split(',')
                 .map(s => s.trim())
-                .filter(Boolean);
+                .filter(function(cat) { return !!categoryIcons[cat]; });
               if (!p.categories.length) p.categories = [DEFAULT_CATEGORY];
               if (!STATUS_META[p.status]) p.status = '';
             });
@@ -1386,8 +1531,8 @@
             var seen = new Set();
             geojson.features = geojson.features.filter(function(f) {
               var p = f.properties;
-              var id = /\/(?:food|store)\/(\d+)/.exec(p.link || '');
-              var key = id ? 'id:' + id[1] : (p.title || '') + '::' + (p.address || '');
+              // 매장 번호가 없으면 이름만으로는 다른 지점을 같은 매장으로 볼 수 있어 주소까지 본다
+              var key = storeKey(p) + (/^\d+$/.test(storeKey(p)) ? '' : '::' + (p.address || ''));
               if (seen.has(key)) return false;
               seen.add(key);
               return true;
@@ -1411,13 +1556,26 @@
                 if (STATUS_META[trimmed]) activeStatuses.add(trimmed);
               });
             }
+            var requestedStore = urlParams.get('store') || '';
+
+            // 첫 화면은 매장이 몰린 곳으로. 전체 범위로 맞추면 서울 한 클러스터와
+            // 지방 몇 곳 때문에 늘 전국 뷰가 떠서 한 번 더 눌러야 했다.
+            // 좌표 중앙값은 멀리 떨어진 소수 매장에 끌려가지 않는다.
+            if (geojson.features.length) {
+              var lats = geojson.features.map(f => f.geometry.coordinates[1]).sort((a, b) => a - b);
+              var lngs = geojson.features.map(f => f.geometry.coordinates[0]).sort((a, b) => a - b);
+              var mid = Math.floor(lats.length / 2);
+              map.setCenter(new kakao.maps.LatLng(lats[mid], lngs[mid]));
+              map.setLevel(7);
+            }
 
             geojson.features.forEach(feature => {
               var p = feature.properties;
               var latlng = new kakao.maps.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
               
                 var iconText = categoryIcons[p.categories[0]] || categoryIcons["기타"];
-                var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || 'white';
+                // 데이터에만 있고 색 토큰이 없는 카테고리(랍스터·해산물 등)는 기타 색을 쓴다
+                var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || getCssVar('--cat-기타-bg') || 'white';
                 
                 var markerSize = 48;
                 // 앵커를 중앙에 고정해 hover로 커져도 위치가 틀어지지 않게 함
@@ -1428,29 +1586,51 @@
                     { offset: new kakao.maps.Point(size / 2, size / 2) }
                   );
                 }
+                // 겹칠 때 신규가 위로, 사라진 매장이 아래로 깔리게 한다
+                var baseZIndex = p.status === 'new' ? 30 : (p.status === 'gone' ? 5 : 10);
                 var marker = new kakao.maps.Marker({
                   position: latlng,
                   image: makeMarkerImage(markerSize),
-                  // 겹칠 때 신규가 위로, 사라진 매장이 아래로 깔리게 한다
-                  zIndex: p.status === 'new' ? 30 : (p.status === 'gone' ? 5 : 10)
+                  zIndex: baseZIndex
                 });
+                var entry = {
+                  marker: marker,
+                  feature: feature,
+                  baseSize: markerSize,
+                  baseZIndex: baseZIndex,
+                  setSize: function(size) { marker.setImage(makeMarkerImage(size)); }
+                };
 
                kakao.maps.event.addListener(marker, 'mouseover', () => {
-                 marker.setImage(makeMarkerImage(markerSize + 8));
+                 entry.setSize(markerSize + 8);
                });
                kakao.maps.event.addListener(marker, 'mouseout', () => {
-                 marker.setImage(makeMarkerImage(markerSize));
+                 // 선택된 마커는 커진 채로 둔다
+                 if (selectedEntry !== entry) entry.setSize(markerSize);
                });
                
                kakao.maps.event.addListener(marker, 'click', () => {
-                 openPopup(marker, feature);
+                 openPopup(entry, true);
                });
                
-               allMarkers.push({ marker, feature });
+               allMarkers.push(entry);
              });
 
               countStatuses();
               updateMarkers();
+
+              // ?store= 딥링크. 매장 번호가 없는 매장은 이름으로 찾는다.
+              if (requestedStore) {
+                var hit = null;
+                for (var i = 0; i < allMarkers.length && !hit; i++) {
+                  if (storeKey(allMarkers[i].feature.properties) === requestedStore) hit = allMarkers[i];
+                }
+                if (hit && matchesFilters(hit.feature.properties)) {
+                  focusStore(hit, false);
+                } else {
+                  syncUrl(); // 없는 매장은 주소에서 지운다
+                }
+              }
             })
            .catch(err => {
             var status = document.getElementById('status');
@@ -1524,6 +1704,12 @@
             });
           }
           filtered.sort(compareStores);
+          // 지도에서 고른 매장은 맨 앞에 둔다. 50개 페이지 뒤에 숨어 있으면
+          // 팝업과 카드가 같은 곳을 가리킨다는 걸 보여 줄 수 없다.
+          if (selectedEntry) {
+            var selIdx = filtered.indexOf(selectedEntry);
+            if (selIdx > 0) filtered.unshift(filtered.splice(selIdx, 1)[0]);
+          }
 
           document.getElementById('sheet-store-count').textContent = filtered.length + '곳';
 
@@ -1549,7 +1735,6 @@
           var fragment = document.createDocumentFragment();
           filtered.slice(0, sheetLimit).forEach(m => {
             var p = m.feature.properties;
-            var latlng = new kakao.maps.LatLng(m.feature.geometry.coordinates[1], m.feature.geometry.coordinates[0]);
 
             var categoriesHtml = (p.categories || []).map(cat =>
               '<span class="category-badge cat-' + esc(cat) + '">' + esc(cat) + '</span>'
@@ -1561,10 +1746,13 @@
             // 태블릿 2단 레이아웃에서 카드 높이가 무너진다. div + role 로 간다.
             var card = document.createElement('div');
             var statusClass = p.status === 'new' ? ' is-new' : (p.status === 'gone' ? ' is-gone' : '');
-            card.className = 'store-card cat-' + (p.categories[0] || DEFAULT_CATEGORY) + statusClass;
+            var isSelected = !!selectedEntry && selectedEntry.feature === m.feature;
+            card.className = 'store-card cat-' + (p.categories[0] || DEFAULT_CATEGORY) + statusClass + (isSelected ? ' is-selected' : '');
+            card.dataset.idx = p._idx;
             card.setAttribute('role', 'button');
+            card.setAttribute('aria-current', isSelected ? 'true' : 'false');
             card.tabIndex = 0;
-            var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || 'white';
+            var catColor = getCssVar('--cat-' + (p.categories[0] || '기타') + '-bg') || getCssVar('--cat-기타-bg') || 'white';
             var distanceHtml = userLatLng ? '<div class="card-distance">📍 ' + formatDistance(m.distanceKm) + '</div>' : '';
             var note = statusText(p, true);
             var noteHtml = note ? '<div class="card-note">' + esc(note) + '</div>' : '';
@@ -1576,13 +1764,7 @@
                              noteHtml +
                              distanceHtml +
                              '</div>';
-            card.onclick = (e) => {
-              // 모바일에서 시트가 화면을 덮고 있으면 팝업이 가려진다
-              if (!isSidebar.matches && currentStateIndex > 1) setSheetState(1);
-              map.setCenter(latlng);
-              map.setLevel(5);
-              openPopup(m.marker, m.feature);
-            };
+            card.onclick = (e) => { focusStore(m, false); };
             card.onkeydown = function(e) {
               if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
                 e.preventDefault();
@@ -1606,6 +1788,8 @@
           }
 
           sheetContent.appendChild(fragment);
+          // 지도에서 고른 뒤 panBy 가 idle 을 불러 목록이 다시 그려지면 그때 스크롤한다
+          if (scrollToSelected) syncSelectedCard(true);
         }
 
         function syncUrl() {
@@ -1613,6 +1797,7 @@
           if (searchTerm) params.set('q', searchTerm);
           if (activeCategories.size > 0) params.set('cat', Array.from(activeCategories).join(','));
           if (activeStatuses.size > 0) params.set('status', Array.from(activeStatuses).join(','));
+          if (selectedEntry) params.set('store', storeKey(selectedEntry.feature.properties));
           var query = params.toString();
           // pushState 는 디바운스마다 히스토리를 쌓아 뒤로가기를 망가뜨린다.
           window.history.replaceState({}, '', window.location.pathname + (query ? '?' + query : ''));
@@ -1625,11 +1810,21 @@
           clusterer.clear();
           var filtered = allMarkers.filter(function(m) { return matchesFilters(m.feature.properties); });
           clusterer.addMarkers(filtered.map(m => m.marker));
+          // 필터에서 빠진 매장의 팝업이 지도에 남아 있으면 안 된다
+          if (selectedEntry && filtered.indexOf(selectedEntry) === -1) closePopup();
           
           if (filtered.length > 0) {
-            var bounds = new kakao.maps.LatLngBounds();
-            filtered.forEach(m => bounds.extend(m.marker.getPosition()));
-            map.setBounds(bounds);
+            // 보던 곳에 결과가 하나라도 있으면 지도를 그대로 둔다. 부산·제주에
+            // 매장 한 곳만 있어도 전국 뷰로 튀어 나가던 것을 막는다.
+            var viewBounds = map.getBounds();
+            var anyVisible = filtered.some(function(m) { return viewBounds.contain(m.marker.getPosition()); });
+            if (!anyVisible) {
+              var bounds = new kakao.maps.LatLngBounds();
+              filtered.forEach(m => bounds.extend(m.marker.getPosition()));
+              map.setBounds(bounds);
+              // 결과가 한 곳이면 setBounds 가 최대 확대까지 들어간다. 골목만 보이면 어딘지 모른다
+              if (map.getLevel() < 4) map.setLevel(4);
+            }
           } else {
             showStatus('검색 결과가 없습니다');
           }
